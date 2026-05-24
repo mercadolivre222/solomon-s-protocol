@@ -12,4 +12,7 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
+  vite: {
+    base: process.env.GITHUB_ACTIONS ? "/solomon-s-protocol/" : "/",
+  }
 });
