@@ -3,14 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import { 
   ShieldCheck, 
   Lock, 
-  Check, 
   Star, 
   Sparkles, 
   Clock, 
   ArrowRight, 
-  MessageSquare,
-  BadgeAlert,
-  ChevronDown
+  BadgeAlert
 } from "lucide-react";
 import lockImg from "@/assets/solomon-lock.jpg";
 import stoneImg from "@/assets/stone-bg.jpg";
@@ -20,81 +17,18 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Protocolo de Salomão — Diagnóstico Espiritual" },
+      { title: "Protocolo de Salomão — Liberação Espiritual" },
       {
         name: "description",
         content:
-          "Descubra se sua linhagem está sob o selo da escassez hereditária. Faça o diagnóstico agora.",
+          "Quebre o selo da escassez hereditária e ative a Provisão Terrena Absoluta. Ativação imediata.",
       },
     ],
   }),
 });
 
-type Step = "quiz" | "loading" | "sales";
-
-const QUESTIONS = [
-  {
-    q: "Você sente que o seu dinheiro some misteriosamente antes do final do mês?",
-    options: [
-      "Sim, trabalho duro mas o dinheiro simplesmente desaparece",
-      "Às vezes sinto um bloqueio invisível que suga meus frutos",
-    ],
-  },
-  {
-    q: "Você carrega dívidas ou boletos acumulados que parecem nunca ter fim?",
-    options: [
-      "Sim, vivo sufocado por contas e parcelas recorrentes",
-      "Sim, sinto que herdei essa dificuldade financeira da minha família",
-    ],
-  },
-  {
-    q: "Você percebe padrões repetitivos de perdas financeiras na sua linhagem (pais, avós)?",
-    options: [
-      "Sim, minha família sempre trabalhou muito e nunca prosperou realmente",
-      "Sim, vejo a mesma escassez se repetindo de geração em geração",
-    ],
-  },
-  {
-    q: "Qual área da sua vida financeira mais precisa de uma liberação imediata hoje?",
-    options: [
-      "Quitar todas as dívidas e restaurar a paz no meu nome",
-      "Multiplicar meus ganhos e ativar a abundância diária",
-    ],
-  },
-] as const;
-
 function Index() {
-  const [step, setStep] = useState<Step>("quiz");
-  const [qIndex, setQIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  
   const salesRef = useRef<HTMLDivElement>(null);
-
-  const onAnswer = (option: string) => {
-    setSelectedOption(option);
-    
-    // Pause briefly to show selected state animation, then transition
-    setTimeout(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        if (qIndex < QUESTIONS.length - 1) {
-          setQIndex(qIndex + 1);
-          setSelectedOption(null);
-          setIsTransitioning(false);
-        } else {
-          setStep("loading");
-        }
-      }, 250);
-    }, 400);
-  };
-
-  const handleLoadingComplete = () => {
-    setStep("sales");
-    setTimeout(() => {
-      salesRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 100);
-  };
 
   return (
     <main
@@ -108,224 +42,9 @@ function Index() {
       }}
     >
       <div className="mx-auto flex w-full max-w-[640px] flex-col items-center px-4 pb-20 pt-6 sm:pt-12">
-        {step === "quiz" && (
-          <QuizStep
-            index={qIndex}
-            total={QUESTIONS.length}
-            question={QUESTIONS[qIndex].q}
-            options={QUESTIONS[qIndex].options}
-            onAnswer={onAnswer}
-            isTransitioning={isTransitioning}
-            selectedOption={selectedOption}
-          />
-        )}
-        {step === "loading" && <LoadingStep onComplete={handleLoadingComplete} />}
-        {step === "sales" && <SalesStep innerRef={salesRef} />}
+        <SalesPage innerRef={salesRef} />
       </div>
     </main>
-  );
-}
-
-function QuizStep({
-  index,
-  total,
-  question,
-  options,
-  onAnswer,
-  isTransitioning,
-  selectedOption,
-}: {
-  index: number;
-  total: number;
-  question: string;
-  options: readonly string[];
-  onAnswer: (opt: string) => void;
-  isTransitioning: boolean;
-  selectedOption: string | null;
-}) {
-  const progressPercentage = ((index + 1) / total) * 100;
-
-  return (
-    <div className={`reveal is-visible mt-4 w-full max-w-md transition-all duration-300 ${isTransitioning ? "opacity-0 scale-95 translate-y-2" : "opacity-100 scale-100 translate-y-0"}`}>
-      <p className="font-display mb-2 text-center text-[10px] uppercase tracking-[0.3em] text-gold flex items-center justify-center gap-1.5">
-        <Sparkles className="h-3 w-3 text-gold animate-pulse" />
-        Diagnóstico Espiritual Ativo
-      </p>
-      
-      <h1 className="font-display gold-gradient-text mb-6 text-center text-2xl font-black leading-tight sm:text-3xl">
-        Protocolo de Salomão
-      </h1>
-
-      {/* Progress Bar Container */}
-      <div className="mb-6 w-full px-1">
-        <div className="flex justify-between items-center text-[10px] text-neutral-400 mb-2 uppercase tracking-wider font-semibold">
-          <span>ETAPA {index + 1} DE {total}</span>
-          <span className="text-gold-light animate-pulse">{Math.round(progressPercentage)}% CONCLUÍDO</span>
-        </div>
-        <div className="h-1.5 w-full bg-black/40 rounded-full border border-gold-dim/40 p-0.5 overflow-hidden">
-          <div 
-            className="h-full bg-gradient-to-r from-gold-deep via-gold to-gold-light rounded-full transition-all duration-300 shadow-[0_0_8px_rgba(255,215,0,0.5)]"
-            style={{ width: `${progressPercentage}%` }}
-          />
-        </div>
-      </div>
-
-      <div
-        className="rounded-2xl border border-gold-dim p-6 sm:p-8 relative"
-        style={{
-          background:
-            "linear-gradient(160deg, rgba(30,22,4,0.92) 0%, rgba(10,8,2,0.98) 100%)",
-          boxShadow:
-            "inset 0 1px 0 rgba(255,215,0,0.15), 0 20px 50px rgba(0,0,0,0.85)",
-        }}
-      >
-        {/* Glow corner elements */}
-        <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-gold/40 rounded-tl-2xl pointer-events-none" />
-        <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-gold/40 rounded-tr-2xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-gold/40 rounded-bl-2xl pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-gold/40 rounded-br-2xl pointer-events-none" />
-
-        <div className="mb-5 flex items-center justify-between text-[9px] uppercase tracking-widest text-neutral-500 font-semibold border-b border-gold-dim/20 pb-3">
-          <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-            Criptografia Ativa
-          </span>
-          <span className="text-gold/70 flex items-center gap-1">
-            <Lock className="h-2.5 w-2.5" />
-            CONEXÃO SEGURA
-          </span>
-        </div>
-
-        <h2 className="font-display mb-6 text-center text-lg leading-snug text-neutral-100 sm:text-xl font-bold px-2">
-          {question}
-        </h2>
-
-        <div className="flex flex-col gap-3">
-          {options.map((opt) => {
-            const isSelected = selectedOption === opt;
-            return (
-              <button
-                key={opt}
-                type="button"
-                onClick={() => onAnswer(opt)}
-                disabled={selectedOption !== null}
-                className={`group w-full text-left text-sm rounded-xl px-5 py-4 transition-all duration-300 relative border flex items-center justify-between outline-none cursor-pointer sm:text-base ${
-                  isSelected
-                    ? "border-gold bg-gold-deep/30 text-gold-light scale-[1.01] shadow-[0_0_15px_rgba(255,215,0,0.25)]"
-                    : "border-gold-dim/40 bg-black/50 text-neutral-300 hover:border-gold hover:bg-[#1a1408]/80 hover:text-gold-light hover:scale-[1.005]"
-                }`}
-              >
-                <div className="flex items-center gap-3 pr-2">
-                  <span className={`text-xs transition-colors duration-300 font-serif ${isSelected ? "text-gold animate-bounce" : "text-gold/60 group-hover:text-gold"}`}>
-                    ✦
-                  </span>
-                  <span>{opt}</span>
-                </div>
-                
-                <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${
-                  isSelected 
-                    ? "border-gold bg-gold text-neutral-900" 
-                    : "border-neutral-700 bg-black/40 group-hover:border-gold/60"
-                }`}>
-                  {isSelected ? <Check className="h-3.5 w-3.5 stroke-[3]" /> : null}
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      <p className="mt-5 text-center text-[9px] uppercase tracking-[0.18em] text-neutral-500 font-medium flex items-center justify-center gap-1.5">
-        <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
-        Análise espiritual e comportamental em tempo real
-      </p>
-    </div>
-  );
-}
-
-function LoadingStep({ onComplete }: { onComplete: () => void }) {
-  const [progress, setProgress] = useState(0);
-  const [statusIndex, setStatusIndex] = useState(0);
-
-  const statusMessages = [
-    "Estabelecendo conexão espiritual criptografada...",
-    "Rastreando assinaturas e selos de escassez hereditária...",
-    "Consultando registros históricos do Protocolo de Salomão...",
-    "Decodificando frequências vibracionais de endividamento...",
-    "Identificando chaves de liberação para sua linhagem...",
-    "Selo de Escassez Detectado! Gerando diagnóstico final..."
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(timer);
-          setTimeout(() => {
-            onComplete();
-          }, 350);
-          return 100;
-        }
-        return prev + 1;
-      });
-    }, 45); // ~4.5 seconds
-
-    return () => clearInterval(timer);
-  }, [onComplete]);
-
-  useEffect(() => {
-    const messageInterval = setInterval(() => {
-      setStatusIndex((prev) => (prev < statusMessages.length - 1 ? prev + 1 : prev));
-    }, 750);
-
-    return () => clearInterval(messageInterval);
-  }, []);
-
-  return (
-    <div className="reveal is-visible mt-20 flex w-full max-w-md flex-col items-center text-center px-4">
-      {/* Immersive radial glow spinning */}
-      <div className="relative h-28 w-28 flex items-center justify-center">
-        <div
-          className="absolute inset-0 rounded-full"
-          style={{
-            border: "4px solid rgba(255,215,0,0.05)",
-            borderTopColor: "#ffd700",
-            animation: "spin 1s linear infinite",
-            boxShadow: "0 0 50px rgba(255,215,0,0.25)",
-          }}
-        />
-        <div
-          className="absolute inset-4 rounded-full"
-          style={{
-            border: "3px solid rgba(255,215,0,0.05)",
-            borderBottomColor: "#ffe97a",
-            animation: "spin 1.5s linear infinite reverse",
-          }}
-        />
-        <span className="font-display text-xl font-black text-gold tracking-widest">{progress}%</span>
-      </div>
-
-      <h2 className="font-display gold-gradient-text mt-10 text-xl font-bold uppercase tracking-wider h-16 flex items-center justify-center leading-snug">
-        {statusMessages[statusIndex]}
-      </h2>
-      
-      {/* Elegant Progress bar track */}
-      <div className="mt-6 w-full h-2 bg-black/60 rounded-full border border-gold-dim p-0.5 overflow-hidden">
-        <div 
-          className="h-full bg-gradient-to-r from-gold-deep via-gold to-gold-light rounded-full transition-all duration-75 shadow-[0_0_10px_rgba(255,215,0,0.4)]"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
-
-      <p className="mt-5 text-[9px] tracking-[0.25em] text-neutral-500 uppercase flex items-center gap-2 font-semibold">
-        <Sparkles className="h-3 w-3 text-gold animate-pulse" />
-        Processamento e Criptografia
-      </p>
-      
-      <style>{`
-        @keyframes spin { to { transform: rotate(360deg); } }
-      `}</style>
-    </div>
   );
 }
 
@@ -358,7 +77,6 @@ function ScarcityCounter() {
   const [count, setCount] = useState(7);
 
   useEffect(() => {
-    // Random decrease in available seats to mimic active signups
     const interval = setTimeout(() => {
       if (count > 3) {
         setCount(count - 1);
@@ -380,7 +98,7 @@ function TestimonialsSection() {
     {
       name: "Carlos Eduardo Mendes",
       role: "Empreendedor, SP",
-      text: "Senti o peso das dívidas de minha família sumirem na primeira semana. O Protocolo me deu o direcionamento exato para quebrar a escassez hereditária. Hoje vivo em provisão extraordinária.",
+      text: "Senti o peso das dívidas de minha família sumirem na primeira semana. O Protocolo me deu o direcionamento exato para quebrar a escassez hereditária. Hoje vivemos em provisão extraordinária.",
       initials: "CM"
     },
     {
@@ -464,7 +182,7 @@ function FAQSection() {
             O acesso é imediato?
           </AccordionTrigger>
           <AccordionContent className="text-neutral-400 text-[13px] leading-relaxed pb-4">
-            Sim! Assim que o seu diagnóstico for concluído e a ativação realizada, você recebe o acesso digital imediato em seu e-mail e em seu WhatsApp com as orientações do Protocolo.
+            Sim! Assim que a sua ativação for realizada, você recebe o acesso digital imediato em seu e-mail e em seu WhatsApp com as orientações do Protocolo.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3" className="border border-gold-dim/20 rounded-xl bg-black/60 px-4 transition hover:border-gold-dim/40">
@@ -488,7 +206,7 @@ function FAQSection() {
   );
 }
 
-function SalesStep({
+function SalesPage({
   innerRef,
 }: {
   innerRef: React.RefObject<HTMLDivElement | null>;
