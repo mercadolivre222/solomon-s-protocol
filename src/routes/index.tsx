@@ -10,7 +10,6 @@ import {
   BadgeAlert
 } from "lucide-react";
 import lockImg from "@/assets/solomon-lock.jpg";
-import stoneImg from "@/assets/stone-bg.jpg";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/")({
@@ -32,13 +31,10 @@ function Index() {
 
   return (
     <main
-      className="min-h-screen w-full text-foreground select-none overflow-x-hidden"
+      className="min-h-screen w-full text-foreground select-none overflow-x-hidden font-sans"
       style={{
-        backgroundColor: "#000",
-        backgroundImage: `radial-gradient(ellipse at top, rgba(255,215,0,0.08), transparent 55%), radial-gradient(ellipse at bottom, rgba(139,69,19,0.06), transparent 65%), url(${stoneImg})`,
-        backgroundSize: "cover, cover, 700px",
-        backgroundBlendMode: "screen, screen, overlay",
-        backgroundRepeat: "no-repeat, no-repeat, repeat",
+        backgroundColor: "#080808",
+        backgroundImage: "radial-gradient(circle at 50% 0%, #151515 0%, #060606 100%)",
       }}
     >
       <div className="mx-auto flex w-full max-w-[640px] flex-col items-center px-4 pb-20 pt-6 sm:pt-12">
@@ -117,42 +113,49 @@ function TestimonialsSection() {
 
   return (
     <div className="mt-14 w-full">
-      <h3 className="font-display gold-gradient-text text-center text-xl font-bold uppercase tracking-widest mb-6">
+      <h3 className="font-display text-center text-xl font-bold uppercase tracking-widest mb-6" style={{
+        background: "linear-gradient(180deg, #ffffff 0%, #ddc08e 65%, #b09260 100%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      }}>
         Testemunhos de Libertação
       </h3>
       <div className="flex flex-col gap-4">
         {testimonies.map((t, i) => (
           <div 
             key={i} 
-            className="rounded-2xl border border-gold-dim/20 p-5 transition duration-300 hover:border-gold-dim relative overflow-hidden"
-            style={{
-              background: "linear-gradient(135deg, rgba(20,15,5,0.75) 0%, rgba(5,4,2,0.9) 100%)",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.5)"
-            }}
+            className="p-0.5 rounded-2xl border border-[#ddc08e]/10 bg-neutral-950/20 shadow-xl transition-all duration-300 hover:border-[#ddc08e]/35"
           >
-            <div className="absolute top-0 right-0 w-24 h-24 bg-gold/5 rounded-full blur-2xl pointer-events-none" />
-            <div className="flex gap-4.5">
-              <div className="w-11 h-11 rounded-full shrink-0 flex items-center justify-center font-display font-black text-sm bg-gradient-to-br from-gold via-gold-deep to-amber-950 text-black border border-gold/40 shadow-inner">
-                {t.initials}
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center justify-between mb-1">
-                  <div>
-                    <h4 className="font-display font-bold text-sm text-neutral-100 flex items-center gap-1.5">
-                      {t.name}
-                      <ShieldCheck className="h-3.5 w-3.5 text-emerald-500 fill-emerald-500/10 stroke-[2.5]" />
-                    </h4>
-                    <p className="text-[10px] text-neutral-500 font-semibold uppercase tracking-wider">{t.role}</p>
-                  </div>
-                  <div className="flex gap-0.5 text-gold">
-                    {[...Array(5)].map((_, idx) => (
-                      <Star key={idx} className="h-3 w-3 fill-gold text-gold" />
-                    ))}
-                  </div>
+            <div 
+              className="p-5 rounded-[14px] border border-[#ddc08e]/10 relative overflow-hidden"
+              style={{
+                background: "linear-gradient(135deg, #121212 0%, #0a0a0a 100%)",
+              }}
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#ddc08e]/5 rounded-full blur-2xl pointer-events-none" />
+              <div className="flex gap-4.5">
+                <div className="w-11 h-11 rounded-full shrink-0 flex items-center justify-center font-display font-black text-sm bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-900 text-black border border-[#ddc08e]/40 shadow-inner">
+                  {t.initials}
                 </div>
-                <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed italic">
-                  "{t.text}"
-                </p>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <div>
+                      <h4 className="font-display font-bold text-sm text-neutral-100 flex items-center gap-1.5">
+                        {t.name}
+                        <ShieldCheck className="h-3.5 w-3.5 text-emerald-500 fill-emerald-500/10 stroke-[2.5]" />
+                      </h4>
+                      <p className="text-[10px] text-neutral-500 font-semibold uppercase tracking-wider">{t.role}</p>
+                    </div>
+                    <div className="flex gap-0.5 text-[#ddc08e]">
+                      {[...Array(5)].map((_, idx) => (
+                        <Star key={idx} className="h-3 w-3 fill-[#ddc08e] text-[#ddc08e]" />
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed italic">
+                    "{t.text}"
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -165,36 +168,40 @@ function TestimonialsSection() {
 function FAQSection() {
   return (
     <div className="mt-14 w-full">
-      <h3 className="font-display gold-gradient-text text-center text-xl font-bold uppercase tracking-widest mb-6">
+      <h3 className="font-display text-center text-xl font-bold uppercase tracking-widest mb-6" style={{
+        background: "linear-gradient(180deg, #ffffff 0%, #ddc08e 65%, #b09260 100%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      }}>
         Perguntas Frequentes
       </h3>
       <Accordion type="single" collapsible className="w-full space-y-3">
-        <AccordionItem value="item-1" className="border border-gold-dim/20 rounded-xl bg-black/60 px-4 transition hover:border-gold-dim/40">
-          <AccordionTrigger className="text-gold-light font-display text-sm font-semibold tracking-wide hover:no-underline py-4">
+        <AccordionItem value="item-1" className="border border-[#ddc08e]/15 rounded-xl bg-[#121212]/95 px-4 transition hover:border-[#ddc08e]/35">
+          <AccordionTrigger className="text-[#ddc08e] font-display text-sm font-semibold tracking-wide hover:no-underline py-4">
             Como o Protocolo de Salomão funciona?
           </AccordionTrigger>
           <AccordionContent className="text-neutral-400 text-[13px] leading-relaxed pb-4">
             O Protocolo é um método prático detalhado que reúne as chaves espirituais e ferramentas reveladas na sabedoria antiga de Salomão para quebrar bloqueios hereditários invisíveis e ativar a provisão financeira na sua linhagem.
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-2" className="border border-gold-dim/20 rounded-xl bg-black/60 px-4 transition hover:border-gold-dim/40">
-          <AccordionTrigger className="text-gold-light font-display text-sm font-semibold tracking-wide hover:no-underline py-4">
+        <AccordionItem value="item-2" className="border border-[#ddc08e]/15 rounded-xl bg-[#121212]/95 px-4 transition hover:border-[#ddc08e]/35">
+          <AccordionTrigger className="text-[#ddc08e] font-display text-sm font-semibold tracking-wide hover:no-underline py-4">
             O acesso é imediato?
           </AccordionTrigger>
           <AccordionContent className="text-neutral-400 text-[13px] leading-relaxed pb-4">
             Sim! Assim que a sua ativação for realizada, você recebe o acesso digital imediato em seu e-mail e em seu WhatsApp com as orientações do Protocolo.
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-3" className="border border-gold-dim/20 rounded-xl bg-black/60 px-4 transition hover:border-gold-dim/40">
-          <AccordionTrigger className="text-gold-light font-display text-sm font-semibold tracking-wide hover:no-underline py-4">
+        <AccordionItem value="item-3" className="border border-[#ddc08e]/15 rounded-xl bg-[#121212]/95 px-4 transition hover:border-[#ddc08e]/35">
+          <AccordionTrigger className="text-[#ddc08e] font-display text-sm font-semibold tracking-wide hover:no-underline py-4">
             Existe alguma garantia?
           </AccordionTrigger>
           <AccordionContent className="text-neutral-400 text-[13px] leading-relaxed pb-4">
             Absolutamente. Oferecemos uma garantia sagrada e incondicional de 7 dias. Se você aplicar e não sentir as chaves agindo em sua vida e libertação, devolvemos todo o seu investimento integralmente.
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-4" className="border border-gold-dim/20 rounded-xl bg-black/60 px-4 transition hover:border-gold-dim/40">
-          <AccordionTrigger className="text-gold-light font-display text-sm font-semibold tracking-wide hover:no-underline py-4">
+        <AccordionItem value="item-4" className="border border-[#ddc08e]/15 rounded-xl bg-[#121212]/95 px-4 transition hover:border-[#ddc08e]/35">
+          <AccordionTrigger className="text-[#ddc08e] font-display text-sm font-semibold tracking-wide hover:no-underline py-4">
             Isso é seguro e sigiloso?
           </AccordionTrigger>
           <AccordionContent className="text-neutral-400 text-[13px] leading-relaxed pb-4">
@@ -220,12 +227,16 @@ function SalesPage({
         </p>
       </div>
 
-      <h1 className="font-display gold-gradient-text text-center text-3xl font-black leading-[1.1] sm:text-5xl uppercase tracking-tight">
+      <h1 className="font-display text-center text-3xl font-black leading-[1.1] sm:text-5xl uppercase tracking-tight" style={{
+        background: "linear-gradient(180deg, #ffffff 0%, #ddc08e 65%, #b09260 100%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      }}>
         O SELO DE SALOMÃO
         <br />
         FOI REVELADO
       </h1>
-      <p className="mt-4 max-w-md text-center text-sm text-neutral-400 sm:text-base leading-relaxed">
+      <p className="mt-4 max-w-md text-center text-sm text-neutral-400 sm:text-base leading-relaxed font-medium">
         Seu diagnóstico confirmou a presença da <span className="text-[#ff5c5c] font-semibold">Maldição da Escassez Hereditária</span> em sua árvore genealógica.
       </p>
 
@@ -235,11 +246,12 @@ function SalesPage({
           className="absolute inset-0 -z-10 rounded-full blur-3xl animate-pulse"
           style={{
             background:
-              "radial-gradient(circle, rgba(255,215,0,0.65), transparent 60%)",
+              "radial-gradient(circle, rgba(221,192,142,0.45), transparent 60%)",
             animationDuration: "3s"
           }}
         />
-        <div className="gold-glow-strong flex h-60 w-60 items-center justify-center overflow-hidden rounded-full border-2 border-gold bg-black relative sm:h-72 sm:w-72 shadow-[0_0_50px_rgba(255,215,0,0.3)]">
+        <div className="flex h-60 w-60 items-center justify-center overflow-hidden rounded-full border border-[#ddc08e]/60 bg-black relative sm:h-72 sm:w-72 shadow-[0_15px_40px_rgba(0,0,0,0.8)]">
+          <div className="absolute inset-2 rounded-full border border-[#ddc08e]/20 pointer-events-none" />
           <img
             src={lockImg}
             alt="Cadeado dourado de Salomão"
@@ -258,57 +270,64 @@ function SalesPage({
 
       <p className="mt-8 max-w-xl text-center text-[15px] leading-relaxed text-neutral-300 sm:text-lg px-2">
         O diagnóstico detectou a{" "}
-        <span className="text-gold font-bold">Maldição da Escassez Hereditária</span>{" "}
+        <span className="text-[#ddc08e] font-bold">Maldição da Escassez Hereditária</span>{" "}
         operando sobre as suas finanças. Ao quebrar esse selo agora, você ativa a{" "}
-        <span className="text-gold font-bold">Provisão Terrena Absoluta</span> — dinheiro
+        <span className="text-[#ddc08e] font-bold">Provisão Terrena Absoluta</span> — dinheiro
         fluindo de fontes inesperadas e o fim do ciclo das dívidas — garantindo a sua{" "}
-        <span className="text-gold font-bold">Herança Divina</span>.
+        <span className="text-[#ddc08e] font-bold">Herança Divina</span>.
       </p>
 
-      <div
-        className="mt-10 w-full max-w-md rounded-2xl border border-gold-dim p-6 sm:p-8 relative overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(160deg, rgba(30,22,4,0.92) 0%, rgba(10,8,2,0.98) 100%)",
-          boxShadow:
-            "inset 0 1px 0 rgba(255,215,0,0.15), 0 20px 60px rgba(0,0,0,0.85)",
-        }}
-      >
-        <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
-        <h3 className="font-display gold-gradient-text mb-6 text-center text-lg font-bold uppercase tracking-widest border-b border-gold-dim/20 pb-3">
-          O Que Você Irá Ativar
-        </h3>
-        <ul className="space-y-4">
-          {[
-            {
-              t: "A Chave de Salomão",
-              d: "O selo sagrado prático para quebrar em definitivo a barreira hereditária da escassez.",
-            },
-            {
-              t: "Provisão Terrena Absoluta",
-              d: "Ativação sobrenatural do fluxo financeiro e encerramento total de dívidas históricas.",
-            },
-            {
-              t: "Garantia Sagrada de 7 Dias",
-              d: "Satisfação completa com garantia divina. Zero risco para sua jornada espiritual.",
-            },
-          ].map((b) => (
-            <li key={b.t} className="flex gap-3 items-start">
-              <span className="mt-1 text-base text-gold shrink-0">✦</span>
-              <div>
-                <p className="font-bold text-gold-light text-sm tracking-wide">{b.t}</p>
-                <p className="text-xs sm:text-sm text-neutral-400 leading-normal mt-0.5">{b.d}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+      {/* Nested Double Champagne Rounded Border Box */}
+      <div className="mt-10 w-full max-w-md p-0.5 rounded-2xl border border-[#ddc08e]/15 bg-neutral-950/20 shadow-2xl relative">
+        <div
+          className="p-6 sm:p-8 rounded-[14px] border border-[#ddc08e]/15 relative overflow-hidden"
+          style={{
+            background: "linear-gradient(160deg, #111111 0%, #080808 100%)",
+          }}
+        >
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#ddc08e]/5 rounded-full blur-3xl pointer-events-none" />
+          <h3 className="font-display text-center text-lg font-bold uppercase tracking-widest border-b border-[#ddc08e]/25 pb-3" style={{
+            background: "linear-gradient(180deg, #ffffff 0%, #ddc08e 75%, #b09260 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}>
+            O Que Você Irá Ativar
+          </h3>
+          <ul className="space-y-4 mt-5">
+            {[
+              {
+                t: "A Chave de Salomão",
+                d: "O selo sagrado prático para quebrar em definitivo a barreira hereditária da escassez.",
+              },
+              {
+                t: "Provisão Terrena Absoluta",
+                d: "Ativação sobrenatural do fluxo financeiro e encerramento total de dívidas históricas.",
+              },
+              {
+                t: "Garantia Sagrada de 7 Dias",
+                d: "Satisfação completa com garantia divina. Zero risco para sua jornada espiritual.",
+              },
+            ].map((b) => (
+              <li key={b.t} className="flex gap-3 items-start">
+                <span className="mt-1 text-base text-[#ddc08e] shrink-0">✦</span>
+                <div>
+                  <p className="font-bold text-[#ddc08e] text-sm tracking-wide">{b.t}</p>
+                  <p className="text-xs sm:text-sm text-neutral-400 leading-normal mt-0.5">{b.d}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       <a
         href="https://pay.kiwify.com.br/G1r08mQ"
         target="_blank"
         rel="noopener noreferrer"
-        className="gold-bar-btn font-display mt-10 block w-full max-w-md rounded-2xl px-6 py-5 text-center text-base font-black uppercase leading-tight tracking-wider text-[#3a2700] no-underline shadow-[0_10px_40px_rgba(255,215,0,0.4)] transition-all duration-300 hover:scale-[1.015] sm:text-lg flex items-center justify-center gap-2 border border-gold/60 cursor-pointer"
+        className="font-display mt-10 block w-full max-w-md rounded-2xl px-6 py-5 text-center text-base font-black uppercase leading-tight tracking-wider text-[#1a1202] no-underline shadow-[0_10px_40px_rgba(221,192,142,0.25)] transition-all duration-300 hover:scale-[1.015] sm:text-lg flex items-center justify-center gap-2 border border-[#ddc08e]/70 cursor-pointer"
+        style={{
+          background: "linear-gradient(180deg, #ffffff 0%, #ddc08e 30%, #cfae78 70%, #9e7f4c 100%)",
+        }}
       >
         🔑 Quebrar o Selo e Ativar Meu Código
         <ArrowRight className="h-4.5 w-4.5 stroke-[2.5]" />
@@ -329,7 +348,7 @@ function SalesPage({
       <FAQSection />
 
       {/* Secure footer */}
-      <div className="mt-16 w-full border-t border-gold-dim/15 pt-8 flex flex-col items-center gap-4 text-center">
+      <div className="mt-16 w-full border-t border-[#ddc08e]/10 pt-8 flex flex-col items-center gap-4 text-center">
         <div className="flex items-center gap-5 text-neutral-600 text-xs">
           <span className="flex items-center gap-1"><Lock className="h-3 w-3" /> SSL Seguro</span>
           <span className="flex items-center gap-1"><ShieldCheck className="h-3 w-3" /> Verificado</span>
