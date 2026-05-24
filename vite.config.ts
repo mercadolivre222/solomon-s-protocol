@@ -13,6 +13,6 @@ export default defineConfig({
     server: { entry: "server" },
   },
   vite: {
-    base: process.env.GITHUB_ACTIONS ? "/solomon-s-protocol/" : "/",
+    base: "./",
   }
 });
