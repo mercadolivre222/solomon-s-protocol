@@ -6,7 +6,8 @@ import {
   Star, 
   Sparkles, 
   Clock, 
-  ArrowRight
+  ArrowRight,
+  BadgeAlert
 } from "lucide-react";
 import lockImg from "@/assets/solomon-lock.jpg";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -27,6 +28,23 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const salesRef = useRef<HTMLDivElement>(null);
+  const [city, setCity] = useState("sua cidade");
+
+  // Real-time IP Geolocation Fetch
+  useEffect(() => {
+    fetch("https://ipapi.co/json/")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.city) {
+          setCity(data.city);
+        } else {
+          setCity("sua região");
+        }
+      })
+      .catch(() => {
+        setCity("sua região");
+      });
+  }, []);
 
   return (
     <main
@@ -37,19 +55,47 @@ function Index() {
       }}
     >
       <div className="mx-auto flex w-full max-w-[640px] flex-col items-center px-4 pb-20 pt-6 sm:pt-12">
-        <SalesPage innerRef={salesRef} />
+        <SalesPage innerRef={salesRef} city={city} />
       </div>
     </main>
   );
 }
 
 function CountdownTimer() {
-  const [time, setTime] = useState(597); // 9 minutes and 57 seconds
+  const [time, setTime] = useState(300);
 
   useEffect(() => {
+    // Check if there is an existing target timestamp in localStorage
+    const storedTarget = localStorage.getItem("solomon_timer_target");
+    let targetTime: number;
+
+    if (storedTarget) {
+      targetTime = parseInt(storedTarget, 10);
+      const remaining = Math.max(0, Math.floor((targetTime - Date.now()) / 1000));
+      // If timer already expired, reset it to a new 5-minute countdown for demo/high conversion convenience
+      if (remaining <= 0) {
+        const newTarget = Date.now() + 300 * 1000;
+        localStorage.setItem("solomon_timer_target", newTarget.toString());
+        targetTime = newTarget;
+        setTime(300);
+      } else {
+        setTime(remaining);
+      }
+    } else {
+      const newTarget = Date.now() + 300 * 1000;
+      localStorage.setItem("solomon_timer_target", newTarget.toString());
+      targetTime = newTarget;
+      setTime(300);
+    }
+
     const interval = setInterval(() => {
-      setTime((prev) => (prev > 0 ? prev - 1 : 0));
+      const remaining = Math.max(0, Math.floor((targetTime - Date.now()) / 1000));
+      setTime(remaining);
+      if (remaining <= 0) {
+        clearInterval(interval);
+      }
     }, 1000);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -68,7 +114,7 @@ function CountdownTimer() {
   );
 }
 
-function ScarcityCounter() {
+function ScarcityCounter({ city }: { city: string }) {
   const [count, setCount] = useState(7);
 
   useEffect(() => {
@@ -82,8 +128,8 @@ function ScarcityCounter() {
   }, [count]);
 
   return (
-    <p className="mt-4 text-center text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">
-      Restam apenas <span className="text-[#ff4c4c] font-black underline decoration-2">{count} licenças espirituais</span> para o seu IP.
+    <p className="mt-4 text-center text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold leading-relaxed px-2">
+      Restam apenas <span className="text-[#ff4c4c] font-black underline decoration-2">{count} licenças espirituais</span> para o seu IP em <span className="text-[#ddc08e] font-black underline decoration-1">{city} e região</span>.
     </p>
   );
 }
@@ -108,7 +154,7 @@ function ComparisonSection() {
             <ul className="space-y-3 mt-4 text-[11px] text-neutral-400 leading-relaxed">
               <li className="flex items-start gap-2">
                 <span className="text-[#ff5c5c] font-bold">✕</span>
-                <span>O dinheiro some misteriosamente no fim do mês</span>
+                <span>O dinheiro sumia misteriosamente no fim do mês</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#ff5c5c] font-bold">✕</span>
@@ -213,70 +259,316 @@ function OrderbumpSection() {
   );
 }
 
+// Facebook Comments Section
+function FacebookComments() {
+  const [newComment, setNewComment] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userAge, setUserAge] = useState(65);
+  const [userCity, setUserCity] = useState("MG");
+  const [userComments, setUserComments] = useState<Array<{
+    name: string;
+    age: number;
+    role: string;
+    initials: string;
+    text: string;
+    time: string;
+    likes: number;
+    replies: any[];
+  }>>([]);
+
+  const initialComments = [
+    {
+      name: "Sebastião Gomes",
+      age: 67,
+      role: "Aposentado, MG",
+      initials: "SG",
+      text: "Minha filha me mostrou esse diagnóstico na semana passada. Estava com um pé atrás, mas aos 67 anos eu já não aguentava mais dever. Fiz a ativação e ontem mesmo recebi um valor de uma causa na justiça que estava travada há 11 anos! Deus seja louvado!",
+      time: "há 2 minutos",
+      likes: 42,
+      replies: [
+        {
+          name: "Tereza Souza",
+          age: 61,
+          role: "Pensionista, SP",
+          initials: "TS",
+          text: "Seu Sebastião, também tenho 61 anos e aconteceu algo parecido comigo! Uma dívida antiga que parecia impossível de receber foi quitada anteontem. É uma sensação maravilhosa ver essa barreira caindo.",
+          time: "há 1 minuto",
+          likes: 9
+        }
+      ]
+    },
+    {
+      name: "Maria das Graças Silva",
+      age: 62,
+      role: "Professora Aposentada, RJ",
+      initials: "MG",
+      text: "Tenho 62 anos e nós sempre fomos pessoas honestas e muito trabalhadoras, mas parecia que nossa família carregava um ralo invisível. O dinheiro sumia. Depois que ativei o Protocolo de Salomão, a provisão entrou na minha casa de um jeito extraordinário. Comprei para os meus três filhos também.",
+      time: "há 12 minutos",
+      likes: 56,
+      replies: []
+    },
+    {
+      name: "Geraldo de Almeida",
+      age: 65,
+      role: "Técnico Industrial, SP",
+      initials: "GA",
+      text: "Amigos, façam sem medo de errar. Eu estava desempregado, com contas acumuladas e sem dormir. Fiz a ativação do código, escutei os áudios do templo toda noite e essa semana assinei um contrato de serviço excelente. A escassez da minha linhagem acabou!",
+      time: "há 24 minutos",
+      likes: 31,
+      replies: []
+    },
+    {
+      name: "Helena Silveira",
+      age: 59,
+      role: "Dona de Casa, RS",
+      initials: "HS",
+      text: "Fiz o diagnóstico e parecia que estavam descrevendo a minha vida inteira. Liberei a chave e anteontem mesmo meu marido recebeu uma proposta excelente de venda de um terreno que estava parado há anos. Agradeço todos os dias por ter encontrado esse protocolo.",
+      time: "há 45 minutos",
+      likes: 19,
+      replies: []
+    }
+  ];
+
+  const handlePostComment = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newComment.trim() || !userName.trim()) return;
+
+    const initials = userName
+      .trim()
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .slice(0, 2)
+      .toUpperCase();
+
+    const comment = {
+      name: userName,
+      age: userAge,
+      role: `Membro Ativo, ${userCity.toUpperCase()}`,
+      initials: initials || "VC",
+      text: newComment,
+      time: "há poucos segundos",
+      likes: 0,
+      replies: []
+    };
+
+    setUserComments([comment, ...userComments]);
+    setNewComment("");
+    setUserName("");
+  };
+
+  const allComments = [...userComments, ...initialComments];
+
+  return (
+    <div className="mt-14 w-full p-0.5 rounded-2xl border border-neutral-800 bg-[#0d0d0d]/80 shadow-xl relative">
+      <div className="p-5 sm:p-6 rounded-[14px]">
+        {/* Header */}
+        <div className="flex items-center justify-between border-b border-neutral-800 pb-4 mb-5">
+          <h3 className="font-display font-bold text-sm tracking-widest text-[#ddc08e] uppercase flex items-center gap-2">
+            💬 Discussão Ativa (Facebook Comments)
+          </h3>
+          <span className="text-[10px] text-neutral-500 font-mono tracking-wider uppercase font-semibold">
+            {allComments.length + 1} comentários ativos
+          </span>
+        </div>
+
+        {/* Dynamic Comment Form */}
+        <form onSubmit={handlePostComment} className="mb-6 p-4 rounded-xl border border-neutral-800 bg-[#121212]/50 flex flex-col gap-3">
+          <p className="text-xs text-[#ddc08e] font-bold uppercase tracking-wider">Deixe seu depoimento:</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <input
+              type="text"
+              placeholder="Seu nome completo"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              className="flex-1 bg-black/50 border border-neutral-800 rounded-lg px-3 py-2 text-xs text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-[#ddc08e]/50"
+              required
+            />
+            <div className="flex gap-2">
+              <input
+                type="number"
+                min="18"
+                max="100"
+                placeholder="Idade"
+                value={userAge || ""}
+                onChange={(e) => setUserAge(parseInt(e.target.value) || 0)}
+                className="w-16 bg-black/50 border border-neutral-800 rounded-lg px-3 py-2 text-xs text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-[#ddc08e]/50"
+                required
+              />
+              <input
+                type="text"
+                maxLength={2}
+                placeholder="UF"
+                value={userCity}
+                onChange={(e) => setUserCity(e.target.value.toUpperCase())}
+                className="w-12 bg-black/50 border border-neutral-800 rounded-lg px-3 py-2 text-xs text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-[#ddc08e]/50 text-center"
+                required
+              />
+            </div>
+          </div>
+          <textarea
+            placeholder="Compartilhe sua benção ou resultado com o Protocolo..."
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            className="w-full bg-black/50 border border-neutral-800 rounded-lg p-3 text-xs text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-[#ddc08e]/50 min-h-[65px] resize-none"
+            required
+          />
+          <button
+            type="submit"
+            className="self-end bg-gradient-to-r from-[#ddc08e] to-[#b09260] text-black font-black text-[10px] uppercase px-4 py-2 rounded-lg hover:scale-[1.015] active:scale-[0.98] transition cursor-pointer"
+          >
+            Publicar Depoimento
+          </button>
+        </form>
+
+        {/* Comment List */}
+        <div className="flex flex-col gap-6">
+          {allComments.map((c, i) => (
+            <div key={i} className="flex gap-3 text-left">
+              {/* Profile Avatar */}
+              <div className="w-10 h-10 rounded-full shrink-0 flex items-center justify-center font-display font-black text-xs bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none">
+                {c.initials}
+              </div>
+              
+              {/* Comment Content */}
+              <div className="flex-1">
+                <div className="bg-[#121212] border border-neutral-800/40 rounded-2xl px-4 py-3 shadow-inner">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
+                    <div>
+                      <span className="font-bold text-xs sm:text-sm text-neutral-100 flex items-center gap-1">
+                        {c.name}
+                        <span className="text-[10px] text-neutral-500 font-normal">({c.age} anos)</span>
+                      </span>
+                      <p className="text-[9px] text-neutral-500 font-semibold uppercase tracking-wider leading-none mt-0.5">{c.role}</p>
+                    </div>
+                    <span className="text-[9px] text-[#ddc08e]/60 font-medium sm:mt-0 mt-1">{c.time}</span>
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-neutral-300 leading-relaxed mt-2.5">
+                    {c.text}
+                  </p>
+                </div>
+
+                {/* Comment footer */}
+                <div className="flex items-center gap-4.5 mt-2.5 pl-3 text-[10px] font-bold text-neutral-500 select-none">
+                  <button className="hover:text-[#ddc08e] cursor-pointer transition">Curtir</button>
+                  <span>·</span>
+                  <button className="hover:text-[#ddc08e] cursor-pointer transition">Responder</button>
+                  
+                  <div className="flex items-center gap-1 text-[#ddc08e]/80 ml-auto bg-[#ddc08e]/5 px-2 py-0.5 border border-[#ddc08e]/10 rounded-full text-[9px] font-bold font-mono">
+                    👍 {c.likes > 0 ? c.likes : 1}
+                  </div>
+                </div>
+
+                {/* Sub replies */}
+                {c.replies && c.replies.map((r, rIdx) => (
+                  <div key={rIdx} className="flex gap-3 text-left mt-4.5 pl-3 border-l border-neutral-800">
+                    <div className="w-8 h-8 rounded-full shrink-0 flex items-center justify-center font-display font-black text-[10px] bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none">
+                      {r.initials}
+                    </div>
+                    <div className="flex-1">
+                      <div className="bg-[#161616] border border-neutral-800/40 rounded-2xl px-4 py-3 shadow-inner">
+                        <div className="flex items-center justify-between mb-1">
+                          <div>
+                            <span className="font-bold text-[11px] sm:text-xs text-neutral-100 flex items-center gap-1">
+                              {r.name}
+                              <span className="text-[9px] text-neutral-500 font-normal">({r.age} anos)</span>
+                            </span>
+                            <p className="text-[8px] text-neutral-500 font-semibold uppercase tracking-wider leading-none mt-0.5">{r.role}</p>
+                          </div>
+                          <span className="text-[8px] text-[#ddc08e]/60 font-medium">{r.time}</span>
+                        </div>
+                        <p className="text-[10px] sm:text-[11px] text-neutral-300 leading-relaxed mt-2">
+                          {r.text}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-4 mt-2 pl-3 text-[9px] font-bold text-neutral-500 select-none">
+                        <button className="hover:text-[#ddc08e] cursor-pointer transition">Curtir</button>
+                        <span>·</span>
+                        <button className="hover:text-[#ddc08e] cursor-pointer transition">Responder</button>
+                        
+                        <div className="flex items-center gap-1 text-[#ddc08e]/80 ml-auto bg-[#ddc08e]/5 px-2 py-0.5 border border-[#ddc08e]/10 rounded-full text-[8px] font-bold font-mono">
+                          👍 {r.likes > 0 ? r.likes : 1}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+// Testimonials Section
 function TestimonialsSection() {
-  const testimonies = [
+  const testimonials = [
     {
-      name: "Carlos Eduardo Mendes",
-      role: "Empreendedor, SP",
-      text: "Senti o peso das dívidas de minha família sumirem na primeira semana. O Protocolo me deu o direcionamento exato para quebrar a escassez hereditária. Hoje vivemos em provisão extraordinária.",
-      initials: "CM"
+      name: "Adelaide Menezes",
+      age: 68,
+      city: "Salvador, BA",
+      text: "Eu e meu marido vivíamos de uma aposentadoria muito apertada, cheios de remédios caros para comprar todo mês. Ativamos o protocolo há 3 meses. Ganhamos uma ação judicial antiga e nosso neto nos deu um ótimo suporte. A prosperidade entrou na nossa casa definitivamente!",
+      stars: 5,
+      avatar: "AM"
     },
     {
-      name: "Dra. Elizabeth Ramos",
-      role: "Líder Comunitária, MG",
-      text: "Sempre fomos trabalhadores, mas vivíamos devendo. Após quebrar o selo hereditário da escassez, minha situação financeira mudou de forma extraordinária. Recomendo imensamente.",
-      initials: "ER"
+      name: "Valdemar Castro",
+      age: 71,
+      city: "Curitiba, PR",
+      text: "Sempre trabalhei de sol a sol na roça e depois na metalúrgica. Mas o dinheiro parecia que escorria pelas mãos por conta de uma maldita escassez familiar. Quebrei o selo de Salomão e, aos 71 anos, consegui comprar meu carro próprio à vista. Nunca é tarde para a provisão divina.",
+      stars: 5,
+      avatar: "VC"
     },
     {
-      name: "Pastor Roberto Silveira",
-      role: "Ministro Religioso, RJ",
-      text: "Decodificar as chaves espirituais me trouxe uma paz imensa. Senti uma verdadeira barreira invisível caindo. Minhas economias e paz familiar foram restauradas.",
-      initials: "RS"
+      name: "Nair Rodrigues",
+      age: 64,
+      city: "Belo Horizonte, MG",
+      text: "Minhas contas de luz e água estavam atrasadas e o desespero era muito grande. Fiz a ativação com muita fé. Dois dias depois, recebi um reembolso inesperado do banco de uma conta antiga de quase 5 mil reais! Quebrou em definitivo o ciclo da falta na minha vida.",
+      stars: 5,
+      avatar: "NR"
     }
   ];
 
   return (
-    <div className="mt-14 w-full">
-      <h3 className="font-display text-center text-xl font-bold uppercase tracking-widest mb-6" style={{
-        background: "linear-gradient(180deg, #ffffff 0%, #ddc08e 65%, #b09260 100%)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-      }}>
-        Testemunhos de Libertação
+    <div className="mt-14 w-full px-1 text-center">
+      <h3 className="font-display gold-gradient-text text-xl font-bold uppercase tracking-widest mb-6">
+        ✦ Milagres e Ativações Reais ✦
       </h3>
-      <div className="flex flex-col gap-4">
-        {testimonies.map((t, i) => (
+      <div className="flex flex-col gap-5">
+        {testimonials.map((t, idx) => (
           <div 
-            key={i} 
-            className="p-0.5 rounded-2xl border border-[#ddc08e]/10 bg-neutral-950/20 shadow-xl transition-all duration-300 hover:border-[#ddc08e]/35"
+            key={idx} 
+            className="p-0.5 rounded-2xl border border-[#ddc08e]/15 bg-neutral-950/20 shadow-xl transition duration-200 hover:border-[#ddc08e]/35 text-left"
           >
             <div 
-              className="p-5 rounded-[14px] border border-[#ddc08e]/10 relative overflow-hidden"
+              className="p-5 sm:p-6 rounded-[14px] relative overflow-hidden"
               style={{
-                background: "linear-gradient(135deg, #121212 0%, #0a0a0a 100%)",
+                background: "linear-gradient(160deg, #111111 0%, #080808 100%)",
               }}
             >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-[#ddc08e]/5 rounded-full blur-2xl pointer-events-none" />
-              <div className="flex gap-4.5">
-                <div className="w-11 h-11 rounded-full shrink-0 flex items-center justify-center font-display font-black text-sm bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-900 text-black border border-[#ddc08e]/40 shadow-inner">
-                  {t.initials}
+              <div className="flex gap-4 items-start">
+                <div className="w-11 h-11 rounded-full shrink-0 flex items-center justify-center font-display font-black text-sm bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner">
+                  {t.avatar}
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center justify-between mb-1">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
                     <div>
-                      <h4 className="font-display font-bold text-sm text-neutral-100 flex items-center gap-1.5">
-                        {t.name}
-                        <ShieldCheck className="h-3.5 w-3.5 text-emerald-500 fill-emerald-500/10 stroke-[2.5]" />
+                      <h4 className="font-bold text-sm text-neutral-100">
+                        {t.name} <span className="text-xs text-neutral-500 font-normal">({t.age} anos)</span>
                       </h4>
-                      <p className="text-[10px] text-neutral-500 font-semibold uppercase tracking-wider">{t.role}</p>
+                      <p className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">{t.city}</p>
                     </div>
-                    <div className="flex gap-0.5 text-[#ddc08e]">
-                      {[...Array(5)].map((_, idx) => (
-                        <Star key={idx} className="h-3 w-3 fill-[#ddc08e] text-[#ddc08e]" />
+                    <div className="flex text-[#ddc08e] text-xs">
+                      {Array.from({ length: t.stars }).map((_, sIdx) => (
+                        <Star key={sIdx} className="w-3.5 h-3.5 fill-[#ddc08e]" />
                       ))}
                     </div>
                   </div>
-                  <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed italic">
+                  <p className="text-xs text-neutral-300 leading-relaxed italic">
                     "{t.text}"
                   </p>
                 </div>
@@ -289,49 +581,52 @@ function TestimonialsSection() {
   );
 }
 
+// FAQ Section
 function FAQSection() {
+  const faqs = [
+    {
+      q: "O que é o Protocolo de Salomão?",
+      a: "É um método prático espiritual e mental baseado nos ensinamentos de sabedoria e provisão financeira do Rei Salomão, focado em quebrar bloqueios de escassez familiar e ativar a prosperidade terrena imediata."
+    },
+    {
+      q: "Eu já sou aposentado(a) ou idoso(a), isso funciona para a minha idade?",
+      a: "Sim! A sabedoria de Salomão e as leis da provisão divina não têm idade. De fato, a maioria dos nossos membros ativos tem mais de 60 anos e relatam a quitação de dívidas históricas e liberação de valores travados (como heranças ou processos judiciais)."
+    },
+    {
+      q: "Como vou receber o acesso ao Protocolo?",
+      a: "O acesso é enviado imediatamente para o seu e-mail cadastrado logo após a confirmação do pagamento. Você receberá o guia passo a passo, os aceleradores e os áudios binaurais em formato digital seguro."
+    },
+    {
+      q: "E se eu não ver nenhum resultado?",
+      a: "Nós oferecemos uma Garantia Divina de 7 Dias. Se dentro desse período você sentir que o protocolo não ativou a prosperidade na sua vida, basta solicitar o reembolso total por e-mail ou WhatsApp de suporte. O risco é zero."
+    },
+    {
+      q: "O pagamento é seguro e sigiloso?",
+      a: "Absolutamente. Todo o processo de pagamento é intermediado pela Kiwify, uma das maiores e mais seguras plataformas de educação digital do Brasil, com criptografia SSL avançada e sigilo absoluto dos seus dados."
+    }
+  ];
+
   return (
-    <div className="mt-14 w-full">
-      <h3 className="font-display text-center text-xl font-bold uppercase tracking-widest mb-6" style={{
-        background: "linear-gradient(180deg, #ffffff 0%, #ddc08e 65%, #b09260 100%)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-      }}>
-        Perguntas Frequentes
+    <div className="mt-14 w-full px-1">
+      <h3 className="font-display gold-gradient-text text-center text-xl font-bold uppercase tracking-widest mb-6">
+        ✦ Perguntas Frequentes ✦
       </h3>
-      <Accordion type="single" collapsible className="w-full space-y-3">
-        <AccordionItem value="item-1" className="border border-[#ddc08e]/15 rounded-xl bg-[#121212]/95 px-4 transition hover:border-[#ddc08e]/35">
-          <AccordionTrigger className="text-[#ddc08e] font-display text-sm font-semibold tracking-wide hover:no-underline py-4">
-            Como o Protocolo de Salomão funciona?
-          </AccordionTrigger>
-          <AccordionContent className="text-neutral-400 text-[13px] leading-relaxed pb-4">
-            O Protocolo é um método prático detalhado que reúne as chaves espirituais e ferramentas reveladas na sabedoria antiga de Salomão para quebrar bloqueios hereditários invisíveis e ativar a provisão financeira na sua linhagem.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-2" className="border border-[#ddc08e]/15 rounded-xl bg-[#121212]/95 px-4 transition hover:border-[#ddc08e]/35">
-          <AccordionTrigger className="text-[#ddc08e] font-display text-sm font-semibold tracking-wide hover:no-underline py-4">
-            O acesso é imediato?
-          </AccordionTrigger>
-          <AccordionContent className="text-neutral-400 text-[13px] leading-relaxed pb-4">
-            Sim! Assim que a sua ativação for realizada, você recebe o acesso digital imediato em seu e-mail e em seu WhatsApp com as orientações do Protocolo.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-3" className="border border-[#ddc08e]/15 rounded-xl bg-[#121212]/95 px-4 transition hover:border-[#ddc08e]/35">
-          <AccordionTrigger className="text-[#ddc08e] font-display text-sm font-semibold tracking-wide hover:no-underline py-4">
-            Existe alguma garantia?
-          </AccordionTrigger>
-          <AccordionContent className="text-neutral-400 text-[13px] leading-relaxed pb-4">
-            Absolutamente. Oferecemos uma garantia sagrada e incondicional de 7 dias. Se você aplicar e não sentir as chaves agindo em sua vida e libertação, devolvemos todo o seu investimento integralmente.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-4" className="border border-[#ddc08e]/15 rounded-xl bg-[#121212]/95 px-4 transition hover:border-[#ddc08e]/35">
-          <AccordionTrigger className="text-[#ddc08e] font-display text-sm font-semibold tracking-wide hover:no-underline py-4">
-            Isso é seguro e sigiloso?
-          </AccordionTrigger>
-          <AccordionContent className="text-neutral-400 text-[13px] leading-relaxed pb-4">
-            Sim, o seu processo de ativação é processado em ambiente criptografado de nível bancário militar (SSL 256 bits) e mantido sob sigilo espiritual absoluto.
-          </AccordionContent>
-        </AccordionItem>
+      
+      <Accordion type="single" collapsible className="w-full flex flex-col gap-3">
+        {faqs.map((faq, idx) => (
+          <AccordionItem 
+            key={idx} 
+            value={`item-${idx}`}
+            className="border border-[#ddc08e]/15 bg-neutral-950/20 rounded-xl px-4 py-1"
+          >
+            <AccordionTrigger className="text-left font-bold text-xs sm:text-sm text-[#ddc08e] hover:text-[#ffd700] transition py-3">
+              {faq.q}
+            </AccordionTrigger>
+            <AccordionContent className="text-xs sm:text-sm text-neutral-400 leading-relaxed pb-3 pt-1">
+              {faq.a}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
       </Accordion>
     </div>
   );
@@ -339,17 +634,19 @@ function FAQSection() {
 
 function SalesPage({
   innerRef,
+  city,
 }: {
   innerRef: React.RefObject<HTMLDivElement | null>;
+  city: string;
 }) {
   return (
     <div ref={innerRef} className="reveal is-visible flex w-full flex-col items-center">
       
-      {/* Immersive Warning Container matching uploaded design exactly */}
+      {/* Immersive Warning Container matching uploaded design exactly, customized with IP Geolocation City */}
       <div className="alert-blink mb-10 w-full rounded-2xl border border-red-500/25 bg-[#170202]/70 p-5 sm:p-6 backdrop-blur-md shadow-[0_0_40px_rgba(239,68,68,0.15)] flex flex-col sm:flex-row items-center gap-5 sm:gap-6 text-center sm:text-left relative">
         <div className="absolute inset-0 rounded-2xl border border-red-500/10 pointer-events-none" />
         <div className="shrink-0 flex items-center justify-center relative w-20 h-20 bg-red-950/20 border border-red-500/10 rounded-xl">
-          <svg className="w-12 h-12 text-[#ff3b3b] filter drop-shadow-[0_0_12px_rgba(255,59,59,0.75)]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+          <svg className="w-12 h-12 text-[#ff3b3b] filter drop-shadow-[0_0_12px_rgba(255,59,59,0.75)]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
           </svg>
         </div>
@@ -358,10 +655,10 @@ function SalesPage({
             ▲ SISTEMA BLOQUEADO
           </p>
           <h3 className="font-display font-bold text-neutral-100 text-base sm:text-lg tracking-wide uppercase mt-1 leading-snug">
-            LINHAGEM SOB ESCASSEZ DETECTADA
+            LINHAGEM SOB ESCASSEZ DETECTADA EM {city.toUpperCase()}
           </h3>
           <p className="text-[11px] text-neutral-400 mt-2 leading-relaxed max-w-sm">
-            O cruzamento de dados identificou padrões recorrentes de endividamento e travamentos vinculados ao seu endereço IP. Protocolo ativado de emergência.
+            O cruzamento de dados identificou padrões recorrentes de endividamento e travamentos vinculados ao seu endereço IP em <span class="text-[#ff6b6b] font-bold">{city}</span>. Protocolo ativado de emergência.
           </p>
         </div>
       </div>
@@ -483,8 +780,11 @@ function SalesPage({
         Acesso Imediato · Criptografia SSL · Sigilo Total
       </p>
 
-      {/* Dynamic Seat Scarcity Widget */}
-      <ScarcityCounter />
+      {/* Dynamic Seat Scarcity Widget with Geolocation City */}
+      <ScarcityCounter city={city} />
+
+      {/* Facebook Comments Section */}
+      <FacebookComments />
 
       {/* Social Proof Testimonials */}
       <TestimonialsSection />
@@ -499,7 +799,7 @@ function SalesPage({
           <span className="flex items-center gap-1"><ShieldCheck className="h-3 w-3" /> Verificado</span>
         </div>
         <p className="max-w-md text-[10px] leading-relaxed text-neutral-600 sm:text-xs">
-          O Protocolo de Salomão é um guia de sabedoria e reflexão espiritual e financeira. Se você fechar esta página, seu código temporário expira e será redirecionado para outra linhagem necessitada.
+          O Protocolo de Salomão é um guia de sabedoria e reflexão espiritual e financeira. Se você fechar esta página, seu código temporário expira e será redirecionado para outra linhagem necessitada em {city}.
         </p>
       </div>
     </div>
