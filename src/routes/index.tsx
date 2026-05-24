@@ -6,8 +6,7 @@ import {
   Star, 
   Sparkles, 
   Clock, 
-  ArrowRight, 
-  BadgeAlert
+  ArrowRight
 } from "lucide-react";
 import lockImg from "@/assets/solomon-lock.jpg";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -86,6 +85,131 @@ function ScarcityCounter() {
     <p className="mt-4 text-center text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">
       Restam apenas <span className="text-[#ff4c4c] font-black underline decoration-2">{count} licenças espirituais</span> para o seu IP.
     </p>
+  );
+}
+
+function ComparisonSection() {
+  return (
+    <div className="mt-14 w-full px-1">
+      <h3 className="font-display text-center text-xl font-bold uppercase tracking-widest mb-6" style={{
+        background: "linear-gradient(180deg, #ffffff 0%, #ddc08e 65%, #b09260 100%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      }}>
+        Diagnóstico Vibracional
+      </h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* Curse Card */}
+        <div className="p-0.5 rounded-xl border border-red-500/10 bg-red-950/5">
+          <div className="p-5 rounded-[10px] bg-[#100505] border border-red-500/10 min-h-[175px]">
+            <h4 className="font-display font-bold text-xs text-[#ff5c5c] border-b border-red-950 pb-2.5 flex items-center gap-1.5 uppercase tracking-wider">
+              ☠ Maldição Hereditária
+            </h4>
+            <ul className="space-y-3 mt-4 text-[11px] text-neutral-400 leading-relaxed">
+              <li className="flex items-start gap-2">
+                <span className="text-[#ff5c5c] font-bold">✕</span>
+                <span>O dinheiro some misteriosamente no fim do mês</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#ff5c5c] font-bold">✕</span>
+                <span>Acúmulo de boletos e dívidas que nunca terminam</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#ff5c5c] font-bold">✕</span>
+                <span>Esforço exaustivo com zero frutos ou economias</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Provision Card */}
+        <div className="p-0.5 rounded-xl border border-[#ddc08e]/10 bg-neutral-950/20 shadow-lg">
+          <div className="p-5 rounded-[10px] bg-[#121212] border border-[#ddc08e]/10 min-h-[175px]">
+            <h4 className="font-display font-bold text-xs text-[#ddc08e] border-b border-neutral-900 pb-2.5 flex items-center gap-1.5 uppercase tracking-wider">
+              ✦ Provisão Ativada
+            </h4>
+            <ul className="space-y-3 mt-4 text-[11px] text-neutral-300 leading-relaxed">
+              <li className="flex items-start gap-2">
+                <span className="text-[#ddc08e] font-bold">✔</span>
+                <span>Fluxo constante de ganhos e estabilidade financeira</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#ddc08e] font-bold">✔</span>
+                <span>Quitação definitiva de dívidas e bloqueios no nome</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#ddc08e] font-bold">✔</span>
+                <span>Acesso imediato à sua prosperidade e herança divina</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function OrderbumpSection() {
+  return (
+    <div className="mt-14 w-full p-0.5 rounded-2xl border border-[#ddc08e]/15 bg-neutral-950/20 shadow-2xl relative">
+      <div 
+        className="p-6 sm:p-8 rounded-[14px] border border-[#ddc08e]/15 relative overflow-hidden"
+        style={{
+          background: "linear-gradient(160deg, #111111 0%, #080808 100%)",
+        }}
+      >
+        <div className="absolute top-0 right-0 w-32 h-32 bg-[#ddc08e]/5 rounded-full blur-3xl pointer-events-none" />
+        
+        <h3 className="font-display text-center text-lg font-bold uppercase tracking-widest border-b border-[#ddc08e]/25 pb-3" style={{
+          background: "linear-gradient(180deg, #ffffff 0%, #ddc08e 75%, #b09260 100%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}>
+          💡 Aceleradores de Provisão
+        </h3>
+        
+        <p className="text-xs text-neutral-400 text-center mt-3 max-w-xs mx-auto leading-relaxed">
+          Você poderá selecionar estes selos adicionais diretamente no formulário de pagamento com até <span className="text-[#ddc08e] font-bold">80% de desconto</span>:
+        </p>
+
+        <div className="flex flex-col gap-4 mt-6">
+          {[
+            {
+              title: "1. O Selo de Salomão Contra Perdas e Ralos",
+              price: "R$ 19,90",
+              desc: "Um escudo espiritual para travar suas finanças, impedindo que o dinheiro escape com imprevistos, acidentes ou quebras de equipamentos.",
+              icon: "🛡️"
+            },
+            {
+              title: "2. Frequências do Templo: 528Hz Binaural",
+              price: "R$ 14,95",
+              desc: "Coleção de áudios harmônicos para escutar dormindo. Reprograma crenças inconscientes e remove bloqueios de escassez em tempo recorde.",
+              icon: "🎧"
+            },
+            {
+              title: "3. O Manual Oculto dos Sócios de Salomão",
+              price: "R$ 27,90",
+              desc: "Os 7 princípios de sabedoria comercial, negociação e acumulação de ouro que Salomão usou para erguer seu templo e império.",
+              icon: "📖"
+            }
+          ].map((item, idx) => (
+            <div 
+              key={idx} 
+              className="p-4 rounded-xl border border-neutral-900 bg-black/60 flex items-start gap-4 transition duration-200 hover:border-[#ddc08e]/35"
+            >
+              <span className="text-2xl mt-0.5 shrink-0 select-none">{item.icon}</span>
+              <div className="flex-1">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <h4 className="font-bold text-[#ddc08e] text-xs sm:text-sm tracking-wide">{item.title}</h4>
+                  <span className="text-[10px] text-[#ddc08e] bg-[#ddc08e]/10 border border-[#ddc08e]/30 px-2 py-0.5 rounded-full font-black w-fit uppercase font-mono tracking-wider shrink-0">{item.price}</span>
+                </div>
+                <p className="text-[11px] text-neutral-400 mt-2 leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -220,11 +344,26 @@ function SalesPage({
 }) {
   return (
     <div ref={innerRef} className="reveal is-visible flex w-full flex-col items-center">
-      <div className="alert-blink mb-8 w-full rounded-xl border border-[#ff3b3b]/60 bg-[#1e0000]/90 px-4 py-3.5 text-center backdrop-blur-sm shadow-[0_0_20px_rgba(255,59,59,0.25)] flex items-center justify-center gap-2">
-        <BadgeAlert className="h-4.5 w-4.5 text-[#ff4c4c] shrink-0 animate-pulse" />
-        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#ff6b6b] sm:text-xs">
-          ⚠️ Sistema Bloqueado: Linhagem Sob Escassez Detectada
-        </p>
+      
+      {/* Immersive Warning Container matching uploaded design exactly */}
+      <div className="alert-blink mb-10 w-full rounded-2xl border border-red-500/25 bg-[#170202]/70 p-5 sm:p-6 backdrop-blur-md shadow-[0_0_40px_rgba(239,68,68,0.15)] flex flex-col sm:flex-row items-center gap-5 sm:gap-6 text-center sm:text-left relative">
+        <div className="absolute inset-0 rounded-2xl border border-red-500/10 pointer-events-none" />
+        <div className="shrink-0 flex items-center justify-center relative w-20 h-20 bg-red-950/20 border border-red-500/10 rounded-xl">
+          <svg className="w-12 h-12 text-[#ff3b3b] filter drop-shadow-[0_0_12px_rgba(255,59,59,0.75)]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </div>
+        <div className="flex-1">
+          <p className="text-[10px] text-[#ff6b6b] font-display font-black tracking-[0.25em] flex items-center justify-center sm:justify-start gap-1">
+            ▲ SISTEMA BLOQUEADO
+          </p>
+          <h3 className="font-display font-bold text-neutral-100 text-base sm:text-lg tracking-wide uppercase mt-1 leading-snug">
+            LINHAGEM SOB ESCASSEZ DETECTADA
+          </h3>
+          <p className="text-[11px] text-neutral-400 mt-2 leading-relaxed max-w-sm">
+            O cruzamento de dados identificou padrões recorrentes de endividamento e travamentos vinculados ao seu endereço IP. Protocolo ativado de emergência.
+          </p>
+        </div>
       </div>
 
       <h1 className="font-display text-center text-3xl font-black leading-[1.1] sm:text-5xl uppercase tracking-tight" style={{
@@ -320,11 +459,17 @@ function SalesPage({
         </div>
       </div>
 
+      {/* Dynamic Comparison Section */}
+      <ComparisonSection />
+
+      {/* Dynamic Orderbumps Ideas Preview */}
+      <OrderbumpSection />
+
       <a
         href="https://pay.kiwify.com.br/G1r08mQ"
         target="_blank"
         rel="noopener noreferrer"
-        className="font-display mt-10 block w-full max-w-md rounded-2xl px-6 py-5 text-center text-base font-black uppercase leading-tight tracking-wider text-[#1a1202] no-underline shadow-[0_10px_40px_rgba(221,192,142,0.25)] transition-all duration-300 hover:scale-[1.015] sm:text-lg flex items-center justify-center gap-2 border border-[#ddc08e]/70 cursor-pointer"
+        className="font-display mt-14 block w-full max-w-md rounded-2xl px-6 py-5 text-center text-base font-black uppercase leading-tight tracking-wider text-[#1a1202] no-underline shadow-[0_10px_40px_rgba(221,192,142,0.25)] transition-all duration-300 hover:scale-[1.015] sm:text-lg flex items-center justify-center gap-2 border border-[#ddc08e]/70 cursor-pointer"
         style={{
           background: "linear-gradient(180deg, #ffffff 0%, #ddc08e 30%, #cfae78 70%, #9e7f4c 100%)",
         }}

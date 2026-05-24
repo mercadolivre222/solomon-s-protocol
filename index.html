@@ -120,11 +120,26 @@
     
     <!-- SALES SECTION -->
     <div id="sales-section" class="w-full flex flex-col items-center transition-all duration-500 opacity-100 transform translate-y-0">
-      <div class="alert-blink mb-8 w-full rounded-xl border border-[#ff3b3b]/60 bg-[#1e0000]/90 px-4 py-3.5 text-center backdrop-blur-sm shadow-[0_0_20px_rgba(255,59,59,0.25)] flex items-center justify-center gap-2">
-        <svg class="h-4.5 w-4.5 text-[#ff4c4c] shrink-0 animate-pulse" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"/></svg>
-        <p class="text-[10px] font-black uppercase tracking-[0.2em] text-[#ff6b6b] sm:text-xs">
-          ⚠️ Sistema Bloqueado: Linhagem Sob Escassez Detectada
-        </p>
+      
+      <!-- Immersive Warning Container matching uploaded design exactly -->
+      <div class="alert-blink mb-10 w-full rounded-2xl border border-red-500/25 bg-[#170202]/70 p-5 sm:p-6 backdrop-blur-md shadow-[0_0_40px_rgba(239,68,68,0.15)] flex flex-col sm:flex-row items-center gap-5 sm:gap-6 text-center sm:text-left relative">
+        <div class="absolute inset-0 rounded-2xl border border-red-500/10 pointer-events-none"></div>
+        <div class="shrink-0 flex items-center justify-center relative w-20 h-20 bg-red-950/20 border border-red-500/10 rounded-xl">
+          <svg class="w-12 h-12 text-[#ff3b3b] filter drop-shadow-[0_0_12px_rgba(255,59,59,0.75)]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </div>
+        <div class="flex-1">
+          <p class="text-[10px] text-[#ff6b6b] font-display font-black tracking-[0.25em] flex items-center justify-center sm:justify-start gap-1">
+            ▲ SISTEMA BLOQUEADO
+          </p>
+          <h3 class="font-display font-bold text-neutral-100 text-base sm:text-lg tracking-wide uppercase mt-1 leading-snug">
+            LINHAGEM SOB ESCASSEZ DETECTADA
+          </h3>
+          <p class="text-[11px] text-neutral-400 mt-2 leading-relaxed max-w-sm">
+            O cruzamento de dados identificou padrões recorrentes de endividamento e travamentos vinculados ao seu endereço IP. Protocolo ativado de emergência.
+          </p>
+        </div>
       </div>
 
       <h1 class="font-display gold-gradient-text text-center text-3xl font-black leading-[1.1] sm:text-5xl uppercase tracking-tight">
@@ -190,8 +205,110 @@
         </div>
       </div>
 
+      <!-- Diagnostico Vibracional Section -->
+      <div class="mt-14 w-full px-1">
+        <h3 class="font-display gold-gradient-text text-center text-xl font-bold uppercase tracking-widest mb-6">
+          Diagnóstico Vibracional
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Curse Card -->
+          <div class="p-0.5 rounded-xl border border-red-500/10 bg-red-950/5">
+            <div class="p-5 rounded-[10px] bg-[#100505] border border-red-500/10 min-h-[175px]">
+              <h4 class="font-display font-bold text-xs text-[#ff5c5c] border-b border-red-950 pb-2.5 flex items-center gap-1.5 uppercase tracking-wider">
+                ☠ Maldição Hereditária
+              </h4>
+              <ul class="space-y-3 mt-4 text-[11px] text-neutral-400 leading-relaxed">
+                <li class="flex items-start gap-2">
+                  <span class="text-[#ff5c5c] font-bold">✕</span>
+                  <span>O dinheiro some misteriosamente no fim do mês</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#ff5c5c] font-bold">✕</span>
+                  <span>Acúmulo de boletos e dívidas que nunca terminam</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#ff5c5c] font-bold">✕</span>
+                  <span>Esforço exaustivo com zero frutos ou economias</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Provision Card -->
+          <div class="p-0.5 rounded-xl border border-[#ddc08e]/10 bg-neutral-950/20 shadow-lg">
+            <div class="p-5 rounded-[10px] bg-[#121212] border border-[#ddc08e]/10 min-h-[175px]">
+              <h4 class="font-display font-bold text-xs text-[#ddc08e] border-b border-neutral-900 pb-2.5 flex items-center gap-1.5 uppercase tracking-wider">
+                ✦ Provisão Ativada
+              </h4>
+              <ul class="space-y-3 mt-4 text-[11px] text-neutral-300 leading-relaxed">
+                <li class="flex items-start gap-2">
+                  <span class="text-[#ddc08e] font-bold">✔</span>
+                  <span>Fluxo constante de ganhos e estabilidade financeira</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#ddc08e] font-bold">✔</span>
+                  <span>Quitação definitiva de dívidas e bloqueios no nome</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#ddc08e] font-bold">✔</span>
+                  <span>Acesso imediato à sua prosperidade e herança divina</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Orderbump Accelerators Section -->
+      <div class="mt-14 w-full p-0.5 rounded-2xl border border-[#ddc08e]/15 bg-neutral-950/20 shadow-2xl relative">
+        <div class="p-6 sm:p-8 rounded-[14px] border border-[#ddc08e]/15 relative overflow-hidden" style="background: linear-gradient(160deg, #111111 0%, #080808 100%);">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-[#ddc08e]/5 rounded-full blur-3xl pointer-events-none"></div>
+          <h3 class="font-display gold-gradient-text text-center text-lg font-bold uppercase tracking-widest border-b border-[#ddc08e]/25 pb-3">
+            💡 Aceleradores de Provisão
+          </h3>
+          <p class="text-xs text-neutral-400 text-center mt-3 max-w-xs mx-auto leading-relaxed">
+            Você poderá selecionar estes selos adicionais diretamente no formulário de pagamento com até <span class="text-[#ddc08e] font-bold">80% de desconto</span>:
+          </p>
+
+          <div class="flex flex-col gap-4 mt-6">
+            <div class="p-4 rounded-xl border border-neutral-800 bg-black/60 flex items-start gap-4 transition duration-200 hover:border-[#ddc08e]/35">
+              <span class="text-2xl mt-0.5 shrink-0 select-none">🛡️</span>
+              <div class="flex-1">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <h4 class="font-bold text-[#ddc08e] text-xs sm:text-sm tracking-wide">1. O Selo de Salomão Contra Perdas e Ralos</h4>
+                  <span class="text-[10px] text-[#ddc08e] bg-[#ddc08e]/10 border border-[#ddc08e]/30 px-2 py-0.5 rounded-full font-black w-fit uppercase font-mono tracking-wider shrink-0">R$ 19,90</span>
+                </div>
+                <p class="text-[11px] text-neutral-400 mt-2 leading-relaxed">Um escudo espiritual para travar suas finanças, impedindo que o dinheiro escape com imprevistos, acidentes ou quebras de equipamentos.</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-neutral-800 bg-black/60 flex items-start gap-4 transition duration-200 hover:border-[#ddc08e]/35">
+              <span class="text-2xl mt-0.5 shrink-0 select-none">🎧</span>
+              <div class="flex-1">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <h4 class="font-bold text-[#ddc08e] text-xs sm:text-sm tracking-wide">2. Frequências do Templo: 528Hz Binaural</h4>
+                  <span class="text-[10px] text-[#ddc08e] bg-[#ddc08e]/10 border border-[#ddc08e]/30 px-2 py-0.5 rounded-full font-black w-fit uppercase font-mono tracking-wider shrink-0">R$ 14,95</span>
+                </div>
+                <p class="text-[11px] text-neutral-400 mt-2 leading-relaxed">Coleção de áudios harmônicos para escutar dormindo. Reprograma crenças inconscientes e remove bloqueios de escassez em tempo recorde.</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-neutral-800 bg-black/60 flex items-start gap-4 transition duration-200 hover:border-[#ddc08e]/35">
+              <span class="text-2xl mt-0.5 shrink-0 select-none">📖</span>
+              <div class="flex-1">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <h4 class="font-bold text-[#ddc08e] text-xs sm:text-sm tracking-wide">3. O Manual Oculto dos Sócios de Salomão</h4>
+                  <span class="text-[10px] text-[#ddc08e] bg-[#ddc08e]/10 border border-[#ddc08e]/30 px-2 py-0.5 rounded-full font-black w-fit uppercase font-mono tracking-wider shrink-0">R$ 27,90</span>
+                </div>
+                <p class="text-[11px] text-neutral-400 mt-2 leading-relaxed">Os 7 princípios de sabedoria comercial, negociação e acumulação de ouro que Salomão usou para erguer seu templo e império.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- CTA Button -->
-      <a href="https://pay.kiwify.com.br/G1r08mQ" target="_blank" rel="noopener noreferrer" class="font-display mt-10 block w-full max-w-md rounded-2xl px-6 py-5 text-center text-base font-black uppercase leading-tight tracking-wider text-[#1a1202] no-underline shadow-[0_10px_40px_rgba(221,192,142,0.25)] transition-all duration-300 hover:scale-[1.015] sm:text-lg flex items-center justify-center gap-2 border border-[#ddc08e]/70 cursor-pointer" style="background: linear-gradient(180deg, #ffffff 0%, #ddc08e 30%, #cfae78 70%, #9e7f4c 100%);">
+      <a href="https://pay.kiwify.com.br/G1r08mQ" target="_blank" rel="noopener noreferrer" class="font-display mt-14 block w-full max-w-md rounded-2xl px-6 py-5 text-center text-base font-black uppercase leading-tight tracking-wider text-[#1a1202] no-underline shadow-[0_10px_40px_rgba(221,192,142,0.25)] transition-all duration-300 hover:scale-[1.015] sm:text-lg flex items-center justify-center gap-2 border border-[#ddc08e]/70 cursor-pointer" style="background: linear-gradient(180deg, #ffffff 0%, #ddc08e 30%, #cfae78 70%, #9e7f4c 100%);">
         🔑 Quebrar o Selo e Ativar Meu Código
         <svg class="h-4.5 w-4.5 stroke-[2.5]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
