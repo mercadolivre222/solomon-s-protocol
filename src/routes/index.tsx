@@ -29,16 +29,13 @@ export const Route = createFileRoute("/")({
 function Index() {
   const salesRef = useRef<HTMLDivElement>(null);
   const [city, setCity] = useState("sua cidade");
-  const [regionLabel, setRegionLabel] = useState("");
 
   // Real-time IP Geolocation Fetch with Timeout & LocalStorage Cache
   useEffect(() => {
     const cachedCity = localStorage.getItem("solomon_user_city");
-    const cachedState = localStorage.getItem("solomon_user_state");
 
-    if (cachedCity && cachedState) {
+    if (cachedCity) {
       setCity(cachedCity);
-      setRegionLabel(`${cachedCity}-${cachedState}`);
       return;
     }
 
@@ -47,24 +44,33 @@ function Index() {
       controller.abort();
     }, 3000);
 
-    fetch("https://ipapi.co/json/", { signal: controller.signal })
+    fetch("https://ipinfo.io/json", { signal: controller.signal })
       .then((res) => res.json())
       .then((data) => {
         clearTimeout(timeoutId);
-        if (data.city && data.region_code) {
+        if (data.city) {
           localStorage.setItem("solomon_user_city", data.city);
-          localStorage.setItem("solomon_user_state", data.region_code);
           setCity(data.city);
-          setRegionLabel(`${data.city}-${data.region_code}`);
         } else {
-          setCity("sua região");
-          setRegionLabel("");
+          throw new Error("No city in ipinfo");
         }
       })
       .catch(() => {
         clearTimeout(timeoutId);
-        setCity("sua região");
-        setRegionLabel("");
+        // Try ipapi.co as a fallback
+        fetch("https://ipapi.co/json/")
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.city) {
+              localStorage.setItem("solomon_user_city", data.city);
+              setCity(data.city);
+            } else {
+              setCity("sua região");
+            }
+          })
+          .catch(() => {
+            setCity("sua região");
+          });
       });
   }, []);
 
@@ -135,14 +141,14 @@ function CountdownTimer() {
     </div>
   );
 }
-
-function ScarcityCounter({ regionLabel }: { regionLabel: string }) {
-  const text = regionLabel
-    ? `🔴 ATENÇÃO: Restam apenas 3 licenças espirituais de liberação para a região de ${regionLabel} hoje.`
+function ScarcityCounter({ city }: { city: string }) {
+  const isCityValid = city && city !== "sua cidade" && city !== "sua região";
+  const text = isCityValid
+    ? `🔴 ATENÇÃO: Restam apenas 3 licenças espirituais de liberação para a região de ${city} hoje.`
     : `🔴 ATENÇÃO: Restam apenas 3 licenças espirituais de liberação para a sua região hoje.`;
 
   return (
-    <p className="mt-4 text-center text-xs sm:text-sm font-bold text-[#ff4c4c] leading-relaxed max-w-md px-2 uppercase tracking-wide">
+    <p id="urgency-text" className="mt-4 text-center text-xs sm:text-sm font-bold text-[#ff4c4c] leading-relaxed max-w-md px-2 uppercase tracking-wide">
       {text}
     </p>
   );
@@ -795,7 +801,7 @@ function SalesPage({
       </p>
 
       {/* Dynamic Seat Scarcity Widget with Geolocation City */}
-      <ScarcityCounter regionLabel={regionLabel} />
+      <ScarcityCounter city={city} />
 
       {/* Facebook Comments Section */}
       <FacebookComments />

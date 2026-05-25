@@ -318,8 +318,8 @@
         Acesso Imediato · Criptografia SSL · Sigilo Total
       </p>
 
-      <!-- Red Urgency Geolocation Widget -->
-      <p id="red-urgency-text" class="mt-4 text-center text-xs sm:text-sm font-bold text-[#ff4c4c] leading-relaxed max-w-md px-2 uppercase tracking-wide">
+      <!-- Urgency Scarcity Line -->
+      <p id="urgency-text" class="mt-4 text-center text-xs sm:text-sm font-bold text-[#ff4c4c] leading-relaxed max-w-md px-2 uppercase tracking-wide">
         🔴 ATENÇÃO: Restam apenas 3 licenças espirituais de liberação para a sua região hoje.
       </p>
 
@@ -685,7 +685,7 @@
   <script>
     // DOM References
     const countdownTimer = document.getElementById("countdown-timer");
-    const redUrgencyText = document.getElementById("red-urgency-text");
+    const urgencyText = document.getElementById("urgency-text");
 
     // Geolocation elements
     const cityWarningText = document.getElementById("city-warning-text");
@@ -696,46 +696,57 @@
     let userCity = "sua região";
     const majorCapitals = ["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Porto Alegre", "Curitiba", "Salvador", "Fortaleza", "Brasília", "Recife", "Goiânia"];
 
-    function updateGeoText(city, stateCode) {
+    function updateGeoText(city) {
       userCity = city;
       if (cityWarningText) cityWarningText.innerText = `LINHAGEM SOB ESCASSEZ DETECTADA EM ${userCity.toUpperCase()}`;
       if (cityDescText) cityDescText.innerHTML = `O cruzamento de dados identificou padrões recorrentes de endividamento e travamentos vinculados ao seu endereço IP em <span class="text-[#ff6b6b] font-bold">${userCity}</span>. Protocolo ativado de emergência.`;
       if (cityScarcityText) cityScarcityText.innerText = `${userCity} e região`;
       if (cityFooterText) cityFooterText.innerText = `O Protocolo de Salomão é um guia de sabedoria e reflexão espiritual e financeira. Se você fechar esta página, seu código temporário expira e será redirecionado para outra linhagem necessitada em ${userCity}.`;
       
-      if (redUrgencyText) {
-        if (city && stateCode && city !== "sua região") {
-          redUrgencyText.innerText = `🔴 ATENÇÃO: Restam apenas 3 licenças espirituais de liberação para a região de ${city}-${stateCode} hoje.`;
-        } else {
-          redUrgencyText.innerText = `🔴 ATENÇÃO: Restam apenas 3 licenças espirituais de liberação para a sua região hoje.`;
-        }
+      // Simpler, robust urgency text replacer
+      if (urgencyText && userCity && userCity !== "sua região") {
+        const currentContent = urgencyText.innerText;
+        // Case-insensitive replace "sua região" with the dynamic city name
+        const updatedContent = currentContent.replace(/sua região/i, userCity);
+        urgencyText.innerText = updatedContent;
       }
     }
 
-    // Load from localStorage or fetch with 3s Timeout
+    // Load from localStorage or fetch (ipinfo.io with ipapi.co fallback)
     const cachedCity = localStorage.getItem("solomon_user_city");
-    const cachedState = localStorage.getItem("solomon_user_state");
-    if (cachedCity && cachedState) {
-      updateGeoText(cachedCity, cachedState);
+    if (cachedCity) {
+      updateGeoText(cachedCity);
     } else {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 3000);
 
-      fetch("https://ipapi.co/json/", { signal: controller.signal })
+      fetch("https://ipinfo.io/json", { signal: controller.signal })
         .then(res => res.json())
         .then(data => {
           clearTimeout(timeoutId);
-          if (data.city && data.region_code) {
+          if (data.city) {
             localStorage.setItem("solomon_user_city", data.city);
-            localStorage.setItem("solomon_user_state", data.region_code);
-            updateGeoText(data.city, data.region_code);
+            updateGeoText(data.city);
           } else {
-            throw new Error("No city/state in payload");
+            throw new Error("No city in ipinfo");
           }
         })
         .catch(() => {
           clearTimeout(timeoutId);
-          updateGeoText("sua região", "");
+          // Try ipapi.co as a fallback
+          fetch("https://ipapi.co/json/")
+            .then(res => res.json())
+            .then(data => {
+              if (data.city) {
+                localStorage.setItem("solomon_user_city", data.city);
+                updateGeoText(data.city);
+              } else {
+                updateGeoText("sua região");
+              }
+            })
+            .catch(() => {
+              updateGeoText("sua região");
+            });
         });
     }
 
