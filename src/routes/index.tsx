@@ -29,51 +29,100 @@ export const Route = createFileRoute("/")({
 function Index() {
   const salesRef = useRef<HTMLDivElement>(null);
   const [city, setCity] = useState("sua cidade");
-
-  // Real-time IP Geolocation Fetch with Timeout & LocalStorage Cache
+  // Real-time IP Geolocation Fetch & Security Shield
   useEffect(() => {
     const cachedCity = localStorage.getItem("solomon_user_city");
 
     if (cachedCity) {
       setCity(cachedCity);
-      return;
+    } else {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => {
+        controller.abort();
+      }, 3000);
+
+      fetch("https://ipinfo.io/json", { signal: controller.signal })
+        .then((res) => res.json())
+        .then((data) => {
+          clearTimeout(timeoutId);
+          if (data.city) {
+            localStorage.setItem("solomon_user_city", data.city);
+            setCity(data.city);
+          } else {
+            throw new Error("No city in ipinfo");
+          }
+        })
+        .catch(() => {
+          clearTimeout(timeoutId);
+          // Try ipapi.co as a fallback
+          fetch("https://ipapi.co/json/")
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.city) {
+                localStorage.setItem("solomon_user_city", data.city);
+                setCity(data.city);
+              } else {
+                setCity("sua região");
+              }
+            })
+            .catch(() => {
+              setCity("sua região");
+            });
+        });
     }
 
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => {
-      controller.abort();
-    }, 3000);
+    // Security Shield event handlers
+    const preventDefault = (e: Event) => e.preventDefault();
+    
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Disable F12
+      if (e.keyCode === 123) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      // Disable Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+      if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      // Disable Ctrl+U
+      if (e.ctrlKey && e.keyCode === 85) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      // Disable Ctrl+S
+      if (e.ctrlKey && e.keyCode === 83) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      // Disable Ctrl+P
+      if (e.ctrlKey && e.keyCode === 80) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      // Disable Ctrl+C and Ctrl+X
+      if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 88)) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
 
-    fetch("https://ipinfo.io/json", { signal: controller.signal })
-      .then((res) => res.json())
-      .then((data) => {
-        clearTimeout(timeoutId);
-        if (data.city) {
-          localStorage.setItem("solomon_user_city", data.city);
-          setCity(data.city);
-        } else {
-          throw new Error("No city in ipinfo");
-        }
-      })
-      .catch(() => {
-        clearTimeout(timeoutId);
-        // Try ipapi.co as a fallback
-        fetch("https://ipapi.co/json/")
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.city) {
-              localStorage.setItem("solomon_user_city", data.city);
-              setCity(data.city);
-            } else {
-              setCity("sua região");
-            }
-          })
-          .catch(() => {
-            setCity("sua região");
-          });
-      });
+    const handleDragStart = (e: DragEvent) => {
+      if ((e.target as HTMLElement).nodeName === "IMG") {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("contextmenu", preventDefault);
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("dragstart", handleDragStart);
+
+    return () => {
+      document.removeEventListener("contextmenu", preventDefault);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("dragstart", handleDragStart);
+    };
   }, []);
-
   return (
     <main
       className="min-h-screen w-full text-foreground select-none overflow-x-hidden font-sans"

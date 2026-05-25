@@ -853,6 +853,61 @@
 
     // Start Widgets
     startCountdownWidget();
+
+    // ==========================================
+    // SECURITY SHIELD: CONTEXT & CODE PROTECTION
+    // ==========================================
+
+    // 1. Disable Right Click Context Menu
+    document.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+    });
+
+    // 2. Disable Key Shortcuts for Source / DevTools
+    document.addEventListener("keydown", (e) => {
+      // Disable F12
+      if (e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+      if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Disable Ctrl+U (view source)
+      if (e.ctrlKey && e.keyCode === 85) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Disable Ctrl+S (save page)
+      if (e.ctrlKey && e.keyCode === 83) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Disable Ctrl+P (print page)
+      if (e.ctrlKey && e.keyCode === 80) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Disable Ctrl+C and Ctrl+X (copy and cut)
+      if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 88)) {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // 3. Disable Dragging of Images
+    document.addEventListener("dragstart", (e) => {
+      if (e.target.nodeName === "IMG") {
+        e.preventDefault();
+      }
+    });
   </script>
 </body>
 </html>
