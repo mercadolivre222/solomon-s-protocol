@@ -327,14 +327,15 @@ function OrderbumpSection() {
     </div>
   );
 }
-
 // Facebook Comments Section
 function FacebookComments() {
   const [newComment, setNewComment] = useState("");
   const [userName, setUserName] = useState("");
   const [userAge, setUserAge] = useState(65);
   const [userCity, setUserCity] = useState("MG");
-  const [userComments, setUserComments] = useState<Array<{
+  
+  const [allComments, setAllComments] = useState<Array<{
+    id: string;
     name: string;
     age: number;
     role: string;
@@ -342,61 +343,80 @@ function FacebookComments() {
     text: string;
     time: string;
     likes: number;
-    replies: any[];
+    userLiked?: boolean;
+    replies: Array<{
+      id: string;
+      name: string;
+      age: number;
+      role: string;
+      initials: string;
+      text: string;
+      time: string;
+      likes: number;
+      userLiked?: boolean;
+    }>;
   }>>([]);
 
-  const initialComments = [
-    {
-      name: "Sebastião Gomes",
-      age: 67,
-      role: "Aposentado, MG",
-      initials: "SG",
-      text: "Minha filha me mostrou esse diagnóstico na semana passada. Estava com um pé atrás, mas aos 67 anos eu já não aguentava mais dever. Fiz a ativação e ontem mesmo recebi um valor de uma causa na justiça que estava travada há 11 anos! Deus seja louvado!",
-      time: "há 2 minutos",
-      likes: 42,
-      replies: [
-        {
-          name: "Tereza Souza",
-          age: 61,
-          role: "Pensionista, SP",
-          initials: "TS",
-          text: "Seu Sebastião, também tenho 61 anos e aconteceu algo parecido comigo! Uma dívida antiga que parecia impossível de receber foi quitada anteontem. É uma sensação maravilhosa ver essa barreira caindo.",
-          time: "há 1 minuto",
-          likes: 9
-        }
-      ]
-    },
-    {
-      name: "Maria das Graças Silva",
-      age: 62,
-      role: "Professora Aposentada, RJ",
-      initials: "MG",
-      text: "Tenho 62 anos e nós sempre fomos pessoas honestas e muito trabalhadoras, mas parecia que nossa família carregava um ralo invisível. O dinheiro sumia. Depois que ativei o Protocolo de Salomão, a provisão entrou na minha casa de um jeito extraordinário. Comprei para os meus três filhos também.",
-      time: "há 12 minutos",
-      likes: 56,
-      replies: []
-    },
-    {
-      name: "Geraldo de Almeida",
-      age: 65,
-      role: "Técnico Industrial, SP",
-      initials: "GA",
-      text: "Amigos, façam sem medo de errar. Eu estava desempregado, com contas acumuladas e sem dormir. Fiz a ativação do código, escutei os áudios do templo toda noite e essa semana assinei um contrato de serviço excelente. A escassez da minha linhagem acabou!",
-      time: "há 24 minutos",
-      likes: 31,
-      replies: []
-    },
-    {
-      name: "Helena Silveira",
-      age: 59,
-      role: "Dona de Casa, RS",
-      initials: "HS",
-      text: "Fiz o diagnóstico e parecia que estavam descrevendo a minha vida inteira. Liberei a chave e anteontem mesmo meu marido recebeu uma proposta excelente de venda de um terreno que estava parado há anos. Agradeço todos os dias por ter encontrado esse protocolo.",
-      time: "há 45 minutos",
-      likes: 19,
-      replies: []
-    }
-  ];
+  // Initialize initial comments on mount
+  useEffect(() => {
+    setAllComments([
+      {
+        id: "comment-1",
+        name: "Sebastião Gomes",
+        age: 67,
+        role: "Aposentado, MG",
+        initials: "SG",
+        text: "Minha filha me mostrou esse diagnóstico na semana passada. Estava com um pé atrás, mas aos 67 anos eu já não aguentava mais dever. Fiz a ativação e ontem mesmo recebi um valor de uma causa na justiça que estava travada há 11 anos! Deus seja louvado!",
+        time: "há 2 minutos",
+        likes: 42,
+        replies: [
+          {
+            id: "reply-1-1",
+            name: "Tereza Souza",
+            age: 61,
+            role: "Pensionista, SP",
+            initials: "TS",
+            text: "Seu Sebastião, também tenho 61 anos e aconteceu algo parecido comigo! Uma dívida antiga que parecia impossível de receber foi quitada anteontem. É uma sensação maravilhosa ver essa barreira caindo.",
+            time: "há 1 minuto",
+            likes: 9
+          }
+        ]
+      },
+      {
+        id: "comment-2",
+        name: "Maria das Graças Silva",
+        age: 62,
+        role: "Professora Aposentada, RJ",
+        initials: "MG",
+        text: "Tenho 62 anos e nós sempre fomos pessoas honestas e muito trabalhadoras, mas parecia que nossa família carregava um ralo invisível. O dinheiro sumia. Depois que ativei o Protocolo de Salomão, a provisão entrou na minha casa de um jeito extraordinário. Comprei para os meus três filhos também.",
+        time: "há 12 minutos",
+        likes: 56,
+        replies: []
+      },
+      {
+        id: "comment-3",
+        name: "Geraldo de Almeida",
+        age: 65,
+        role: "Técnico Industrial, SP",
+        initials: "GA",
+        text: "Amigos, façam sem medo de errar. Eu estava desempregado, com contas acumuladas e sem dormir. Fiz a ativação do código, escutei os áudios do templo toda noite e essa semana assinei um contrato de serviço excelente. A escassez da minha linhagem acabou!",
+        time: "há 24 minutos",
+        likes: 31,
+        replies: []
+      },
+      {
+        id: "comment-4",
+        name: "Helena Silveira",
+        age: 59,
+        role: "Dona de Casa, RS",
+        initials: "HS",
+        text: "Fiz o diagnóstico e parecia que estavam descrevendo a minha vida inteira. Liberei a chave e anteontem mesmo meu marido recebeu uma proposta excelente de venda de um terreno que estava parado há anos. Agradeço todos os dias por ter encontrado esse protocolo.",
+        time: "há 45 minutos",
+        likes: 19,
+        replies: []
+      }
+    ]);
+  }, []);
 
   const handlePostComment = (e: React.FormEvent) => {
     e.preventDefault();
@@ -411,6 +431,7 @@ function FacebookComments() {
       .toUpperCase();
 
     const comment = {
+      id: `comment-${Date.now()}`,
       name: userName,
       age: userAge,
       role: `Membro Ativo, ${userCity.toUpperCase()}`,
@@ -421,12 +442,45 @@ function FacebookComments() {
       replies: []
     };
 
-    setUserComments([comment, ...userComments]);
+    setAllComments([comment, ...allComments]);
     setNewComment("");
     setUserName("");
   };
 
-  const allComments = [...userComments, ...initialComments];
+  const toggleLikeComment = (commentId: string, replyId?: string) => {
+    setAllComments(prevComments =>
+      prevComments.map((c) => {
+        if (replyId) {
+          if (c.id === commentId) {
+            return {
+              ...c,
+              replies: c.replies.map((r) => {
+                if (r.id === replyId) {
+                  const liked = !r.userLiked;
+                  return {
+                    ...r,
+                    userLiked: liked,
+                    likes: liked ? r.likes + 1 : Math.max(0, r.likes - 1)
+                  };
+                }
+                return r;
+              })
+            };
+          }
+        } else {
+          if (c.id === commentId) {
+            const liked = !c.userLiked;
+            return {
+              ...c,
+              userLiked: liked,
+              likes: liked ? c.likes + 1 : Math.max(0, c.likes - 1)
+            };
+          }
+        }
+        return c;
+      })
+    );
+  };
 
   return (
     <div className="mt-14 w-full p-0.5 rounded-2xl border border-neutral-800 bg-[#0d0d0d]/80 shadow-xl relative">
@@ -492,8 +546,8 @@ function FacebookComments() {
 
         {/* Comment List */}
         <div className="flex flex-col gap-6">
-          {allComments.map((c, i) => (
-            <div key={i} className="flex gap-3 text-left">
+          {allComments.map((c) => (
+            <div key={c.id} className="flex gap-3 text-left">
               {/* Profile Avatar */}
               <div className="w-10 h-10 rounded-full shrink-0 flex items-center justify-center font-display font-black text-xs bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none">
                 {c.initials}
@@ -519,18 +573,23 @@ function FacebookComments() {
 
                 {/* Comment footer */}
                 <div className="flex items-center gap-4.5 mt-2.5 pl-3 text-[10px] font-bold text-neutral-500 select-none">
-                  <button className="hover:text-[#ddc08e] cursor-pointer transition">Curtir</button>
+                  <button 
+                    onClick={() => toggleLikeComment(c.id)}
+                    className={`hover:text-[#ddc08e] cursor-pointer transition ${c.userLiked ? 'text-[#ddc08e]' : ''}`}
+                  >
+                    {c.userLiked ? "Descurtir" : "Curtir"}
+                  </button>
                   <span>·</span>
                   <button className="hover:text-[#ddc08e] cursor-pointer transition">Responder</button>
                   
                   <div className="flex items-center gap-1 text-[#ddc08e]/80 ml-auto bg-[#ddc08e]/5 px-2 py-0.5 border border-[#ddc08e]/10 rounded-full text-[9px] font-bold font-mono">
-                    👍 {c.likes > 0 ? c.likes : 1}
+                    👍 {c.likes}
                   </div>
                 </div>
 
                 {/* Sub replies */}
-                {c.replies && c.replies.map((r, rIdx) => (
-                  <div key={rIdx} className="flex gap-3 text-left mt-4.5 pl-3 border-l border-neutral-800">
+                {c.replies && c.replies.map((r) => (
+                  <div key={r.id} className="flex gap-3 text-left mt-4.5 pl-3 border-l border-neutral-800">
                     <div className="w-8 h-8 rounded-full shrink-0 flex items-center justify-center font-display font-black text-[10px] bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none">
                       {r.initials}
                     </div>
@@ -551,12 +610,17 @@ function FacebookComments() {
                         </p>
                       </div>
                       <div className="flex items-center gap-4 mt-2 pl-3 text-[9px] font-bold text-neutral-500 select-none">
-                        <button className="hover:text-[#ddc08e] cursor-pointer transition">Curtir</button>
+                        <button 
+                          onClick={() => toggleLikeComment(c.id, r.id)}
+                          className={`hover:text-[#ddc08e] cursor-pointer transition ${r.userLiked ? 'text-[#ddc08e]' : ''}`}
+                        >
+                          {r.userLiked ? "Descurtir" : "Curtir"}
+                        </button>
                         <span>·</span>
                         <button className="hover:text-[#ddc08e] cursor-pointer transition">Responder</button>
                         
                         <div className="flex items-center gap-1 text-[#ddc08e]/80 ml-auto bg-[#ddc08e]/5 px-2 py-0.5 border border-[#ddc08e]/10 rounded-full text-[8px] font-bold font-mono">
-                          👍 {r.likes > 0 ? r.likes : 1}
+                          👍 {r.likes}
                         </div>
                       </div>
                     </div>

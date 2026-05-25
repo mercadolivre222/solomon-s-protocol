@@ -908,6 +908,55 @@
         e.preventDefault();
       }
     });
+
+    // 4. Facebook Comments Like Button Delegate
+    document.addEventListener("click", function(e) {
+      if (e.target && e.target.tagName === "BUTTON" && e.target.innerText === "Curtir") {
+        const btn = e.target;
+        const parent = btn.parentElement;
+        if (!parent) return;
+
+        // Find the thumbs-up container
+        const likeContainer = parent.querySelector(".font-mono");
+        if (!likeContainer) return;
+
+        // Extract the current count
+        const textContent = likeContainer.innerText;
+        const countMatch = textContent.match(/\d+/);
+        if (!countMatch) return;
+
+        const currentCount = parseInt(countMatch[0], 10);
+        const newCount = currentCount + 1;
+
+        likeContainer.innerText = `👍 ${newCount}`;
+        
+        // Mark button as liked
+        btn.innerText = "Descurtir";
+        btn.style.color = "#ddc08e";
+      } else if (e.target && e.target.tagName === "BUTTON" && e.target.innerText === "Descurtir") {
+        const btn = e.target;
+        const parent = btn.parentElement;
+        if (!parent) return;
+
+        // Find the thumbs-up container
+        const likeContainer = parent.querySelector(".font-mono");
+        if (!likeContainer) return;
+
+        // Extract the current count
+        const textContent = likeContainer.innerText;
+        const countMatch = textContent.match(/\d+/);
+        if (!countMatch) return;
+
+        const currentCount = parseInt(countMatch[0], 10);
+        const newCount = Math.max(0, currentCount - 1);
+
+        likeContainer.innerText = `👍 ${newCount}`;
+        
+        // Mark button as unliked
+        btn.innerText = "Curtir";
+        btn.style.color = "";
+      }
+    });
   </script>
 </body>
 </html>
