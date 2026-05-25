@@ -29,20 +29,42 @@ export const Route = createFileRoute("/")({
 function Index() {
   const salesRef = useRef<HTMLDivElement>(null);
   const [city, setCity] = useState("sua cidade");
+  const [regionLabel, setRegionLabel] = useState("");
 
-  // Real-time IP Geolocation Fetch
+  // Real-time IP Geolocation Fetch with Timeout & LocalStorage Cache
   useEffect(() => {
-    fetch("https://ipapi.co/json/")
+    const cachedCity = localStorage.getItem("solomon_user_city");
+    const cachedState = localStorage.getItem("solomon_user_state");
+
+    if (cachedCity && cachedState) {
+      setCity(cachedCity);
+      setRegionLabel(`${cachedCity}-${cachedState}`);
+      return;
+    }
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => {
+      controller.abort();
+    }, 3000);
+
+    fetch("https://ipapi.co/json/", { signal: controller.signal })
       .then((res) => res.json())
       .then((data) => {
-        if (data.city) {
+        clearTimeout(timeoutId);
+        if (data.city && data.region_code) {
+          localStorage.setItem("solomon_user_city", data.city);
+          localStorage.setItem("solomon_user_state", data.region_code);
           setCity(data.city);
+          setRegionLabel(`${data.city}-${data.region_code}`);
         } else {
           setCity("sua região");
+          setRegionLabel("");
         }
       })
       .catch(() => {
+        clearTimeout(timeoutId);
         setCity("sua região");
+        setRegionLabel("");
       });
   }, []);
 
@@ -114,22 +136,14 @@ function CountdownTimer() {
   );
 }
 
-function ScarcityCounter({ city }: { city: string }) {
-  const [count, setCount] = useState(7);
-
-  useEffect(() => {
-    const interval = setTimeout(() => {
-      if (count > 3) {
-        setCount(count - 1);
-      }
-    }, 12000);
-
-    return () => clearTimeout(interval);
-  }, [count]);
+function ScarcityCounter({ regionLabel }: { regionLabel: string }) {
+  const text = regionLabel
+    ? `🔴 ATENÇÃO: Restam apenas 3 licenças espirituais de liberação para a região de ${regionLabel} hoje.`
+    : `🔴 ATENÇÃO: Restam apenas 3 licenças espirituais de liberação para a sua região hoje.`;
 
   return (
-    <p className="mt-4 text-center text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold leading-relaxed px-2">
-      Restam apenas <span className="text-[#ff4c4c] font-black underline decoration-2">{count} licenças espirituais</span> para o seu IP em <span className="text-[#ddc08e] font-black underline decoration-1">{city} e região</span>.
+    <p className="mt-4 text-center text-xs sm:text-sm font-bold text-[#ff4c4c] leading-relaxed max-w-md px-2 uppercase tracking-wide">
+      {text}
     </p>
   );
 }
@@ -781,7 +795,7 @@ function SalesPage({
       </p>
 
       {/* Dynamic Seat Scarcity Widget with Geolocation City */}
-      <ScarcityCounter city={city} />
+      <ScarcityCounter regionLabel={regionLabel} />
 
       {/* Facebook Comments Section */}
       <FacebookComments />

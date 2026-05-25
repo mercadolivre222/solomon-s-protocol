@@ -106,7 +106,7 @@
     }
     
     .accordion-item.active .accordion-content {
-      max-height: 200px;
+      max-height: 500px;
     }
 
     .accordion-item.active svg.chevron {
@@ -318,9 +318,9 @@
         Acesso Imediato · Criptografia SSL · Sigilo Total
       </p>
 
-      <!-- Scarcity counter widget with Geolocation -->
-      <p class="mt-4 text-center text-[10px] sm:text-xs uppercase tracking-widest text-neutral-400 font-semibold">
-        Restam apenas <span id="license-scarcity-counter" class="text-[#ff4c4c] font-black underline decoration-2">7 licenças espirituais</span> para o seu IP em <span id="city-scarcity-text" class="text-[#ddc08e] font-black underline decoration-1">sua região</span>.
+      <!-- Red Urgency Geolocation Widget -->
+      <p id="red-urgency-text" class="mt-4 text-center text-xs sm:text-sm font-bold text-[#ff4c4c] leading-relaxed max-w-md px-2 uppercase tracking-wide">
+        🔴 ATENÇÃO: Restam apenas 3 licenças espirituais de liberação para a sua região hoje.
       </p>
 
       <!-- Facebook Comments Section -->
@@ -685,7 +685,7 @@
   <script>
     // DOM References
     const countdownTimer = document.getElementById("countdown-timer");
-    const scarcityCounter = document.getElementById("license-scarcity-counter");
+    const redUrgencyText = document.getElementById("red-urgency-text");
 
     // Geolocation elements
     const cityWarningText = document.getElementById("city-warning-text");
@@ -696,34 +696,46 @@
     let userCity = "sua região";
     const majorCapitals = ["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Porto Alegre", "Curitiba", "Salvador", "Fortaleza", "Brasília", "Recife", "Goiânia"];
 
-    function updateGeoText(city) {
+    function updateGeoText(city, stateCode) {
       userCity = city;
-      cityWarningText.innerText = `LINHAGEM SOB ESCASSEZ DETECTADA EM ${userCity.toUpperCase()}`;
-      cityDescText.innerHTML = `O cruzamento de dados identificou padrões recorrentes de endividamento e travamentos vinculados ao seu endereço IP em <span class="text-[#ff6b6b] font-bold">${userCity}</span>. Protocolo ativado de emergência.`;
-      cityScarcityText.innerText = `${userCity} e região`;
-      cityFooterText.innerText = `O Protocolo de Salomão é um guia de sabedoria e reflexão espiritual e financeira. Se você fechar esta página, seu código temporário expira e será redirecionado para outra linhagem necessitada em ${userCity}.`;
+      if (cityWarningText) cityWarningText.innerText = `LINHAGEM SOB ESCASSEZ DETECTADA EM ${userCity.toUpperCase()}`;
+      if (cityDescText) cityDescText.innerHTML = `O cruzamento de dados identificou padrões recorrentes de endividamento e travamentos vinculados ao seu endereço IP em <span class="text-[#ff6b6b] font-bold">${userCity}</span>. Protocolo ativado de emergência.`;
+      if (cityScarcityText) cityScarcityText.innerText = `${userCity} e região`;
+      if (cityFooterText) cityFooterText.innerText = `O Protocolo de Salomão é um guia de sabedoria e reflexão espiritual e financeira. Se você fechar esta página, seu código temporário expira e será redirecionado para outra linhagem necessitada em ${userCity}.`;
+      
+      if (redUrgencyText) {
+        if (city && stateCode && city !== "sua região") {
+          redUrgencyText.innerText = `🔴 ATENÇÃO: Restam apenas 3 licenças espirituais de liberação para a região de ${city}-${stateCode} hoje.`;
+        } else {
+          redUrgencyText.innerText = `🔴 ATENÇÃO: Restam apenas 3 licenças espirituais de liberação para a sua região hoje.`;
+        }
+      }
     }
 
-    // Load from localStorage or fetch
+    // Load from localStorage or fetch with 3s Timeout
     const cachedCity = localStorage.getItem("solomon_user_city");
-    if (cachedCity) {
-      updateGeoText(cachedCity);
+    const cachedState = localStorage.getItem("solomon_user_state");
+    if (cachedCity && cachedState) {
+      updateGeoText(cachedCity, cachedState);
     } else {
-      fetch("https://ipapi.co/json/")
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 3000);
+
+      fetch("https://ipapi.co/json/", { signal: controller.signal })
         .then(res => res.json())
         .then(data => {
-          if (data.city) {
+          clearTimeout(timeoutId);
+          if (data.city && data.region_code) {
             localStorage.setItem("solomon_user_city", data.city);
-            updateGeoText(data.city);
+            localStorage.setItem("solomon_user_state", data.region_code);
+            updateGeoText(data.city, data.region_code);
           } else {
-            throw new Error("No city in payload");
+            throw new Error("No city/state in payload");
           }
         })
         .catch(() => {
-          // Fallback to random capital
-          const randomCapital = majorCapitals[Math.floor(Math.random() * majorCapitals.length)];
-          localStorage.setItem("solomon_user_city", randomCapital);
-          updateGeoText(randomCapital);
+          clearTimeout(timeoutId);
+          updateGeoText("sua região", "");
         });
     }
 
@@ -758,19 +770,7 @@
       }, 1000);
     }
 
-    // License scarcity fake active drop
-    function startScarcityWidget() {
-      let licensesLeft = 7;
-      
-      const scarcityInterval = setInterval(() => {
-        if (licensesLeft > 3) {
-          licensesLeft--;
-          scarcityCounter.innerHTML = `Restam apenas <span class="text-[#ff4c4c] font-black underline decoration-2">${licensesLeft} licenças espirituais</span> para o seu IP em <span class="text-[#ddc08e] font-black underline decoration-1">${cityScarcityText.innerText}</span>.`;
-        } else {
-          clearInterval(scarcityInterval);
-        }
-      }, 12000);
-    }
+
 
     // RADIX STYLE ACCORDION HANDLER
     function toggleAccordion(element) {
@@ -842,7 +842,6 @@
 
     // Start Widgets
     startCountdownWidget();
-    startScarcityWidget();
   </script>
 </body>
 </html>
