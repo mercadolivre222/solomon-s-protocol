@@ -1,820 +1,1345 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Protocolo de Salomão — Liberação Espiritual</title>
-  <meta name="description" content="Quebre o selo da escassez hereditária e ative a Provisão Terrena Absoluta. Ativação imediata.">
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cinzel+Decorative:wght@700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ['Cinzel', 'serif'],
-            decorative: ['Cinzel Decorative', 'serif'],
-            sans: ['Montserrat', 'sans-serif'],
-          }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Protocolo de Salomão — Liberação Espiritual</title>
+    <meta
+      name="description"
+      content="Quebre o selo da escassez hereditária e ative a Provisão Terrena Absoluta. Ativação imediata."
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cinzel+Decorative:wght@700;900&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ["Cinzel", "serif"],
+              decorative: ["Cinzel Decorative", "serif"],
+              sans: ["Montserrat", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Premium Color Variables and Animations */
+      :root {
+        --gold: #ddc08e;
+        --gold-deep: #b09260;
+        --gold-light: #fff3db;
+      }
+
+      body {
+        background-color: #080808;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .font-display {
+        font-family: "Cinzel", serif;
+        letter-spacing: 0.02em;
+      }
+
+      .gold-gradient-text {
+        background: linear-gradient(180deg, #ffffff 0%, #ddc08e 65%, #b09260 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 40px rgba(221, 192, 142, 0.15);
+      }
+
+      .gold-glow-strong {
+        box-shadow:
+          0 0 0 1px rgba(221, 192, 142, 0.4),
+          0 0 40px rgba(221, 192, 142, 0.2),
+          0 0 100px rgba(221, 192, 142, 0.1),
+          inset 0 0 20px rgba(221, 192, 142, 0.05);
+      }
+
+      .border-gold-dim {
+        border-color: rgba(221, 192, 142, 0.15);
+      }
+
+      .gold-bar-btn {
+        background: linear-gradient(180deg, #ffffff 0%, #ddc08e 30%, #cfae78 70%, #9e7f4c 100%);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.6),
+          inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+          0 6px 0 #5c4724,
+          0 10px 25px rgba(221, 192, 142, 0.25),
+          0 0 60px rgba(221, 192, 142, 0.15);
+        animation: gold-pulse 2.4s ease-in-out infinite;
+      }
+
+      .alert-blink {
+        animation: alert-blink 1.6s ease-in-out infinite;
+      }
+
+      .artifact-float {
+        animation: artifact-float 5s ease-in-out infinite;
+      }
+
+      /* Keyframes */
+      @keyframes gold-pulse {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+
+        50% {
+          transform: translateY(-2px) scale(1.015);
         }
       }
-    }
-  </script>
 
-  <style>
-    /* Premium Color Variables and Animations */
-    :root {
-      --gold: #ddc08e;
-      --gold-deep: #b09260;
-      --gold-light: #fff3db;
-    }
+      @keyframes alert-blink {
+        0%,
+        100% {
+          opacity: 1;
+          box-shadow: 0 0 20px rgba(255, 59, 59, 0.4);
+        }
 
-    body {
-      background-color: #080808;
-      font-family: 'Montserrat', sans-serif;
-    }
+        50% {
+          opacity: 0.65;
+          box-shadow: 0 0 8px rgba(255, 59, 59, 0.2);
+        }
+      }
 
-    .font-display {
-      font-family: 'Cinzel', serif;
-      letter-spacing: 0.02em;
-    }
+      @keyframes artifact-float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
 
-    .gold-gradient-text {
-      background: linear-gradient(180deg, #ffffff 0%, #ddc08e 65%, #b09260 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 40px rgba(221, 192, 142, 0.15);
-    }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
 
-    .gold-glow-strong {
-      box-shadow:
-        0 0 0 1px rgba(221, 192, 142, 0.4),
-        0 0 40px rgba(221, 192, 142, 0.2),
-        0 0 100px rgba(221, 192, 142, 0.1),
-        inset 0 0 20px rgba(221, 192, 142, 0.05);
-    }
+      /* Accordion Custom Transitions */
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.25s ease-out;
+      }
 
-    .border-gold-dim {
-      border-color: rgba(221, 192, 142, 0.15);
-    }
+      .accordion-item.active .accordion-content {
+        max-height: 500px;
+      }
 
-    .gold-bar-btn {
-      background: linear-gradient(180deg, #ffffff 0%, #ddc08e 30%, #cfae78 70%, #9e7f4c 100%);
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.6),
-        inset 0 -2px 0 rgba(0, 0, 0, 0.35),
-        0 6px 0 #5c4724,
-        0 10px 25px rgba(221, 192, 142, 0.25),
-        0 0 60px rgba(221, 192, 142, 0.15);
-      animation: gold-pulse 2.4s ease-in-out infinite;
-    }
+      .accordion-item.active svg.chevron {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
 
-    .alert-blink {
-      animation: alert-blink 1.6s ease-in-out infinite;
-    }
-
-    .artifact-float {
-      animation: artifact-float 5s ease-in-out infinite;
-    }
-
-    /* Keyframes */
-    @keyframes gold-pulse {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-2px) scale(1.015); }
-    }
-    @keyframes alert-blink {
-      0%, 100% { opacity: 1; box-shadow: 0 0 20px rgba(255, 59, 59, 0.4); }
-      50% { opacity: 0.65; box-shadow: 0 0 8px rgba(255, 59, 59, 0.2); }
-    }
-    @keyframes artifact-float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    /* Accordion Custom Transitions */
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.25s ease-out;
-    }
-    
-    .accordion-item.active .accordion-content {
-      max-height: 500px;
-    }
-
-    .accordion-item.active svg.chevron {
-      transform: rotate(180deg);
-    }
-  </style>
-</head>
-<body class="min-h-screen w-full text-white select-none overflow-x-hidden" style="background-image: radial-gradient(circle at 50% 0%, #151515 0%, #060606 100%); background-size: cover; background-repeat: no-repeat;">
-
-  <div class="mx-auto flex w-full max-w-[640px] flex-col items-center px-4 pb-20 pt-6 sm:pt-12">
-    
-    <!-- SALES SECTION -->
-    <div id="sales-section" class="w-full flex flex-col items-center transition-all duration-500 opacity-100 transform translate-y-0">
-      
-      <!-- Immersive Warning Container matching uploaded design exactly -->
-      <div class="alert-blink mb-10 w-full rounded-2xl border border-red-500/25 bg-[#170202]/70 p-5 sm:p-6 backdrop-blur-md shadow-[0_0_40px_rgba(239,68,68,0.15)] flex flex-col sm:flex-row items-center gap-5 sm:gap-6 text-center sm:text-left relative">
-        <div class="absolute inset-0 rounded-2xl border border-red-500/10 pointer-events-none"></div>
-        <div class="shrink-0 flex items-center justify-center relative w-20 h-20 bg-red-950/20 border border-red-500/10 rounded-xl">
-          <svg class="w-12 h-12 text-[#ff3b3b] filter drop-shadow-[0_0_12px_rgba(255,59,59,0.75)]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-          </svg>
-        </div>
-        <div class="flex-1">
-          <p class="text-[10px] text-[#ff6b6b] font-display font-black tracking-[0.25em] flex items-center justify-center sm:justify-start gap-1">
-            ▲ SISTEMA BLOQUEADO
-          </p>
-          <h3 id="city-warning-text" class="font-display font-bold text-neutral-100 text-base sm:text-lg tracking-wide uppercase mt-1 leading-snug">
-            LINHAGEM SOB ESCASSEZ DETECTADA EM SUA REGIÃO
-          </h3>
-          <p id="city-desc-text" class="text-[11px] text-neutral-400 mt-2 leading-relaxed max-w-sm">
-            O cruzamento de dados identificou padrões recorrentes de endividamento e travamentos vinculados ao seu endereço IP em <span class="text-[#ff6b6b] font-bold">sua região</span>. Protocolo ativado de emergência.
-          </p>
-        </div>
-      </div>
-
-      <h1 class="font-display gold-gradient-text text-center text-3xl font-black leading-[1.1] sm:text-5xl uppercase tracking-tight">
-        O SELO DE SALOMÃO<br>FOI REVELADO
-      </h1>
-      
-      <p class="mt-4 max-w-md text-center text-sm text-neutral-400 sm:text-base leading-relaxed font-medium">
-        Seu diagnóstico confirmou a presença da <span class="text-[#ff5c5c] font-semibold">Maldição da Escassez Hereditária</span> em sua árvore genealógica.
-      </p>
-
-      <!-- Lock Artifact Image -->
-      <div class="artifact-float relative mt-12 mb-4">
-        <div class="absolute inset-0 -z-10 rounded-full blur-3xl animate-pulse" style="background: radial-gradient(circle, rgba(221,192,142,0.45), transparent 60%); animation-duration: 3s;"></div>
-        <div class="flex h-60 w-60 items-center justify-center overflow-hidden rounded-full border border-[#ddc08e]/60 bg-black relative sm:h-72 sm:w-72 shadow-[0_15px_40px_rgba(0,0,0,0.8)]">
-          <div class="absolute inset-2 rounded-full border border-[#ddc08e]/20 pointer-events-none"></div>
-          <img src="./src/assets/solomon-lock.jpg" alt="Cadeado dourado de Salomão" class="h-full w-full object-cover transition-transform duration-700 hover:scale-105">
-        </div>
-      </div>
-
-      <!-- Scarcity Countdown Widget -->
-      <div class="mt-8 flex justify-center w-full">
-        <div class="flex items-center gap-2 rounded-xl bg-black/60 border border-[#ff3b3b]/30 px-3.5 py-2 text-[11px] font-bold text-[#ff6b6b] tracking-wider shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
-          <svg class="h-3.5 w-3.5 animate-pulse text-[#ff4c4c]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          <span>SUA VAGA EXPIRA EM:</span>
-          <span id="countdown-timer" class="font-mono text-[12px] font-black tracking-widest text-[#ff4c4c]">05:00</span>
-        </div>
-      </div>
-
-      <p class="mt-8 max-w-xl text-center text-[15px] leading-relaxed text-neutral-300 sm:text-lg px-2">
-        O diagnóstico detectou a <span class="text-[#ddc08e] font-bold">Maldição da Escassez Hereditária</span> operando sobre as suas finanças. Ao quebrar esse selo agora, você ativa a <span class="text-[#ddc08e] font-bold">Provisão Terrena Absoluta</span> — dinheiro fluindo de fontes inesperadas e o fim do ciclo das dívidas — garantindo a sua <span class="text-[#ddc08e] font-bold">Herança Divina</span>.
-      </p>
-
-      <!-- Bullet Points Card (Double Champagne Rounded Border Box) -->
-      <div class="mt-10 w-full max-w-md p-0.5 rounded-2xl border border-[#ddc08e]/15 bg-neutral-950/20 shadow-2xl relative">
-        <div class="p-6 sm:p-8 rounded-[14px] border border-[#ddc08e]/15 relative overflow-hidden" style="background: linear-gradient(160deg, #111111 0%, #080808 100%);">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-[#ddc08e]/5 rounded-full blur-3xl pointer-events-none"></div>
-          <h3 class="font-display gold-gradient-text mb-6 text-center text-lg font-bold uppercase tracking-widest border-b border-[#ddc08e]/25 pb-3">
-            O Que Você Irá Ativar
-          </h3>
-          <ul class="space-y-4">
-            <li class="flex gap-3 items-start">
-              <span class="mt-1 text-base text-[#ddc08e] shrink-0">✦</span>
-              <div>
-                <p class="font-bold text-[#ddc08e] text-sm tracking-wide">A Chave de Salomão</p>
-                <p class="text-xs sm:text-sm text-neutral-400 leading-normal mt-0.5">O selo sagrado prático para quebrar em definitivo a barreira hereditária da escassez.</p>
-              </div>
-            </li>
-            <li class="flex gap-3 items-start">
-              <span class="mt-1 text-base text-[#ddc08e] shrink-0">✦</span>
-              <div>
-                <p class="font-bold text-[#ddc08e] text-sm tracking-wide">Provisão Terrena Absoluta</p>
-                <p class="text-xs sm:text-sm text-neutral-400 leading-normal mt-0.5">Ativação sobrenatural do fluxo financeiro e encerramento total de dívidas históricas.</p>
-              </div>
-            </li>
-            <li class="flex gap-3 items-start">
-              <span class="mt-1 text-base text-[#ddc08e] shrink-0">✦</span>
-              <div>
-                <p class="font-bold text-[#ddc08e] text-sm tracking-wide">Garantia Sagrada de 7 Dias</p>
-                <p class="text-xs sm:text-sm text-neutral-400 leading-normal mt-0.5">Satisfação completa com garantia divina. Zero risco para sua jornada espiritual.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Diagnostico Vibracional Section -->
-      <div class="mt-14 w-full px-1">
-        <h3 class="font-display gold-gradient-text text-center text-xl font-bold uppercase tracking-widest mb-6">
-          Diagnóstico Vibracional
-        </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <!-- Curse Card -->
-          <div class="p-0.5 rounded-xl border border-red-500/10 bg-red-950/5">
-            <div class="p-5 rounded-[10px] bg-[#100505] border border-red-500/10 min-h-[175px]">
-              <h4 class="font-display font-bold text-xs text-[#ff5c5c] border-b border-red-950 pb-2.5 flex items-center gap-1.5 uppercase tracking-wider">
-                ☠ Maldição Hereditária
-              </h4>
-              <ul class="space-y-3 mt-4 text-[11px] text-neutral-400 leading-relaxed">
-                <li class="flex items-start gap-2">
-                  <span class="text-[#ff5c5c] font-bold">✕</span>
-                  <span>O dinheiro some misteriosamente no fim do mês</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-[#ff5c5c] font-bold">✕</span>
-                  <span>Acúmulo de boletos e dívidas que nunca terminam</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-[#ff5c5c] font-bold">✕</span>
-                  <span>Esforço exaustivo com zero frutos ou economias</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Provision Card -->
-          <div class="p-0.5 rounded-xl border border-[#ddc08e]/10 bg-neutral-950/20 shadow-lg">
-            <div class="p-5 rounded-[10px] bg-[#121212] border border-[#ddc08e]/10 min-h-[175px]">
-              <h4 class="font-display font-bold text-xs text-[#ddc08e] border-b border-neutral-900 pb-2.5 flex items-center gap-1.5 uppercase tracking-wider">
-                ✦ Provisão Ativada
-              </h4>
-              <ul class="space-y-3 mt-4 text-[11px] text-neutral-300 leading-relaxed">
-                <li class="flex items-start gap-2">
-                  <span class="text-[#ddc08e] font-bold">✔</span>
-                  <span>Fluxo constante de ganhos e estabilidade financeira</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-[#ddc08e] font-bold">✔</span>
-                  <span>Quitação definitiva de dívidas e bloqueios no nome</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-[#ddc08e] font-bold">✔</span>
-                  <span>Acesso imediato à sua prosperidade e herança divina</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Orderbump Accelerators Section -->
-      <div class="mt-14 w-full p-0.5 rounded-2xl border border-[#ddc08e]/15 bg-neutral-950/20 shadow-2xl relative">
-        <div class="p-6 sm:p-8 rounded-[14px] border border-[#ddc08e]/15 relative overflow-hidden" style="background: linear-gradient(160deg, #111111 0%, #080808 100%);">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-[#ddc08e]/5 rounded-full blur-3xl pointer-events-none"></div>
-          <h3 class="font-display gold-gradient-text text-center text-lg font-bold uppercase tracking-widest border-b border-[#ddc08e]/25 pb-3">
-            💡 Aceleradores de Provisão
-          </h3>
-          <p class="text-xs text-neutral-400 text-center mt-3 max-w-xs mx-auto leading-relaxed">
-            Você poderá selecionar estes selos adicionais diretamente no formulário de pagamento com até <span class="text-[#ddc08e] font-bold">80% de desconto</span>:
-          </p>
-
-          <div class="flex flex-col gap-4 mt-6">
-            <div class="p-4 rounded-xl border border-neutral-800 bg-black/60 flex items-start gap-4 transition duration-200 hover:border-[#ddc08e]/35">
-              <span class="text-2xl mt-0.5 shrink-0 select-none">🛡️</span>
-              <div class="flex-1">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                  <h4 class="font-bold text-[#ddc08e] text-xs sm:text-sm tracking-wide">1. O Selo de Salomão Contra Perdas e Ralos</h4>
-                  <span class="text-[10px] text-[#ddc08e] bg-[#ddc08e]/10 border border-[#ddc08e]/30 px-2 py-0.5 rounded-full font-black w-fit uppercase font-mono tracking-wider shrink-0">R$ 19,90</span>
-                </div>
-                <p class="text-[11px] text-neutral-400 mt-2 leading-relaxed">Um escudo espiritual para travar suas finanças, impedindo que o dinheiro escape com imprevistos, acidentes ou quebras de equipamentos.</p>
-              </div>
-            </div>
-
-            <div class="p-4 rounded-xl border border-neutral-800 bg-black/60 flex items-start gap-4 transition duration-200 hover:border-[#ddc08e]/35">
-              <span class="text-2xl mt-0.5 shrink-0 select-none">🎧</span>
-              <div class="flex-1">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                  <h4 class="font-bold text-[#ddc08e] text-xs sm:text-sm tracking-wide">2. Frequências do Templo: 528Hz Binaural</h4>
-                  <span class="text-[10px] text-[#ddc08e] bg-[#ddc08e]/10 border border-[#ddc08e]/30 px-2 py-0.5 rounded-full font-black w-fit uppercase font-mono tracking-wider shrink-0">R$ 14,95</span>
-                </div>
-                <p class="text-[11px] text-neutral-400 mt-2 leading-relaxed">Coleção de áudios harmônicos para escutar dormindo. Reprograma crenças inconscientes e remove bloqueios de escassez em tempo recorde.</p>
-              </div>
-            </div>
-
-            <div class="p-4 rounded-xl border border-neutral-800 bg-black/60 flex items-start gap-4 transition duration-200 hover:border-[#ddc08e]/35">
-              <span class="text-2xl mt-0.5 shrink-0 select-none">📖</span>
-              <div class="flex-1">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                  <h4 class="font-bold text-[#ddc08e] text-xs sm:text-sm tracking-wide">3. O Manual Oculto dos Sócios de Salomão</h4>
-                  <span class="text-[10px] text-[#ddc08e] bg-[#ddc08e]/10 border border-[#ddc08e]/30 px-2 py-0.5 rounded-full font-black w-fit uppercase font-mono tracking-wider shrink-0">R$ 27,90</span>
-                </div>
-                <p class="text-[11px] text-neutral-400 mt-2 leading-relaxed">Os 7 princípios de sabedoria comercial, negociação e acumulação de ouro que Salomão usou para erguer seu templo e império.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CTA Button -->
-      <a href="https://pay.kiwify.com.br/G1r08mQ" target="_blank" rel="noopener noreferrer" class="font-display mt-14 block w-full max-w-md rounded-2xl px-6 py-5 text-center text-base font-black uppercase leading-tight tracking-wider text-[#1a1202] no-underline shadow-[0_10px_40px_rgba(221,192,142,0.25)] transition-all duration-300 hover:scale-[1.015] sm:text-lg flex items-center justify-center gap-2 border border-[#ddc08e]/70 cursor-pointer" style="background: linear-gradient(180deg, #ffffff 0%, #ddc08e 30%, #cfae78 70%, #9e7f4c 100%);">
-        🔑 Quebrar o Selo e Ativar Meu Código
-        <svg class="h-4.5 w-4.5 stroke-[2.5]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-
-      <p class="mt-3 text-center text-[10px] uppercase tracking-[0.25em] text-neutral-500 font-bold flex items-center justify-center gap-1">
-        <svg class="h-3.5 w-3.5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Acesso Imediato · Criptografia SSL · Sigilo Total
-      </p>
-
-      <!-- Urgency Scarcity Line -->
-      <p id="urgency-text" class="mt-4 text-center text-xs sm:text-sm font-bold text-[#ff4c4c] leading-relaxed max-w-md px-2 uppercase tracking-wide">
-        🔴 ATENÇÃO: Restam apenas 3 licenças espirituais de liberação para a sua região hoje.
-      </p>
-
-      <!-- Facebook Comments Section -->
-      <div class="mt-14 w-full p-0.5 rounded-2xl border border-neutral-800 bg-[#0d0d0d]/80 shadow-xl relative">
-        <div class="p-5 sm:p-6 rounded-[14px]">
-          <div class="flex items-center justify-between border-b border-neutral-800 pb-4 mb-5">
-            <h3 class="font-display font-bold text-sm tracking-widest text-[#ddc08e] uppercase flex items-center gap-2">
-              💬 Discussão Ativa (Facebook Comments)
-            </h3>
-            <span class="text-[10px] text-neutral-500 font-mono tracking-wider uppercase font-semibold">
-              5 comentários ativos
-            </span>
-          </div>
-
-          <!-- Dynamic Comment Form -->
-          <form id="fb-comment-form" class="mb-6 p-4 rounded-xl border border-neutral-800 bg-[#121212]/50 flex flex-col gap-3">
-            <p class="text-xs text-[#ddc08e] font-bold uppercase tracking-wider">Deixe seu depoimento:</p>
-            <div class="flex flex-col sm:flex-row gap-3">
-              <input
-                type="text"
-                id="fb-name-input"
-                placeholder="Seu nome completo"
-                class="flex-1 bg-black/50 border border-neutral-800 rounded-lg px-3 py-2 text-xs text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-[#ddc08e]/50"
-                required
+  <body
+    class="min-h-screen w-full text-white select-none overflow-x-hidden"
+    style="
+      background-image: radial-gradient(circle at 50% 0%, #151515 0%, #060606 100%);
+      background-size: cover;
+      background-repeat: no-repeat;
+    "
+  >
+    <div class="mx-auto flex w-full max-w-[640px] flex-col items-center px-4 pb-20 pt-6 sm:pt-12">
+      <!-- SALES SECTION -->
+      <div
+        id="sales-section"
+        class="w-full flex flex-col items-center transition-all duration-500 opacity-100 transform translate-y-0"
+      >
+        <!-- Immersive Warning Container matching uploaded design exactly -->
+        <div
+          class="alert-blink mb-10 w-full rounded-2xl border border-red-500/25 bg-[#170202]/70 p-5 sm:p-6 backdrop-blur-md shadow-[0_0_40px_rgba(239,68,68,0.15)] flex flex-col sm:flex-row items-center gap-5 sm:gap-6 text-center sm:text-left relative"
+        >
+          <div
+            class="absolute inset-0 rounded-2xl border border-red-500/10 pointer-events-none"
+          ></div>
+          <div
+            class="shrink-0 flex items-center justify-center relative w-20 h-20 bg-red-950/20 border border-red-500/10 rounded-xl"
+          >
+            <svg
+              class="w-12 h-12 text-[#ff3b3b] filter drop-shadow-[0_0_12px_rgba(255,59,59,0.75)]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
               />
-              <div class="flex gap-2">
-                <input
-                  type="number"
-                  id="fb-age-input"
-                  min="18"
-                  max="100"
-                  placeholder="Idade"
-                  value="65"
-                  class="w-16 bg-black/50 border border-neutral-800 rounded-lg px-3 py-2 text-xs text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-[#ddc08e]/50"
-                  required
-                />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <p
+              class="text-[10px] text-[#ff6b6b] font-display font-black tracking-[0.25em] flex items-center justify-center sm:justify-start gap-1"
+            >
+              ▲ SISTEMA BLOQUEADO
+            </p>
+            <h3
+              id="city-warning-text"
+              class="font-display font-bold text-neutral-100 text-base sm:text-lg tracking-wide uppercase mt-1 leading-snug"
+            >
+              LINHAGEM SOB ESCASSEZ DETECTADA EM SUA REGIÃO
+            </h3>
+            <p
+              id="city-desc-text"
+              class="text-[11px] text-neutral-400 mt-2 leading-relaxed max-w-sm"
+            >
+              O cruzamento de dados identificou padrões recorrentes de endividamento e travamentos
+              vinculados ao seu endereço IP em
+              <span class="text-[#ff6b6b] font-bold">sua região</span>. Protocolo ativado de
+              emergência.
+            </p>
+          </div>
+        </div>
+
+        <h1
+          class="font-display gold-gradient-text text-center text-3xl font-black leading-[1.1] sm:text-5xl uppercase tracking-tight"
+        >
+          O SELO DE SALOMÃO<br />FOI REVELADO
+        </h1>
+
+        <p
+          class="mt-4 max-w-md text-center text-sm text-neutral-400 sm:text-base leading-relaxed font-medium"
+        >
+          Seu diagnóstico confirmou a presença da
+          <span class="text-[#ff5c5c] font-semibold">Maldição da Escassez Hereditária</span> em sua
+          árvore genealógica.
+        </p>
+
+        <!-- Lock Artifact Image -->
+        <div class="artifact-float relative mt-12 mb-4">
+          <div
+            class="absolute inset-0 -z-10 rounded-full blur-3xl animate-pulse"
+            style="
+              background: radial-gradient(circle, rgba(221, 192, 142, 0.45), transparent 60%);
+              animation-duration: 3s;
+            "
+          ></div>
+          <div
+            class="flex h-60 w-60 items-center justify-center overflow-hidden rounded-full border border-[#ddc08e]/60 bg-black relative sm:h-72 sm:w-72 shadow-[0_15px_40px_rgba(0,0,0,0.8)]"
+          >
+            <div
+              class="absolute inset-2 rounded-full border border-[#ddc08e]/20 pointer-events-none"
+            ></div>
+            <img
+              src="./src/assets/solomon-lock.jpg"
+              alt="Cadeado dourado de Salomão"
+              class="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+          </div>
+        </div>
+
+        <!-- Scarcity Countdown Widget -->
+        <div class="mt-8 flex justify-center w-full">
+          <div
+            class="flex items-center gap-2 rounded-xl bg-black/60 border border-[#ff3b3b]/30 px-3.5 py-2 text-[11px] font-bold text-[#ff6b6b] tracking-wider shadow-[0_4px_15px_rgba(0,0,0,0.5)]"
+          >
+            <svg
+              class="h-3.5 w-3.5 animate-pulse text-[#ff4c4c]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 6v6l4 2" />
+            </svg>
+            <span>SUA VAGA EXPIRA EM:</span>
+            <span
+              id="countdown-timer"
+              class="font-mono text-[12px] font-black tracking-widest text-[#ff4c4c]"
+              >05:00</span
+            >
+          </div>
+        </div>
+
+        <p
+          class="mt-8 max-w-xl text-center text-[15px] leading-relaxed text-neutral-300 sm:text-lg px-2"
+        >
+          O diagnóstico detectou a
+          <span class="text-[#ddc08e] font-bold">Maldição da Escassez Hereditária</span> operando
+          sobre as suas finanças. Ao quebrar esse selo agora, você ativa a
+          <span class="text-[#ddc08e] font-bold">Provisão Terrena Absoluta</span> — dinheiro fluindo
+          de fontes inesperadas e o fim do ciclo das dívidas — garantindo a sua
+          <span class="text-[#ddc08e] font-bold">Herança Divina</span>.
+        </p>
+
+        <!-- Bullet Points Card (Double Champagne Rounded Border Box) -->
+        <div
+          class="mt-10 w-full max-w-md p-0.5 rounded-2xl border border-[#ddc08e]/15 bg-neutral-950/20 shadow-2xl relative"
+        >
+          <div
+            class="p-6 sm:p-8 rounded-[14px] border border-[#ddc08e]/15 relative overflow-hidden"
+            style="background: linear-gradient(160deg, #111111 0%, #080808 100%)"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-[#ddc08e]/5 rounded-full blur-3xl pointer-events-none"
+            ></div>
+            <h3
+              class="font-display gold-gradient-text mb-6 text-center text-lg font-bold uppercase tracking-widest border-b border-[#ddc08e]/25 pb-3"
+            >
+              O Que Você Irá Ativar
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex gap-3 items-start">
+                <span class="mt-1 text-base text-[#ddc08e] shrink-0">✦</span>
+                <div>
+                  <p class="font-bold text-[#ddc08e] text-sm tracking-wide">A Chave de Salomão</p>
+                  <p class="text-xs sm:text-sm text-neutral-400 leading-normal mt-0.5">
+                    O selo sagrado prático para quebrar em definitivo a barreira hereditária da
+                    escassez.
+                  </p>
+                </div>
+              </li>
+              <li class="flex gap-3 items-start">
+                <span class="mt-1 text-base text-[#ddc08e] shrink-0">✦</span>
+                <div>
+                  <p class="font-bold text-[#ddc08e] text-sm tracking-wide">
+                    Provisão Terrena Absoluta
+                  </p>
+                  <p class="text-xs sm:text-sm text-neutral-400 leading-normal mt-0.5">
+                    Ativação sobrenatural do fluxo financeiro e encerramento total de dívidas
+                    históricas.
+                  </p>
+                </div>
+              </li>
+              <li class="flex gap-3 items-start">
+                <span class="mt-1 text-base text-[#ddc08e] shrink-0">✦</span>
+                <div>
+                  <p class="font-bold text-[#ddc08e] text-sm tracking-wide">
+                    Garantia Sagrada de 7 Dias
+                  </p>
+                  <p class="text-xs sm:text-sm text-neutral-400 leading-normal mt-0.5">
+                    Satisfação completa com garantia divina. Zero risco para sua jornada espiritual.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Diagnostico Vibracional Section -->
+        <div class="mt-14 w-full px-1">
+          <h3
+            class="font-display gold-gradient-text text-center text-xl font-bold uppercase tracking-widest mb-6"
+          >
+            Diagnóstico Vibracional
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Curse Card -->
+            <div class="p-0.5 rounded-xl border border-red-500/10 bg-red-950/5">
+              <div class="p-5 rounded-[10px] bg-[#100505] border border-red-500/10 min-h-[175px]">
+                <h4
+                  class="font-display font-bold text-xs text-[#ff5c5c] border-b border-red-950 pb-2.5 flex items-center gap-1.5 uppercase tracking-wider"
+                >
+                  ☠ Maldição Hereditária
+                </h4>
+                <ul class="space-y-3 mt-4 text-[11px] text-neutral-400 leading-relaxed">
+                  <li class="flex items-start gap-2">
+                    <span class="text-[#ff5c5c] font-bold">✕</span>
+                    <span>O dinheiro some misteriosamente no fim do mês</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-[#ff5c5c] font-bold">✕</span>
+                    <span>Acúmulo de boletos e dívidas que nunca terminam</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-[#ff5c5c] font-bold">✕</span>
+                    <span>Esforço exaustivo com zero frutos ou economias</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Provision Card -->
+            <div class="p-0.5 rounded-xl border border-[#ddc08e]/10 bg-neutral-950/20 shadow-lg">
+              <div class="p-5 rounded-[10px] bg-[#121212] border border-[#ddc08e]/10 min-h-[175px]">
+                <h4
+                  class="font-display font-bold text-xs text-[#ddc08e] border-b border-neutral-900 pb-2.5 flex items-center gap-1.5 uppercase tracking-wider"
+                >
+                  ✦ Provisão Ativada
+                </h4>
+                <ul class="space-y-3 mt-4 text-[11px] text-neutral-300 leading-relaxed">
+                  <li class="flex items-start gap-2">
+                    <span class="text-[#ddc08e] font-bold">✔</span>
+                    <span>Fluxo constante de ganhos e estabilidade financeira</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-[#ddc08e] font-bold">✔</span>
+                    <span>Quitação definitiva de dívidas e bloqueios no nome</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-[#ddc08e] font-bold">✔</span>
+                    <span>Acesso imediato à sua prosperidade e herança divina</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orderbump Accelerators Section -->
+        <div
+          class="mt-14 w-full p-0.5 rounded-2xl border border-[#ddc08e]/15 bg-neutral-950/20 shadow-2xl relative"
+        >
+          <div
+            class="p-6 sm:p-8 rounded-[14px] border border-[#ddc08e]/15 relative overflow-hidden"
+            style="background: linear-gradient(160deg, #111111 0%, #080808 100%)"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-[#ddc08e]/5 rounded-full blur-3xl pointer-events-none"
+            ></div>
+            <h3
+              class="font-display gold-gradient-text text-center text-lg font-bold uppercase tracking-widest border-b border-[#ddc08e]/25 pb-3"
+            >
+              💡 Aceleradores de Provisão
+            </h3>
+            <p class="text-xs text-neutral-400 text-center mt-3 max-w-xs mx-auto leading-relaxed">
+              Você poderá selecionar estes selos adicionais diretamente no formulário de pagamento
+              com até <span class="text-[#ddc08e] font-bold">80% de desconto</span>:
+            </p>
+
+            <div class="flex flex-col gap-4 mt-6">
+              <div
+                class="p-4 rounded-xl border border-neutral-800 bg-black/60 flex items-start gap-4 transition duration-200 hover:border-[#ddc08e]/35"
+              >
+                <span class="text-2xl mt-0.5 shrink-0 select-none">🛡️</span>
+                <div class="flex-1">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                    <h4 class="font-bold text-[#ddc08e] text-xs sm:text-sm tracking-wide">
+                      1. O Selo de Salomão Contra Perdas e Ralos
+                    </h4>
+                    <span
+                      class="text-[10px] text-[#ddc08e] bg-[#ddc08e]/10 border border-[#ddc08e]/30 px-2 py-0.5 rounded-full font-black w-fit uppercase font-mono tracking-wider shrink-0"
+                      >R$ 19,90</span
+                    >
+                  </div>
+                  <p class="text-[11px] text-neutral-400 mt-2 leading-relaxed">
+                    Um escudo espiritual para travar suas finanças, impedindo que o dinheiro escape
+                    com imprevistos, acidentes ou quebras de equipamentos.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="p-4 rounded-xl border border-neutral-800 bg-black/60 flex items-start gap-4 transition duration-200 hover:border-[#ddc08e]/35"
+              >
+                <span class="text-2xl mt-0.5 shrink-0 select-none">🎧</span>
+                <div class="flex-1">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                    <h4 class="font-bold text-[#ddc08e] text-xs sm:text-sm tracking-wide">
+                      2. Frequências do Templo: 528Hz Binaural
+                    </h4>
+                    <span
+                      class="text-[10px] text-[#ddc08e] bg-[#ddc08e]/10 border border-[#ddc08e]/30 px-2 py-0.5 rounded-full font-black w-fit uppercase font-mono tracking-wider shrink-0"
+                      >R$ 14,95</span
+                    >
+                  </div>
+                  <p class="text-[11px] text-neutral-400 mt-2 leading-relaxed">
+                    Coleção de áudios harmônicos para escutar dormindo. Reprograma crenças
+                    inconscientes e remove bloqueios de escassez em tempo recorde.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="p-4 rounded-xl border border-neutral-800 bg-black/60 flex items-start gap-4 transition duration-200 hover:border-[#ddc08e]/35"
+              >
+                <span class="text-2xl mt-0.5 shrink-0 select-none">📖</span>
+                <div class="flex-1">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                    <h4 class="font-bold text-[#ddc08e] text-xs sm:text-sm tracking-wide">
+                      3. O Manual Oculto dos Sócios de Salomão
+                    </h4>
+                    <span
+                      class="text-[10px] text-[#ddc08e] bg-[#ddc08e]/10 border border-[#ddc08e]/30 px-2 py-0.5 rounded-full font-black w-fit uppercase font-mono tracking-wider shrink-0"
+                      >R$ 27,90</span
+                    >
+                  </div>
+                  <p class="text-[11px] text-neutral-400 mt-2 leading-relaxed">
+                    Os 7 princípios de sabedoria comercial, negociação e acumulação de ouro que
+                    Salomão usou para erguer seu templo e império.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <a
+          href="https://pay.disruptybr.app/c/lyj?of=hOP"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-display mt-14 block w-full max-w-md rounded-2xl px-6 py-5 text-center text-base font-black uppercase leading-tight tracking-wider text-[#1a1202] no-underline shadow-[0_10px_40px_rgba(221,192,142,0.25)] transition-all duration-300 hover:scale-[1.015] sm:text-lg flex items-center justify-center gap-2 border border-[#ddc08e]/70 cursor-pointer"
+          style="
+            background: linear-gradient(180deg, #ffffff 0%, #ddc08e 30%, #cfae78 70%, #9e7f4c 100%);
+          "
+        >
+          🔑 Quebrar o Selo e Ativar Meu Código
+          <svg
+            class="h-4.5 w-4.5 stroke-[2.5]"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+            width="20"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+
+        <p
+          class="mt-3 text-center text-[10px] uppercase tracking-[0.25em] text-neutral-500 font-bold flex items-center justify-center gap-1"
+        >
+          <svg
+            class="h-3.5 w-3.5 text-emerald-600"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+            width="14"
+          >
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          Acesso Imediato · Criptografia SSL · Sigilo Total
+        </p>
+
+        <!-- Urgency Scarcity Line -->
+        <p
+          id="urgency-text"
+          class="mt-4 text-center text-xs sm:text-sm font-bold text-[#ff4c4c] leading-relaxed max-w-md px-2 uppercase tracking-wide"
+        >
+          🔴 ATENÇÃO: Restam apenas 3 licenças espirituais de liberação para a sua região hoje.
+        </p>
+
+        <!-- Facebook Comments Section -->
+        <div
+          class="mt-14 w-full p-0.5 rounded-2xl border border-neutral-800 bg-[#0d0d0d]/80 shadow-xl relative"
+        >
+          <div class="p-5 sm:p-6 rounded-[14px]">
+            <div class="flex items-center justify-between border-b border-neutral-800 pb-4 mb-5">
+              <h3
+                class="font-display font-bold text-sm tracking-widest text-[#ddc08e] uppercase flex items-center gap-2"
+              >
+                💬 Discussão Ativa (Facebook Comments)
+              </h3>
+              <span
+                class="text-[10px] text-neutral-500 font-mono tracking-wider uppercase font-semibold"
+              >
+                5 comentários ativos
+              </span>
+            </div>
+
+            <!-- Dynamic Comment Form -->
+            <form
+              id="fb-comment-form"
+              class="mb-6 p-4 rounded-xl border border-neutral-800 bg-[#121212]/50 flex flex-col gap-3"
+            >
+              <p class="text-xs text-[#ddc08e] font-bold uppercase tracking-wider">
+                Deixe seu depoimento:
+              </p>
+              <div class="flex flex-col sm:flex-row gap-3">
                 <input
                   type="text"
-                  id="fb-uf-input"
-                  maxlength="2"
-                  placeholder="UF"
-                  value="MG"
-                  class="w-12 bg-black/50 border border-neutral-800 rounded-lg px-3 py-2 text-xs text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-[#ddc08e]/50 text-center"
+                  id="fb-name-input"
+                  placeholder="Seu nome completo"
+                  class="flex-1 bg-black/50 border border-neutral-800 rounded-lg px-3 py-2 text-xs text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-[#ddc08e]/50"
                   required
                 />
+                <div class="flex gap-2">
+                  <input
+                    type="number"
+                    id="fb-age-input"
+                    min="18"
+                    max="100"
+                    placeholder="Idade"
+                    value="65"
+                    class="w-16 bg-black/50 border border-neutral-800 rounded-lg px-3 py-2 text-xs text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-[#ddc08e]/50"
+                    required
+                  />
+                  <input
+                    type="text"
+                    id="fb-uf-input"
+                    maxlength="2"
+                    placeholder="UF"
+                    value="MG"
+                    class="w-12 bg-black/50 border border-neutral-800 rounded-lg px-3 py-2 text-xs text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-[#ddc08e]/50 text-center"
+                    required
+                  />
+                </div>
               </div>
-            </div>
-            <textarea
-              id="fb-comment-input"
-              placeholder="Compartilhe sua benção ou resultado com o Protocolo..."
-              class="w-full bg-black/50 border border-neutral-800 rounded-lg p-3 text-xs text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-[#ddc08e]/50 min-h-[65px] resize-none"
-              required
-            ></textarea>
-            <button
-              type="submit"
-              class="self-end bg-gradient-to-r from-[#ddc08e] to-[#b09260] text-black font-black text-[10px] uppercase px-4 py-2 rounded-lg hover:scale-[1.015] active:scale-[0.98] transition cursor-pointer"
-            >
-              Publicar Depoimento
-            </button>
-          </form>
+              <textarea
+                id="fb-comment-input"
+                placeholder="Compartilhe sua benção ou resultado com o Protocolo..."
+                class="w-full bg-black/50 border border-neutral-800 rounded-lg p-3 text-xs text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-[#ddc08e]/50 min-h-[65px] resize-none"
+                required
+              ></textarea>
+              <button
+                type="submit"
+                class="self-end bg-gradient-to-r from-[#ddc08e] to-[#b09260] text-black font-black text-[10px] uppercase px-4 py-2 rounded-lg hover:scale-[1.015] active:scale-[0.98] transition cursor-pointer"
+              >
+                Publicar Depoimento
+              </button>
+            </form>
 
-          <!-- Comment List -->
-          <div id="fb-comments-list" class="flex flex-col gap-6">
-            
-            <!-- Comment 1 -->
-            <div class="flex gap-3 text-left">
-              <div class="w-10 h-10 rounded-full shrink-0 flex items-center justify-center font-display font-black text-xs bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none">SG</div>
-              <div class="flex-1">
-                <div class="bg-[#121212] border border-neutral-800/40 rounded-2xl px-4 py-3 shadow-inner">
-                  <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
-                    <div>
-                      <span class="font-bold text-xs sm:text-sm text-neutral-100 flex items-center gap-1">
-                        Sebastião Gomes <span class="text-[10px] text-neutral-500 font-normal">(67 anos)</span>
-                      </span>
-                      <p class="text-[9px] text-neutral-500 font-semibold uppercase tracking-wider leading-none mt-0.5">Aposentado, MG</p>
-                    </div>
-                    <span class="text-[9px] text-[#ddc08e]/60 font-medium sm:mt-0 mt-1">há 2 minutos</span>
-                  </div>
-                  <p class="text-[11px] sm:text-xs text-neutral-300 leading-relaxed mt-2.5">
-                    Minha filha me mostrou esse diagnóstico na semana passada. Estava com um pé atrás, mas aos 67 anos eu já não aguentava mais dever. Fiz a ativação e ontem mesmo recebi um valor de uma causa na justiça que estava travada há 11 anos! Deus seja louvado!
-                  </p>
+            <!-- Comment List -->
+            <div id="fb-comments-list" class="flex flex-col gap-6">
+              <!-- Comment 1 -->
+              <div class="flex gap-3 text-left">
+                <div
+                  class="w-10 h-10 rounded-full shrink-0 flex items-center justify-center font-display font-black text-xs bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none"
+                >
+                  SG
                 </div>
-                <div class="flex items-center gap-4.5 mt-2.5 pl-3 text-[10px] font-bold text-neutral-500 select-none">
-                  <button class="hover:text-[#ddc08e] cursor-pointer transition">Curtir</button>
-                  <span>·</span>
-                  <button class="hover:text-[#ddc08e] cursor-pointer transition">Responder</button>
-                  <div class="flex items-center gap-1 text-[#ddc08e]/80 ml-auto bg-[#ddc08e]/5 px-2 py-0.5 border border-[#ddc08e]/10 rounded-full text-[9px] font-bold font-mono">👍 42</div>
-                </div>
-
-                <!-- Sub Reply 1.1 -->
-                <div class="flex gap-3 text-left mt-4.5 pl-3 border-l border-neutral-800">
-                  <div class="w-8 h-8 rounded-full shrink-0 flex items-center justify-center font-display font-black text-[10px] bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none">TS</div>
-                  <div class="flex-1">
-                    <div class="bg-[#161616] border border-neutral-800/40 rounded-2xl px-4 py-3 shadow-inner">
-                      <div class="flex items-center justify-between mb-1">
-                        <div>
-                          <span class="font-bold text-[11px] sm:text-xs text-neutral-100 flex items-center gap-1">
-                            Tereza Souza <span class="text-[9px] text-neutral-500 font-normal">(61 anos)</span>
-                          </span>
-                          <p class="text-[8px] text-neutral-500 font-semibold uppercase tracking-wider leading-none mt-0.5">Pensionista, SP</p>
-                        </div>
-                        <span class="text-[8px] text-[#ddc08e]/60 font-medium">há 1 minuto</span>
+                <div class="flex-1">
+                  <div
+                    class="bg-[#121212] border border-neutral-800/40 rounded-2xl px-4 py-3 shadow-inner"
+                  >
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
+                      <div>
+                        <span
+                          class="font-bold text-xs sm:text-sm text-neutral-100 flex items-center gap-1"
+                        >
+                          Sebastião Gomes
+                          <span class="text-[10px] text-neutral-500 font-normal">(67 anos)</span>
+                        </span>
+                        <p
+                          class="text-[9px] text-neutral-500 font-semibold uppercase tracking-wider leading-none mt-0.5"
+                        >
+                          Aposentado, MG
+                        </p>
                       </div>
-                      <p class="text-[10px] sm:text-[11px] text-neutral-300 leading-relaxed mt-2">
-                        Seu Sebastião, também tenho 61 anos e aconteceu algo parecido comigo! Uma dívida antiga que parecia impossível de receber foi quitada anteontem. É uma sensação maravilhosa ver essa barreira caindo.
-                      </p>
+                      <span class="text-[9px] text-[#ddc08e]/60 font-medium sm:mt-0 mt-1"
+                        >há 2 minutos</span
+                      >
                     </div>
-                    <div class="flex items-center gap-4 mt-2 pl-3 text-[9px] font-bold text-neutral-500 select-none">
-                      <button class="hover:text-[#ddc08e] cursor-pointer transition">Curtir</button>
-                      <span>·</span>
-                      <button class="hover:text-[#ddc08e] cursor-pointer transition">Responder</button>
-                      <div class="flex items-center gap-1 text-[#ddc08e]/80 ml-auto bg-[#ddc08e]/5 px-2 py-0.5 border border-[#ddc08e]/10 rounded-full text-[8px] font-bold font-mono">👍 9</div>
+                    <p class="text-[11px] sm:text-xs text-neutral-300 leading-relaxed mt-2.5">
+                      Minha filha me mostrou esse diagnóstico na semana passada. Estava com um pé
+                      atrás, mas aos 67 anos eu já não aguentava mais dever. Fiz a ativação e ontem
+                      mesmo recebi um valor de uma causa na justiça que estava travada há 11 anos!
+                      Deus seja louvado!
+                    </p>
+                  </div>
+                  <div
+                    class="flex items-center gap-4.5 mt-2.5 pl-3 text-[10px] font-bold text-neutral-500 select-none"
+                  >
+                    <button class="hover:text-[#ddc08e] cursor-pointer transition">Curtir</button>
+                    <span>·</span>
+                    <button class="hover:text-[#ddc08e] cursor-pointer transition">
+                      Responder
+                    </button>
+                    <div
+                      class="flex items-center gap-1 text-[#ddc08e]/80 ml-auto bg-[#ddc08e]/5 px-2 py-0.5 border border-[#ddc08e]/10 rounded-full text-[9px] font-bold font-mono"
+                    >
+                      👍 42
+                    </div>
+                  </div>
+
+                  <!-- Sub Reply 1.1 -->
+                  <div class="flex gap-3 text-left mt-4.5 pl-3 border-l border-neutral-800">
+                    <div
+                      class="w-8 h-8 rounded-full shrink-0 flex items-center justify-center font-display font-black text-[10px] bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none"
+                    >
+                      TS
+                    </div>
+                    <div class="flex-1">
+                      <div
+                        class="bg-[#161616] border border-neutral-800/40 rounded-2xl px-4 py-3 shadow-inner"
+                      >
+                        <div class="flex items-center justify-between mb-1">
+                          <div>
+                            <span
+                              class="font-bold text-[11px] sm:text-xs text-neutral-100 flex items-center gap-1"
+                            >
+                              Tereza Souza
+                              <span class="text-[9px] text-neutral-500 font-normal">(61 anos)</span>
+                            </span>
+                            <p
+                              class="text-[8px] text-neutral-500 font-semibold uppercase tracking-wider leading-none mt-0.5"
+                            >
+                              Pensionista, SP
+                            </p>
+                          </div>
+                          <span class="text-[8px] text-[#ddc08e]/60 font-medium">há 1 minuto</span>
+                        </div>
+                        <p class="text-[10px] sm:text-[11px] text-neutral-300 leading-relaxed mt-2">
+                          Seu Sebastião, também tenho 61 anos e aconteceu algo parecido comigo! Uma
+                          dívida antiga que parecia impossível de receber foi quitada anteontem. É
+                          uma sensação maravilhosa ver essa barreira caindo.
+                        </p>
+                      </div>
+                      <div
+                        class="flex items-center gap-4 mt-2 pl-3 text-[9px] font-bold text-neutral-500 select-none"
+                      >
+                        <button class="hover:text-[#ddc08e] cursor-pointer transition">
+                          Curtir
+                        </button>
+                        <span>·</span>
+                        <button class="hover:text-[#ddc08e] cursor-pointer transition">
+                          Responder
+                        </button>
+                        <div
+                          class="flex items-center gap-1 text-[#ddc08e]/80 ml-auto bg-[#ddc08e]/5 px-2 py-0.5 border border-[#ddc08e]/10 rounded-full text-[8px] font-bold font-mono"
+                        >
+                          👍 9
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-
               </div>
-            </div>
 
-            <!-- Comment 2 -->
-            <div class="flex gap-3 text-left">
-              <div class="w-10 h-10 rounded-full shrink-0 flex items-center justify-center font-display font-black text-xs bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none">MG</div>
-              <div class="flex-1">
-                <div class="bg-[#121212] border border-neutral-800/40 rounded-2xl px-4 py-3 shadow-inner">
-                  <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
-                    <div>
-                      <span class="font-bold text-xs sm:text-sm text-neutral-100 flex items-center gap-1">
-                        Maria das Graças Silva <span class="text-[10px] text-neutral-500 font-normal">(62 anos)</span>
-                      </span>
-                      <p class="text-[9px] text-neutral-500 font-semibold uppercase tracking-wider leading-none mt-0.5">Professora Aposentada, RJ</p>
-                    </div>
-                    <span class="text-[9px] text-[#ddc08e]/60 font-medium sm:mt-0 mt-1">há 12 minutos</span>
-                  </div>
-                  <p class="text-[11px] sm:text-xs text-neutral-300 leading-relaxed mt-2.5">
-                    Tenho 62 anos e nós sempre fomos pessoas honestas e muito trabalhadoras, mas parecia que nossa família carregava um ralo invisível. O dinheiro sumia. Depois que ativei o Protocolo de Salomão, a provisão entrou na minha casa de um jeito extraordinário. Comprei para os meus três filhos também.
-                  </p>
+              <!-- Comment 2 -->
+              <div class="flex gap-3 text-left">
+                <div
+                  class="w-10 h-10 rounded-full shrink-0 flex items-center justify-center font-display font-black text-xs bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none"
+                >
+                  MG
                 </div>
-                <div class="flex items-center gap-4.5 mt-2.5 pl-3 text-[10px] font-bold text-neutral-500 select-none">
-                  <button class="hover:text-[#ddc08e] cursor-pointer transition">Curtir</button>
-                  <span>·</span>
-                  <button class="hover:text-[#ddc08e] cursor-pointer transition">Responder</button>
-                  <div class="flex items-center gap-1 text-[#ddc08e]/80 ml-auto bg-[#ddc08e]/5 px-2 py-0.5 border border-[#ddc08e]/10 rounded-full text-[9px] font-bold font-mono">👍 56</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Comment 3 -->
-            <div class="flex gap-3 text-left">
-              <div class="w-10 h-10 rounded-full shrink-0 flex items-center justify-center font-display font-black text-xs bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none">GA</div>
-              <div class="flex-1">
-                <div class="bg-[#121212] border border-neutral-800/40 rounded-2xl px-4 py-3 shadow-inner">
-                  <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
-                    <div>
-                      <span class="font-bold text-xs sm:text-sm text-neutral-100 flex items-center gap-1">
-                        Geraldo de Almeida <span class="text-[10px] text-neutral-500 font-normal">(65 anos)</span>
-                      </span>
-                      <p class="text-[9px] text-neutral-500 font-semibold uppercase tracking-wider leading-none mt-0.5">Técnico Industrial, SP</p>
-                    </div>
-                    <span class="text-[9px] text-[#ddc08e]/60 font-medium sm:mt-0 mt-1">há 24 minutos</span>
-                  </div>
-                  <p class="text-[11px] sm:text-xs text-neutral-300 leading-relaxed mt-2.5">
-                    Amigos, façam sem medo de errar. Eu estava desempregado, com contas acumuladas e sem dormir. Fiz a ativação do código, escutei os áudios do templo toda noite e essa semana assinei um contrato de serviço excelente. A escassez da minha linhagem acabou!
-                  </p>
-                </div>
-                <div class="flex items-center gap-4.5 mt-2.5 pl-3 text-[10px] font-bold text-neutral-500 select-none">
-                  <button class="hover:text-[#ddc08e] cursor-pointer transition">Curtir</button>
-                  <span>·</span>
-                  <button class="hover:text-[#ddc08e] cursor-pointer transition">Responder</button>
-                  <div class="flex items-center gap-1 text-[#ddc08e]/80 ml-auto bg-[#ddc08e]/5 px-2 py-0.5 border border-[#ddc08e]/10 rounded-full text-[9px] font-bold font-mono">👍 31</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Comment 4 -->
-            <div class="flex gap-3 text-left">
-              <div class="w-10 h-10 rounded-full shrink-0 flex items-center justify-center font-display font-black text-xs bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none">HS</div>
-              <div class="flex-1">
-                <div class="bg-[#121212] border border-neutral-800/40 rounded-2xl px-4 py-3 shadow-inner">
-                  <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
-                    <div>
-                      <span class="font-bold text-xs sm:text-sm text-neutral-100 flex items-center gap-1">
-                        Helena Silveira <span class="text-[10px] text-neutral-500 font-normal">(59 anos)</span>
-                      </span>
-                      <p class="text-[9px] text-neutral-500 font-semibold uppercase tracking-wider leading-none mt-0.5">Dona de Casa, RS</p>
-                    </div>
-                    <span class="text-[9px] text-[#ddc08e]/60 font-medium sm:mt-0 mt-1">há 45 minutos</span>
-                  </div>
-                  <p class="text-[11px] sm:text-xs text-neutral-300 leading-relaxed mt-2.5">
-                    Fiz o diagnóstico e parecia que estavam descrevendo a minha vida inteira. Liberei a chave e anteontem mesmo meu marido recebeu uma proposta excelente de venda de um terreno que estava parado há anos. Agradeço todos os dias por ter encontrado esse protocolo.
-                  </p>
-                </div>
-                <div class="flex items-center gap-4.5 mt-2.5 pl-3 text-[10px] font-bold text-neutral-500 select-none">
-                  <button class="hover:text-[#ddc08e] cursor-pointer transition">Curtir</button>
-                  <span>·</span>
-                  <button class="hover:text-[#ddc08e] cursor-pointer transition">Responder</button>
-                  <div class="flex items-center gap-1 text-[#ddc08e]/80 ml-auto bg-[#ddc08e]/5 px-2 py-0.5 border border-[#ddc08e]/10 rounded-full text-[9px] font-bold font-mono">👍 19</div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- Testimonials -->
-      <div class="mt-14 w-full px-1 text-center">
-        <h3 class="font-display gold-gradient-text text-xl font-bold uppercase tracking-widest mb-6">
-          ✦ Milagres e Ativações Reais ✦
-        </h3>
-        <div class="flex flex-col gap-5">
-          <!-- Card 1 -->
-          <div class="p-0.5 rounded-2xl border border-[#ddc08e]/15 bg-neutral-950/20 shadow-xl transition duration-200 hover:border-[#ddc08e]/35 text-left">
-            <div class="p-5 sm:p-6 rounded-[14px] relative overflow-hidden" style="background: linear-gradient(160deg, #111111 0%, #080808 100%);">
-              <div class="flex gap-4 items-start">
-                <div class="w-11 h-11 rounded-full shrink-0 flex items-center justify-center font-display font-black text-sm bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner">AM</div>
                 <div class="flex-1">
-                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-                    <div>
-                      <h4 class="font-bold text-sm text-neutral-100">Adelaide Menezes <span class="text-xs text-neutral-500 font-normal">(68 anos)</span></h4>
-                      <p class="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">Salvador, BA</p>
+                  <div
+                    class="bg-[#121212] border border-neutral-800/40 rounded-2xl px-4 py-3 shadow-inner"
+                  >
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
+                      <div>
+                        <span
+                          class="font-bold text-xs sm:text-sm text-neutral-100 flex items-center gap-1"
+                        >
+                          Maria das Graças Silva
+                          <span class="text-[10px] text-neutral-500 font-normal">(62 anos)</span>
+                        </span>
+                        <p
+                          class="text-[9px] text-neutral-500 font-semibold uppercase tracking-wider leading-none mt-0.5"
+                        >
+                          Professora Aposentada, RJ
+                        </p>
+                      </div>
+                      <span class="text-[9px] text-[#ddc08e]/60 font-medium sm:mt-0 mt-1"
+                        >há 12 minutos</span
+                      >
                     </div>
-                    <div class="flex text-[#ddc08e] gap-0.5 select-none">
-                      ★ ★ ★ ★ ★
+                    <p class="text-[11px] sm:text-xs text-neutral-300 leading-relaxed mt-2.5">
+                      Tenho 62 anos e nós sempre fomos pessoas honestas e muito trabalhadoras, mas
+                      parecia que nossa família carregava um ralo invisível. O dinheiro sumia.
+                      Depois que ativei o Protocolo de Salomão, a provisão entrou na minha casa de
+                      um jeito extraordinário. Comprei para os meus três filhos também.
+                    </p>
+                  </div>
+                  <div
+                    class="flex items-center gap-4.5 mt-2.5 pl-3 text-[10px] font-bold text-neutral-500 select-none"
+                  >
+                    <button class="hover:text-[#ddc08e] cursor-pointer transition">Curtir</button>
+                    <span>·</span>
+                    <button class="hover:text-[#ddc08e] cursor-pointer transition">
+                      Responder
+                    </button>
+                    <div
+                      class="flex items-center gap-1 text-[#ddc08e]/80 ml-auto bg-[#ddc08e]/5 px-2 py-0.5 border border-[#ddc08e]/10 rounded-full text-[9px] font-bold font-mono"
+                    >
+                      👍 56
                     </div>
                   </div>
-                  <p class="text-xs text-neutral-300 leading-relaxed italic font-medium">
-                    "Eu e meu marido vivíamos de uma aposentadoria muito apertada, cheios de remédios caros para comprar todo mês. Ativamos o protocolo há 3 meses. Ganhamos uma ação judicial antiga e nosso neto nos deu um ótimo suporte. A prosperidade entrou na nossa casa definitivamente!"
-                  </p>
                 </div>
               </div>
-            </div>
-          </div>
-          <!-- Card 2 -->
-          <div class="p-0.5 rounded-2xl border border-[#ddc08e]/15 bg-neutral-950/20 shadow-xl transition duration-200 hover:border-[#ddc08e]/35 text-left">
-            <div class="p-5 sm:p-6 rounded-[14px] relative overflow-hidden" style="background: linear-gradient(160deg, #111111 0%, #080808 100%);">
-              <div class="flex gap-4 items-start">
-                <div class="w-11 h-11 rounded-full shrink-0 flex items-center justify-center font-display font-black text-sm bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner">VC</div>
+
+              <!-- Comment 3 -->
+              <div class="flex gap-3 text-left">
+                <div
+                  class="w-10 h-10 rounded-full shrink-0 flex items-center justify-center font-display font-black text-xs bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none"
+                >
+                  GA
+                </div>
                 <div class="flex-1">
-                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-                    <div>
-                      <h4 class="font-bold text-sm text-neutral-100">Valdemar Castro <span class="text-xs text-neutral-500 font-normal">(71 anos)</span></h4>
-                      <p class="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">Curitiba, PR</p>
+                  <div
+                    class="bg-[#121212] border border-neutral-800/40 rounded-2xl px-4 py-3 shadow-inner"
+                  >
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
+                      <div>
+                        <span
+                          class="font-bold text-xs sm:text-sm text-neutral-100 flex items-center gap-1"
+                        >
+                          Geraldo de Almeida
+                          <span class="text-[10px] text-neutral-500 font-normal">(65 anos)</span>
+                        </span>
+                        <p
+                          class="text-[9px] text-neutral-500 font-semibold uppercase tracking-wider leading-none mt-0.5"
+                        >
+                          Técnico Industrial, SP
+                        </p>
+                      </div>
+                      <span class="text-[9px] text-[#ddc08e]/60 font-medium sm:mt-0 mt-1"
+                        >há 24 minutos</span
+                      >
                     </div>
-                    <div class="flex text-[#ddc08e] gap-0.5 select-none">
-                      ★ ★ ★ ★ ★
+                    <p class="text-[11px] sm:text-xs text-neutral-300 leading-relaxed mt-2.5">
+                      Amigos, façam sem medo de errar. Eu estava desempregado, com contas acumuladas
+                      e sem dormir. Fiz a ativação do código, escutei os áudios do templo toda noite
+                      e essa semana assinei um contrato de serviço excelente. A escassez da minha
+                      linhagem acabou!
+                    </p>
+                  </div>
+                  <div
+                    class="flex items-center gap-4.5 mt-2.5 pl-3 text-[10px] font-bold text-neutral-500 select-none"
+                  >
+                    <button class="hover:text-[#ddc08e] cursor-pointer transition">Curtir</button>
+                    <span>·</span>
+                    <button class="hover:text-[#ddc08e] cursor-pointer transition">
+                      Responder
+                    </button>
+                    <div
+                      class="flex items-center gap-1 text-[#ddc08e]/80 ml-auto bg-[#ddc08e]/5 px-2 py-0.5 border border-[#ddc08e]/10 rounded-full text-[9px] font-bold font-mono"
+                    >
+                      👍 31
                     </div>
                   </div>
-                  <p class="text-xs text-neutral-300 leading-relaxed italic font-medium">
-                    "Sempre trabalhei de sol a sol na roça e depois na metalúrgica. Mas o dinheiro parecia que escorria pelas mãos por conta de uma maldita escassez familiar. Quebrei o selo de Salomão e, aos 71 anos, consegui comprar meu carro próprio à vista. Nunca é tarde para a provisão divina."
-                  </p>
                 </div>
               </div>
-            </div>
-          </div>
-          <!-- Card 3 -->
-          <div class="p-0.5 rounded-2xl border border-[#ddc08e]/15 bg-neutral-950/20 shadow-xl transition duration-200 hover:border-[#ddc08e]/35 text-left">
-            <div class="p-5 sm:p-6 rounded-[14px] relative overflow-hidden" style="background: linear-gradient(160deg, #111111 0%, #080808 100%);">
-              <div class="flex gap-4 items-start">
-                <div class="w-11 h-11 rounded-full shrink-0 flex items-center justify-center font-display font-black text-sm bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner">NR</div>
+
+              <!-- Comment 4 -->
+              <div class="flex gap-3 text-left">
+                <div
+                  class="w-10 h-10 rounded-full shrink-0 flex items-center justify-center font-display font-black text-xs bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none"
+                >
+                  HS
+                </div>
                 <div class="flex-1">
-                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-                    <div>
-                      <h4 class="font-bold text-sm text-neutral-100">Nair Rodrigues <span class="text-xs text-neutral-500 font-normal">(64 anos)</span></h4>
-                      <p class="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">Belo Horizonte, MG</p>
+                  <div
+                    class="bg-[#121212] border border-neutral-800/40 rounded-2xl px-4 py-3 shadow-inner"
+                  >
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
+                      <div>
+                        <span
+                          class="font-bold text-xs sm:text-sm text-neutral-100 flex items-center gap-1"
+                        >
+                          Helena Silveira
+                          <span class="text-[10px] text-neutral-500 font-normal">(59 anos)</span>
+                        </span>
+                        <p
+                          class="text-[9px] text-neutral-500 font-semibold uppercase tracking-wider leading-none mt-0.5"
+                        >
+                          Dona de Casa, RS
+                        </p>
+                      </div>
+                      <span class="text-[9px] text-[#ddc08e]/60 font-medium sm:mt-0 mt-1"
+                        >há 45 minutos</span
+                      >
                     </div>
-                    <div class="flex text-[#ddc08e] gap-0.5 select-none">
-                      ★ ★ ★ ★ ★
+                    <p class="text-[11px] sm:text-xs text-neutral-300 leading-relaxed mt-2.5">
+                      Fiz o diagnóstico e parecia que estavam descrevendo a minha vida inteira.
+                      Liberei a chave e anteontem mesmo meu marido recebeu uma proposta excelente de
+                      venda de um terreno que estava parado há anos. Agradeço todos os dias por ter
+                      encontrado esse protocolo.
+                    </p>
+                  </div>
+                  <div
+                    class="flex items-center gap-4.5 mt-2.5 pl-3 text-[10px] font-bold text-neutral-500 select-none"
+                  >
+                    <button class="hover:text-[#ddc08e] cursor-pointer transition">Curtir</button>
+                    <span>·</span>
+                    <button class="hover:text-[#ddc08e] cursor-pointer transition">
+                      Responder
+                    </button>
+                    <div
+                      class="flex items-center gap-1 text-[#ddc08e]/80 ml-auto bg-[#ddc08e]/5 px-2 py-0.5 border border-[#ddc08e]/10 rounded-full text-[9px] font-bold font-mono"
+                    >
+                      👍 19
                     </div>
                   </div>
-                  <p class="text-xs text-neutral-300 leading-relaxed italic font-medium">
-                    "Minhas contas de luz e água estavam atrasadas e o desespero era muito grande. Fiz a ativação com muita fé. Dois dias depois, recebi um reembolso inesperado do banco de uma conta antiga de quase 5 mil reais! Quebrou em definitivo o ciclo da falta na minha vida."
-                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- FAQ Section (Accordion) -->
-      <div class="mt-14 w-full px-1">
-        <h3 class="font-display gold-gradient-text text-center text-xl font-bold uppercase tracking-widest mb-6">
-          ✦ Perguntas Frequentes ✦
-        </h3>
-        
-        <div class="w-full flex flex-col gap-3">
-          <!-- Accordion Item 1 -->
-          <div class="accordion-item border border-[#ddc08e]/15 bg-neutral-950/20 rounded-xl px-4 py-1">
-            <button onclick="toggleAccordion(this)" class="w-full text-left font-bold text-xs sm:text-sm text-[#ddc08e] hover:text-[#ffd700] transition py-3 flex items-center justify-between cursor-pointer">
-              <span>O que é o Protocolo de Salomão?</span>
-              <svg class="chevron h-4 w-4 transition-transform duration-200 text-[#ddc08e]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="accordion-content text-xs sm:text-sm text-neutral-400 leading-relaxed pb-3 pt-1">
-              É um método prático espiritual e mental baseado nos ensinamentos de sabedoria e provisão financeira do Rei Salomão, focado em quebrar bloqueios de escassez familiar e ativar a prosperidade terrena imediata.
+        <!-- Testimonials -->
+        <div class="mt-14 w-full px-1 text-center">
+          <h3
+            class="font-display gold-gradient-text text-xl font-bold uppercase tracking-widest mb-6"
+          >
+            ✦ Milagres e Ativações Reais ✦
+          </h3>
+          <div class="flex flex-col gap-5">
+            <!-- Card 1 -->
+            <div
+              class="p-0.5 rounded-2xl border border-[#ddc08e]/15 bg-neutral-950/20 shadow-xl transition duration-200 hover:border-[#ddc08e]/35 text-left"
+            >
+              <div
+                class="p-5 sm:p-6 rounded-[14px] relative overflow-hidden"
+                style="background: linear-gradient(160deg, #111111 0%, #080808 100%)"
+              >
+                <div class="flex gap-4 items-start">
+                  <div
+                    class="w-11 h-11 rounded-full shrink-0 flex items-center justify-center font-display font-black text-sm bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner"
+                  >
+                    AM
+                  </div>
+                  <div class="flex-1">
+                    <div
+                      class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2"
+                    >
+                      <div>
+                        <h4 class="font-bold text-sm text-neutral-100">
+                          Adelaide Menezes
+                          <span class="text-xs text-neutral-500 font-normal">(68 anos)</span>
+                        </h4>
+                        <p class="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">
+                          Salvador, BA
+                        </p>
+                      </div>
+                      <div class="flex text-[#ddc08e] gap-0.5 select-none">★ ★ ★ ★ ★</div>
+                    </div>
+                    <p class="text-xs text-neutral-300 leading-relaxed italic font-medium">
+                      "Eu e meu marido vivíamos de uma aposentadoria muito apertada, cheios de
+                      remédios caros para comprar todo mês. Ativamos o protocolo há 3 meses.
+                      Ganhamos uma ação judicial antiga e nosso neto nos deu um ótimo suporte. A
+                      prosperidade entrou na nossa casa definitivamente!"
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <!-- Accordion Item 2 -->
-          <div class="accordion-item border border-[#ddc08e]/15 bg-neutral-950/20 rounded-xl px-4 py-1">
-            <button onclick="toggleAccordion(this)" class="w-full text-left font-bold text-xs sm:text-sm text-[#ddc08e] hover:text-[#ffd700] transition py-3 flex items-center justify-between cursor-pointer">
-              <span>Eu já sou aposentado(a) ou idoso(a), isso funciona para a minha idade?</span>
-              <svg class="chevron h-4 w-4 transition-transform duration-200 text-[#ddc08e]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="accordion-content text-xs sm:text-sm text-neutral-400 leading-relaxed pb-3 pt-1">
-              Sim! A sabedoria de Salomão e as leis da provisão divina não têm idade. De fato, a maioria dos nossos membros ativos tem mais de 60 anos e relatam a quitação de dívidas históricas e liberação de valores travados (como heranças ou processos judiciais).
+            <!-- Card 2 -->
+            <div
+              class="p-0.5 rounded-2xl border border-[#ddc08e]/15 bg-neutral-950/20 shadow-xl transition duration-200 hover:border-[#ddc08e]/35 text-left"
+            >
+              <div
+                class="p-5 sm:p-6 rounded-[14px] relative overflow-hidden"
+                style="background: linear-gradient(160deg, #111111 0%, #080808 100%)"
+              >
+                <div class="flex gap-4 items-start">
+                  <div
+                    class="w-11 h-11 rounded-full shrink-0 flex items-center justify-center font-display font-black text-sm bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner"
+                  >
+                    VC
+                  </div>
+                  <div class="flex-1">
+                    <div
+                      class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2"
+                    >
+                      <div>
+                        <h4 class="font-bold text-sm text-neutral-100">
+                          Valdemar Castro
+                          <span class="text-xs text-neutral-500 font-normal">(71 anos)</span>
+                        </h4>
+                        <p class="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">
+                          Curitiba, PR
+                        </p>
+                      </div>
+                      <div class="flex text-[#ddc08e] gap-0.5 select-none">★ ★ ★ ★ ★</div>
+                    </div>
+                    <p class="text-xs text-neutral-300 leading-relaxed italic font-medium">
+                      "Sempre trabalhei de sol a sol na roça e depois na metalúrgica. Mas o dinheiro
+                      parecia que escorria pelas mãos por conta de uma maldita escassez familiar.
+                      Quebrei o selo de Salomão e, aos 71 anos, consegui comprar meu carro próprio à
+                      vista. Nunca é tarde para a provisão divina."
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <!-- Accordion Item 3 -->
-          <div class="accordion-item border border-[#ddc08e]/15 bg-neutral-950/20 rounded-xl px-4 py-1">
-            <button onclick="toggleAccordion(this)" class="w-full text-left font-bold text-xs sm:text-sm text-[#ddc08e] hover:text-[#ffd700] transition py-3 flex items-center justify-between cursor-pointer">
-              <span>Como vou receber o acesso ao Protocolo?</span>
-              <svg class="chevron h-4 w-4 transition-transform duration-200 text-[#ddc08e]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="accordion-content text-xs sm:text-sm text-neutral-400 leading-relaxed pb-3 pt-1">
-              O acesso é enviado imediatamente para o seu e-mail cadastrado logo após a confirmação do pagamento. Você receberá o guia passo a passo, os aceleradores e os áudios binaurais em formato digital seguro.
-            </div>
-          </div>
-          <!-- Accordion Item 4 -->
-          <div class="accordion-item border border-[#ddc08e]/15 bg-neutral-950/20 rounded-xl px-4 py-1">
-            <button onclick="toggleAccordion(this)" class="w-full text-left font-bold text-xs sm:text-sm text-[#ddc08e] hover:text-[#ffd700] transition py-3 flex items-center justify-between cursor-pointer">
-              <span>E se eu não ver nenhum resultado?</span>
-              <svg class="chevron h-4 w-4 transition-transform duration-200 text-[#ddc08e]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="accordion-content text-xs sm:text-sm text-neutral-400 leading-relaxed pb-3 pt-1">
-              Nós oferecemos uma Garantia Divina de 7 Dias. Se dentro desse período você sentir que o protocolo não ativou a prosperidade na sua vida, basta solicitar o reembolso total por e-mail ou WhatsApp de suporte. O risco é zero.
-            </div>
-          </div>
-          <!-- Accordion Item 5 -->
-          <div class="accordion-item border border-[#ddc08e]/15 bg-neutral-950/20 rounded-xl px-4 py-1">
-            <button onclick="toggleAccordion(this)" class="w-full text-left font-bold text-xs sm:text-sm text-[#ddc08e] hover:text-[#ffd700] transition py-3 flex items-center justify-between cursor-pointer">
-              <span>O pagamento é seguro e sigiloso?</span>
-              <svg class="chevron h-4 w-4 transition-transform duration-200 text-[#ddc08e]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="accordion-content text-xs sm:text-sm text-neutral-400 leading-relaxed pb-3 pt-1">
-              Absolutamente. Todo o processo de pagamento é intermediado pela Kiwify, uma das maiores e mais seguras plataformas de educação digital do Brasil, com criptografia SSL avançada e sigilo absoluto dos seus dados.
+            <!-- Card 3 -->
+            <div
+              class="p-0.5 rounded-2xl border border-[#ddc08e]/15 bg-neutral-950/20 shadow-xl transition duration-200 hover:border-[#ddc08e]/35 text-left"
+            >
+              <div
+                class="p-5 sm:p-6 rounded-[14px] relative overflow-hidden"
+                style="background: linear-gradient(160deg, #111111 0%, #080808 100%)"
+              >
+                <div class="flex gap-4 items-start">
+                  <div
+                    class="w-11 h-11 rounded-full shrink-0 flex items-center justify-center font-display font-black text-sm bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner"
+                  >
+                    NR
+                  </div>
+                  <div class="flex-1">
+                    <div
+                      class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2"
+                    >
+                      <div>
+                        <h4 class="font-bold text-sm text-neutral-100">
+                          Nair Rodrigues
+                          <span class="text-xs text-neutral-500 font-normal">(64 anos)</span>
+                        </h4>
+                        <p class="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">
+                          Belo Horizonte, MG
+                        </p>
+                      </div>
+                      <div class="flex text-[#ddc08e] gap-0.5 select-none">★ ★ ★ ★ ★</div>
+                    </div>
+                    <p class="text-xs text-neutral-300 leading-relaxed italic font-medium">
+                      "Minhas contas de luz e água estavam atrasadas e o desespero era muito grande.
+                      Fiz a ativação com muita fé. Dois dias depois, recebi um reembolso inesperado
+                      do banco de uma conta antiga de quase 5 mil reais! Quebrou em definitivo o
+                      ciclo da falta na minha vida."
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Secure Footer -->
-      <div class="mt-16 w-full border-t border-[#ddc08e]/10 pt-8 flex flex-col items-center gap-4 text-center">
-        <div class="flex items-center gap-5 text-neutral-600 text-xs">
-          <span class="flex items-center gap-1">
-            <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="12"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            SSL Seguro
-          </span>
-          <span class="flex items-center gap-1">
-            <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="12"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-            Verificado
-          </span>
+        <!-- FAQ Section (Accordion) -->
+        <div class="mt-14 w-full px-1">
+          <h3
+            class="font-display gold-gradient-text text-center text-xl font-bold uppercase tracking-widest mb-6"
+          >
+            ✦ Perguntas Frequentes ✦
+          </h3>
+
+          <div class="w-full flex flex-col gap-3">
+            <!-- Accordion Item 1 -->
+            <div
+              class="accordion-item border border-[#ddc08e]/15 bg-neutral-950/20 rounded-xl px-4 py-1"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full text-left font-bold text-xs sm:text-sm text-[#ddc08e] hover:text-[#ffd700] transition py-3 flex items-center justify-between cursor-pointer"
+              >
+                <span>O que é o Protocolo de Salomão?</span>
+                <svg
+                  class="chevron h-4 w-4 transition-transform duration-200 text-[#ddc08e]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div
+                class="accordion-content text-xs sm:text-sm text-neutral-400 leading-relaxed pb-3 pt-1"
+              >
+                É um método prático espiritual e mental baseado nos ensinamentos de sabedoria e
+                provisão financeira do Rei Salomão, focado em quebrar bloqueios de escassez familiar
+                e ativar a prosperidade terrena imediata.
+              </div>
+            </div>
+            <!-- Accordion Item 2 -->
+            <div
+              class="accordion-item border border-[#ddc08e]/15 bg-neutral-950/20 rounded-xl px-4 py-1"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full text-left font-bold text-xs sm:text-sm text-[#ddc08e] hover:text-[#ffd700] transition py-3 flex items-center justify-between cursor-pointer"
+              >
+                <span>Eu já sou aposentado(a) ou idoso(a), isso funciona para a minha idade?</span>
+                <svg
+                  class="chevron h-4 w-4 transition-transform duration-200 text-[#ddc08e]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div
+                class="accordion-content text-xs sm:text-sm text-neutral-400 leading-relaxed pb-3 pt-1"
+              >
+                Sim! A sabedoria de Salomão e as leis da provisão divina não têm idade. De fato, a
+                maioria dos nossos membros ativos tem mais de 60 anos e relatam a quitação de
+                dívidas históricas e liberação de valores travados (como heranças ou processos
+                judiciais).
+              </div>
+            </div>
+            <!-- Accordion Item 3 -->
+            <div
+              class="accordion-item border border-[#ddc08e]/15 bg-neutral-950/20 rounded-xl px-4 py-1"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full text-left font-bold text-xs sm:text-sm text-[#ddc08e] hover:text-[#ffd700] transition py-3 flex items-center justify-between cursor-pointer"
+              >
+                <span>Como vou receber o acesso ao Protocolo?</span>
+                <svg
+                  class="chevron h-4 w-4 transition-transform duration-200 text-[#ddc08e]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div
+                class="accordion-content text-xs sm:text-sm text-neutral-400 leading-relaxed pb-3 pt-1"
+              >
+                O acesso é enviado imediatamente para o seu e-mail cadastrado logo após a
+                confirmação do pagamento. Você receberá o guia passo a passo, os aceleradores e os
+                áudios binaurais em formato digital seguro.
+              </div>
+            </div>
+            <!-- Accordion Item 4 -->
+            <div
+              class="accordion-item border border-[#ddc08e]/15 bg-neutral-950/20 rounded-xl px-4 py-1"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full text-left font-bold text-xs sm:text-sm text-[#ddc08e] hover:text-[#ffd700] transition py-3 flex items-center justify-between cursor-pointer"
+              >
+                <span>E se eu não ver nenhum resultado?</span>
+                <svg
+                  class="chevron h-4 w-4 transition-transform duration-200 text-[#ddc08e]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div
+                class="accordion-content text-xs sm:text-sm text-neutral-400 leading-relaxed pb-3 pt-1"
+              >
+                Nós oferecemos uma Garantia Divina de 7 Dias. Se dentro desse período você sentir
+                que o protocolo não ativou a prosperidade na sua vida, basta solicitar o reembolso
+                total por e-mail ou WhatsApp de suporte. O risco é zero.
+              </div>
+            </div>
+            <!-- Accordion Item 5 -->
+            <div
+              class="accordion-item border border-[#ddc08e]/15 bg-neutral-950/20 rounded-xl px-4 py-1"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full text-left font-bold text-xs sm:text-sm text-[#ddc08e] hover:text-[#ffd700] transition py-3 flex items-center justify-between cursor-pointer"
+              >
+                <span>O pagamento é seguro e sigiloso?</span>
+                <svg
+                  class="chevron h-4 w-4 transition-transform duration-200 text-[#ddc08e]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div
+                class="accordion-content text-xs sm:text-sm text-neutral-400 leading-relaxed pb-3 pt-1"
+              >
+                Absolutamente. Todo o processo de pagamento é intermediado pela Disrupty, uma das
+                maiores e mais seguras plataformas de educação digital do Brasil, com criptografia
+                SSL avançada e sigilo absoluto dos seus dados.
+              </div>
+            </div>
+          </div>
         </div>
-        <p id="city-footer-text" class="max-w-md text-[10px] leading-relaxed text-neutral-600 sm:text-xs">
-          O Protocolo de Salomão é um guia de sabedoria e reflexão espiritual e financeira. Se você fechar esta página, seu código temporário expira e será redirecionado para outra linhagem necessitada em sua região.
-        </p>
-      </div>
 
+        <!-- Secure Footer -->
+        <div
+          class="mt-16 w-full border-t border-[#ddc08e]/10 pt-8 flex flex-col items-center gap-4 text-center"
+        >
+          <div class="flex items-center gap-5 text-neutral-600 text-xs">
+            <span class="flex items-center gap-1">
+              <svg
+                class="h-3 w-3"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="12"
+              >
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              SSL Seguro
+            </span>
+            <span class="flex items-center gap-1">
+              <svg
+                class="h-3 w-3"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="12"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <path d="M22 4L12 14.01l-3-3" />
+              </svg>
+              Verificado
+            </span>
+          </div>
+          <p
+            id="city-footer-text"
+            class="max-w-md text-[10px] leading-relaxed text-neutral-600 sm:text-xs"
+          >
+            O Protocolo de Salomão é um guia de sabedoria e reflexão espiritual e financeira. Se
+            você fechar esta página, seu código temporário expira e será redirecionado para outra
+            linhagem necessitada em sua região.
+          </p>
+        </div>
+      </div>
     </div>
 
-  </div>
+    <!-- Client JavaScript Logic -->
+    <script>
+      // DOM References
+      const countdownTimer = document.getElementById("countdown-timer");
+      const urgencyText = document.getElementById("urgency-text");
 
-  <!-- Client JavaScript Logic -->
-  <script>
-    // DOM References
-    const countdownTimer = document.getElementById("countdown-timer");
-    const urgencyText = document.getElementById("urgency-text");
+      // Geolocation elements
+      const cityWarningText = document.getElementById("city-warning-text");
+      const cityDescText = document.getElementById("city-desc-text");
+      const cityScarcityText = document.getElementById("city-scarcity-text");
+      const cityFooterText = document.getElementById("city-footer-text");
 
-    // Geolocation elements
-    const cityWarningText = document.getElementById("city-warning-text");
-    const cityDescText = document.getElementById("city-desc-text");
-    const cityScarcityText = document.getElementById("city-scarcity-text");
-    const cityFooterText = document.getElementById("city-footer-text");
+      let userCity = "sua região";
+      const majorCapitals = [
+        "São Paulo",
+        "Rio de Janeiro",
+        "Belo Horizonte",
+        "Porto Alegre",
+        "Curitiba",
+        "Salvador",
+        "Fortaleza",
+        "Brasília",
+        "Recife",
+        "Goiânia",
+      ];
 
-    let userCity = "sua região";
-    const majorCapitals = ["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Porto Alegre", "Curitiba", "Salvador", "Fortaleza", "Brasília", "Recife", "Goiânia"];
+      function updateGeoText(city) {
+        userCity = city;
+        if (cityWarningText)
+          cityWarningText.innerText = `LINHAGEM SOB ESCASSEZ DETECTADA EM ${userCity.toUpperCase()}`;
+        if (cityDescText)
+          cityDescText.innerHTML = `O cruzamento de dados identificou padrões recorrentes de endividamento e travamentos vinculados ao seu endereço IP em <span class="text-[#ff6b6b] font-bold">${userCity}</span>. Protocolo ativado de emergência.`;
+        if (cityScarcityText) cityScarcityText.innerText = `${userCity} e região`;
+        if (cityFooterText)
+          cityFooterText.innerText = `O Protocolo de Salomão é um guia de sabedoria e reflexão espiritual e financeira. Se você fechar esta página, seu código temporário expira e será redirecionado para outra linhagem necessitada em ${userCity}.`;
 
-    function updateGeoText(city) {
-      userCity = city;
-      if (cityWarningText) cityWarningText.innerText = `LINHAGEM SOB ESCASSEZ DETECTADA EM ${userCity.toUpperCase()}`;
-      if (cityDescText) cityDescText.innerHTML = `O cruzamento de dados identificou padrões recorrentes de endividamento e travamentos vinculados ao seu endereço IP em <span class="text-[#ff6b6b] font-bold">${userCity}</span>. Protocolo ativado de emergência.`;
-      if (cityScarcityText) cityScarcityText.innerText = `${userCity} e região`;
-      if (cityFooterText) cityFooterText.innerText = `O Protocolo de Salomão é um guia de sabedoria e reflexão espiritual e financeira. Se você fechar esta página, seu código temporário expira e será redirecionado para outra linhagem necessitada em ${userCity}.`;
-      
-      // Simpler, robust urgency text replacer
-      if (urgencyText && userCity && userCity !== "sua região") {
-        const currentContent = urgencyText.innerText;
-        // Case-insensitive replace "sua região" with the dynamic city name
-        const updatedContent = currentContent.replace(/sua região/i, userCity);
-        urgencyText.innerText = updatedContent;
+        // Simpler, robust urgency text replacer
+        if (urgencyText && userCity && userCity !== "sua região") {
+          const currentContent = urgencyText.innerText;
+          // Case-insensitive replace "sua região" with the dynamic city name
+          const updatedContent = currentContent.replace(/sua região/i, userCity);
+          urgencyText.innerText = updatedContent;
+        }
       }
-    }
 
-    // Load from localStorage or fetch (ipinfo.io with ipapi.co fallback)
-    const cachedCity = localStorage.getItem("solomon_user_city");
-    if (cachedCity) {
-      updateGeoText(cachedCity);
-    } else {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 3000);
+      // Load from localStorage or fetch (ipinfo.io with ipapi.co fallback)
+      const cachedCity = localStorage.getItem("solomon_user_city");
+      if (cachedCity) {
+        updateGeoText(cachedCity);
+      } else {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3000);
 
-      fetch("https://ipinfo.io/json", { signal: controller.signal })
-        .then(res => res.json())
-        .then(data => {
-          clearTimeout(timeoutId);
-          if (data.city) {
-            localStorage.setItem("solomon_user_city", data.city);
-            updateGeoText(data.city);
-          } else {
-            throw new Error("No city in ipinfo");
-          }
-        })
-        .catch(() => {
-          clearTimeout(timeoutId);
-          // Try ipapi.co as a fallback
-          fetch("https://ipapi.co/json/")
-            .then(res => res.json())
-            .then(data => {
-              if (data.city) {
-                localStorage.setItem("solomon_user_city", data.city);
-                updateGeoText(data.city);
-              } else {
+        fetch("https://ipinfo.io/json", { signal: controller.signal })
+          .then((res) => res.json())
+          .then((data) => {
+            clearTimeout(timeoutId);
+            if (data.city) {
+              localStorage.setItem("solomon_user_city", data.city);
+              updateGeoText(data.city);
+            } else {
+              throw new Error("No city in ipinfo");
+            }
+          })
+          .catch(() => {
+            clearTimeout(timeoutId);
+            // Try ipapi.co as a fallback
+            fetch("https://ipapi.co/json/")
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.city) {
+                  localStorage.setItem("solomon_user_city", data.city);
+                  updateGeoText(data.city);
+                } else {
+                  updateGeoText("sua região");
+                }
+              })
+              .catch(() => {
                 updateGeoText("sua região");
-              }
-            })
-            .catch(() => {
-              updateGeoText("sua região");
-            });
-        });
-    }
+              });
+          });
+      }
 
-    // 2. MINUTES:SECONDS COUNTDOWN TIMER (5:00 minutes with LocalStorage)
-    function startCountdownWidget() {
-      const storedTarget = localStorage.getItem("solomon_timer_target");
-      let targetTime;
+      // 2. MINUTES:SECONDS COUNTDOWN TIMER (5:00 minutes with LocalStorage)
+      function startCountdownWidget() {
+        const storedTarget = localStorage.getItem("solomon_timer_target");
+        let targetTime;
 
-      if (storedTarget) {
-        targetTime = parseInt(storedTarget, 10);
-        let remaining = Math.max(0, Math.floor((targetTime - Date.now()) / 1000));
-        if (remaining <= 0) {
+        if (storedTarget) {
+          targetTime = parseInt(storedTarget, 10);
+          let remaining = Math.max(0, Math.floor((targetTime - Date.now()) / 1000));
+          if (remaining <= 0) {
+            const newTarget = Date.now() + 300 * 1000;
+            localStorage.setItem("solomon_timer_target", newTarget.toString());
+            targetTime = newTarget;
+          }
+        } else {
           const newTarget = Date.now() + 300 * 1000;
           localStorage.setItem("solomon_timer_target", newTarget.toString());
           targetTime = newTarget;
         }
-      } else {
-        const newTarget = Date.now() + 300 * 1000;
-        localStorage.setItem("solomon_timer_target", newTarget.toString());
-        targetTime = newTarget;
+
+        const timerInterval = setInterval(() => {
+          const remaining = Math.max(0, Math.floor((targetTime - Date.now()) / 1000));
+          const min = Math.floor(remaining / 60);
+          const sec = remaining % 60;
+          countdownTimer.innerText = `${min.toString().padStart(2, "0")}:${sec.toString().padStart(2, "0")}`;
+
+          if (remaining <= 0) {
+            clearInterval(timerInterval);
+          }
+        }, 1000);
       }
 
-      const timerInterval = setInterval(() => {
-        const remaining = Math.max(0, Math.floor((targetTime - Date.now()) / 1000));
-        const min = Math.floor(remaining / 60);
-        const sec = remaining % 60;
-        countdownTimer.innerText = `${min.toString().padStart(2, "0")}:${sec.toString().padStart(2, "0")}`;
+      // RADIX STYLE ACCORDION HANDLER
+      function toggleAccordion(element) {
+        const accordionItem = element.parentElement;
+        const isActive = accordionItem.classList.contains("active");
 
-        if (remaining <= 0) {
-          clearInterval(timerInterval);
+        // Collapse all accordion items first
+        document.querySelectorAll(".accordion-item").forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        // If clicked item was not active, expand it
+        if (!isActive) {
+          accordionItem.classList.add("active");
         }
-      }, 1000);
-    }
-
-
-
-    // RADIX STYLE ACCORDION HANDLER
-    function toggleAccordion(element) {
-      const accordionItem = element.parentElement;
-      const isActive = accordionItem.classList.contains("active");
-
-      // Collapse all accordion items first
-      document.querySelectorAll(".accordion-item").forEach(item => {
-        item.classList.remove("active");
-      });
-
-      // If clicked item was not active, expand it
-      if (!isActive) {
-        accordionItem.classList.add("active");
       }
-    }
 
-    // Facebook Comments Dynamic Handler
-    const fbForm = document.getElementById("fb-comment-form");
-    const fbList = document.getElementById("fb-comments-list");
+      // Facebook Comments Dynamic Handler
+      const fbForm = document.getElementById("fb-comment-form");
+      const fbList = document.getElementById("fb-comments-list");
 
-    fbForm.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const name = document.getElementById("fb-name-input").value;
-      const age = document.getElementById("fb-age-input").value;
-      const uf = document.getElementById("fb-uf-input").value.toUpperCase();
-      const text = document.getElementById("fb-comment-input").value;
+      fbForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const name = document.getElementById("fb-name-input").value;
+        const age = document.getElementById("fb-age-input").value;
+        const uf = document.getElementById("fb-uf-input").value.toUpperCase();
+        const text = document.getElementById("fb-comment-input").value;
 
-      if (!name || !age || !uf || !text) return;
+        if (!name || !age || !uf || !text) return;
 
-      const initials = name.trim().split(" ").map(n => n[0]).join("").slice(0, 2).toUpperCase() || "VC";
+        const initials =
+          name
+            .trim()
+            .split(" ")
+            .map((n) => n[0])
+            .join("")
+            .slice(0, 2)
+            .toUpperCase() || "VC";
 
-      const commentHTML = `
+        const commentHTML = `
         <div class="flex gap-3 text-left">
           <div class="w-10 h-10 rounded-full shrink-0 flex items-center justify-center font-display font-black text-xs bg-gradient-to-br from-[#ddc08e] via-[#b09260] to-neutral-800 text-black border border-[#ddc08e]/35 shadow-inner select-none">${initials}</div>
           <div class="flex-1">
@@ -842,121 +1367,125 @@
         </div>
       `;
 
-      // Prepend to list
-      fbList.insertAdjacentHTML("afterbegin", commentHTML);
+        // Prepend to list
+        fbList.insertAdjacentHTML("afterbegin", commentHTML);
 
-      // Reset form
-      document.getElementById("fb-name-input").value = "";
-      document.getElementById("fb-age-input").value = "65";
-      document.getElementById("fb-comment-input").value = "";
-    });
+        // Reset form
+        document.getElementById("fb-name-input").value = "";
+        document.getElementById("fb-age-input").value = "65";
+        document.getElementById("fb-comment-input").value = "";
+      });
 
-    // Start Widgets
-    startCountdownWidget();
+      // Start Widgets
+      startCountdownWidget();
 
-    // ==========================================
-    // SECURITY SHIELD: CONTEXT & CODE PROTECTION
-    // ==========================================
+      // ==========================================
+      // SECURITY SHIELD: CONTEXT & CODE PROTECTION
+      // ==========================================
 
-    // 1. Disable Right Click Context Menu
-    document.addEventListener("contextmenu", (e) => {
-      e.preventDefault();
-    });
-
-    // 2. Disable Key Shortcuts for Source / DevTools
-    document.addEventListener("keydown", (e) => {
-      // Disable F12
-      if (e.keyCode === 123) {
+      // 1. Disable Right Click Context Menu
+      document.addEventListener("contextmenu", (e) => {
         e.preventDefault();
-        return false;
-      }
-      
-      // Disable Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
-      if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
-        e.preventDefault();
-        return false;
-      }
+      });
 
-      // Disable Ctrl+U (view source)
-      if (e.ctrlKey && e.keyCode === 85) {
-        e.preventDefault();
-        return false;
-      }
+      // 2. Disable Key Shortcuts for Source / DevTools
+      document.addEventListener("keydown", (e) => {
+        // Disable F12
+        if (e.keyCode === 123) {
+          e.preventDefault();
+          return false;
+        }
 
-      // Disable Ctrl+S (save page)
-      if (e.ctrlKey && e.keyCode === 83) {
-        e.preventDefault();
-        return false;
-      }
+        // Disable Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+        if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+          e.preventDefault();
+          return false;
+        }
 
-      // Disable Ctrl+P (print page)
-      if (e.ctrlKey && e.keyCode === 80) {
-        e.preventDefault();
-        return false;
-      }
+        // Disable Ctrl+U (view source)
+        if (e.ctrlKey && e.keyCode === 85) {
+          e.preventDefault();
+          return false;
+        }
 
-      // Disable Ctrl+C and Ctrl+X (copy and cut)
-      if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 88)) {
-        e.preventDefault();
-        return false;
-      }
-    });
+        // Disable Ctrl+S (save page)
+        if (e.ctrlKey && e.keyCode === 83) {
+          e.preventDefault();
+          return false;
+        }
 
-    // 3. Disable Dragging of Images
-    document.addEventListener("dragstart", (e) => {
-      if (e.target.nodeName === "IMG") {
-        e.preventDefault();
-      }
-    });
+        // Disable Ctrl+P (print page)
+        if (e.ctrlKey && e.keyCode === 80) {
+          e.preventDefault();
+          return false;
+        }
 
-    // 4. Facebook Comments Like Button Delegate
-    document.addEventListener("click", function(e) {
-      if (e.target && e.target.tagName === "BUTTON" && e.target.innerText === "Curtir") {
-        const btn = e.target;
-        const parent = btn.parentElement;
-        if (!parent) return;
+        // Disable Ctrl+C and Ctrl+X (copy and cut)
+        if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 88)) {
+          e.preventDefault();
+          return false;
+        }
+      });
 
-        // Find the thumbs-up container
-        const likeContainer = parent.querySelector(".font-mono");
-        if (!likeContainer) return;
+      // 3. Disable Dragging of Images
+      document.addEventListener("dragstart", (e) => {
+        if (e.target.nodeName === "IMG") {
+          e.preventDefault();
+        }
+      });
 
-        // Extract the current count
-        const textContent = likeContainer.innerText;
-        const countMatch = textContent.match(/\d+/);
-        if (!countMatch) return;
+      // 4. Facebook Comments Like Button Delegate
+      document.addEventListener("click", function (e) {
+        if (e.target && e.target.tagName === "BUTTON" && e.target.innerText === "Curtir") {
+          const btn = e.target;
+          const parent = btn.parentElement;
+          if (!parent) return;
 
-        const currentCount = parseInt(countMatch[0], 10);
-        const newCount = currentCount + 1;
+          // Find the thumbs-up container
+          const likeContainer = parent.querySelector(".font-mono");
+          if (!likeContainer) return;
 
-        likeContainer.innerText = `👍 ${newCount}`;
-        
-        // Mark button as liked
-        btn.innerText = "Descurtir";
-        btn.style.color = "#ddc08e";
-      } else if (e.target && e.target.tagName === "BUTTON" && e.target.innerText === "Descurtir") {
-        const btn = e.target;
-        const parent = btn.parentElement;
-        if (!parent) return;
+          // Extract the current count
+          const textContent = likeContainer.innerText;
+          const countMatch = textContent.match(/\d+/);
+          if (!countMatch) return;
 
-        // Find the thumbs-up container
-        const likeContainer = parent.querySelector(".font-mono");
-        if (!likeContainer) return;
+          const currentCount = parseInt(countMatch[0], 10);
+          const newCount = currentCount + 1;
 
-        // Extract the current count
-        const textContent = likeContainer.innerText;
-        const countMatch = textContent.match(/\d+/);
-        if (!countMatch) return;
+          likeContainer.innerText = `👍 ${newCount}`;
 
-        const currentCount = parseInt(countMatch[0], 10);
-        const newCount = Math.max(0, currentCount - 1);
+          // Mark button as liked
+          btn.innerText = "Descurtir";
+          btn.style.color = "#ddc08e";
+        } else if (
+          e.target &&
+          e.target.tagName === "BUTTON" &&
+          e.target.innerText === "Descurtir"
+        ) {
+          const btn = e.target;
+          const parent = btn.parentElement;
+          if (!parent) return;
 
-        likeContainer.innerText = `👍 ${newCount}`;
-        
-        // Mark button as unliked
-        btn.innerText = "Curtir";
-        btn.style.color = "";
-      }
-    });
-  </script>
-</body>
+          // Find the thumbs-up container
+          const likeContainer = parent.querySelector(".font-mono");
+          if (!likeContainer) return;
+
+          // Extract the current count
+          const textContent = likeContainer.innerText;
+          const countMatch = textContent.match(/\d+/);
+          if (!countMatch) return;
+
+          const currentCount = parseInt(countMatch[0], 10);
+          const newCount = Math.max(0, currentCount - 1);
+
+          likeContainer.innerText = `👍 ${newCount}`;
+
+          // Mark button as unliked
+          btn.innerText = "Curtir";
+          btn.style.color = "";
+        }
+      });
+    </script>
+  </body>
 </html>

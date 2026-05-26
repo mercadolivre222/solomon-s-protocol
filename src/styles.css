@@ -1,8 +1,7 @@
 @import "tailwindcss" source(none);
 @import "tw-animate-css";
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cinzel+Decorative:wght@700;900&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cinzel+Decorative:wght@700;900&family=Montserrat:wght@300;400;500;600;700&display=swap");
 @source "../src";
-
 
 @custom-variant dark (&:is(.dark *));
 
@@ -148,24 +147,34 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: "Montserrat", system-ui, sans-serif;
   }
 
   .font-display {
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     letter-spacing: 0.02em;
   }
   .font-decorative {
-    font-family: 'Cinzel Decorative', serif;
+    font-family: "Cinzel Decorative", serif;
   }
 }
 
 @layer utilities {
-  .text-gold { color: #ffd700; }
-  .text-gold-light { color: #ffe97a; }
-  .bg-gold { background-color: #ffd700; }
-  .border-gold { border-color: #ffd700; }
-  .border-gold-dim { border-color: rgba(255, 215, 0, 0.35); }
+  .text-gold {
+    color: #ffd700;
+  }
+  .text-gold-light {
+    color: #ffe97a;
+  }
+  .bg-gold {
+    background-color: #ffd700;
+  }
+  .border-gold {
+    border-color: #ffd700;
+  }
+  .border-gold-dim {
+    border-color: rgba(255, 215, 0, 0.35);
+  }
 
   .gold-gradient-text {
     background: linear-gradient(180deg, #fff4b8 0%, #ffd700 45%, #b8860b 100%);
@@ -200,7 +209,9 @@
       0 8px 0 #6b4f08,
       0 12px 30px rgba(255, 215, 0, 0.4),
       0 0 80px rgba(255, 215, 0, 0.35);
-    animation: gold-pulse 2.4s ease-in-out infinite, gold-shimmer 4s linear infinite;
+    animation:
+      gold-pulse 2.4s ease-in-out infinite,
+      gold-shimmer 4s linear infinite;
   }
 
   .alert-blink {
@@ -211,8 +222,7 @@
     background-color: #000;
     background-image:
       radial-gradient(ellipse at top, rgba(255, 215, 0, 0.06), transparent 60%),
-      radial-gradient(ellipse at bottom, rgba(255, 215, 0, 0.04), transparent 70%),
-      var(--stone-img);
+      radial-gradient(ellipse at bottom, rgba(255, 215, 0, 0.04), transparent 70%), var(--stone-img);
     background-size: cover, cover, 800px;
     background-blend-mode: normal, normal, overlay;
   }
@@ -220,7 +230,9 @@
   .reveal {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 1.2s ease, transform 1.2s ease;
+    transition:
+      opacity 1.2s ease,
+      transform 1.2s ease;
   }
   .reveal.is-visible {
     opacity: 1;
@@ -229,29 +241,59 @@
 }
 
 @keyframes gold-pulse {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-2px) scale(1.015); }
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.015);
+  }
 }
 @keyframes gold-shimmer {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 0% 200%; }
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 200%;
+  }
 }
 @keyframes alert-blink {
-  0%, 100% { opacity: 1; box-shadow: 0 0 20px rgba(255, 59, 59, 0.4); }
-  50% { opacity: 0.65; box-shadow: 0 0 8px rgba(255, 59, 59, 0.2); }
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(255, 59, 59, 0.4);
+  }
+  50% {
+    opacity: 0.65;
+    box-shadow: 0 0 8px rgba(255, 59, 59, 0.2);
+  }
 }
 @keyframes artifact-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
-.artifact-float { animation: artifact-float 5s ease-in-out infinite; }
+.artifact-float {
+  animation: artifact-float 5s ease-in-out infinite;
+}
 
 @keyframes accordion-down {
-  from { height: 0; }
-  to { height: var(--radix-accordion-content-height); }
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
 }
 @keyframes accordion-up {
-  from { height: var(--radix-accordion-content-height); }
-  to { height: 0; }
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
 }
-
