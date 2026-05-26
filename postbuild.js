@@ -27,4 +27,4 @@ if (fs.existsSync(stoneBgSrc)) {
   fs.copyFileSync(stoneBgSrc, stoneBgDest);
 }
 
-console.log("Successfully prepared static files in dist/ for Netlify deployment!");
+console.log("Successfully prepared static files in dist/ for Vercel deployment!");
