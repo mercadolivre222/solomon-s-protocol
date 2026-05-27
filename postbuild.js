@@ -20,6 +20,13 @@ if (fs.existsSync(lockSrc)) {
   fs.copyFileSync(lockSrc, lockDest);
 }
 
+// Copy solomon-lock.png
+const lockPngSrc = path.join("src", "assets", "solomon-lock.png");
+const lockPngDest = path.join(destAssetsDir, "solomon-lock.png");
+if (fs.existsSync(lockPngSrc)) {
+  fs.copyFileSync(lockPngSrc, lockPngDest);
+}
+
 // Copy stone-bg.jpg if it exists
 const stoneBgSrc = path.join("src", "assets", "stone-bg.jpg");
 const stoneBgDest = path.join(destAssetsDir, "stone-bg.jpg");
